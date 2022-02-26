@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
