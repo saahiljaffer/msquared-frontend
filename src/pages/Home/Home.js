@@ -42,7 +42,7 @@ const DaysLeft = styled(Countdown)`
   color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
-const WEDDING_DATE = new Date(2019, 9, 11);
+const WEDDING_DATE = new Date(2022, 5, 4);
 const TODAY = new Date();
 
 class Home extends PureComponent {
@@ -65,7 +65,7 @@ class Home extends PureComponent {
     return (
       <HomeContainer>
         <Banner src={banner} alt="Banner" />
-        <MainTitle>Catriona & Darren</MainTitle>
+        <MainTitle>Maysum & Malika</MainTitle>
         <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
         <SubTitle>
           Welcome to our wedding website. We’ve created this website as a
