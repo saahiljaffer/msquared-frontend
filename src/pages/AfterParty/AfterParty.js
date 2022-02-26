@@ -15,19 +15,19 @@ const MainHeader = styled(H5)`
 const VenueInfo = styled(H6)`
   margin-bottom: 1rem;
   text-align: center;
-  color: ${props => props.theme.colors.background.quintenary};
+  color: ${(props) => props.theme.colors.background.quintenary};
 `;
 
 const SectionTitle = styled(H6)`
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-align: center;
-  color: ${props => props.theme.colors.background.quintenary};
+  color: ${(props) => props.theme.colors.background.quintenary};
 `;
 
 const P = styled(B2)`
   margin-bottom: 1rem;
-  color: ${props => props.theme.colors.foreground.secondary};
+  color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
 const DirectionsContainer = styled.section`

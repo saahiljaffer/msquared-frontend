@@ -1,4 +1,9 @@
-import * as firebase from "firebase";
+// This import loads the firebase namespace along with all its type information.
+import firebase from "firebase/app";
+
+// These imports load individual services into the firebase namespace.
+import "firebase/auth";
+import "firebase/firestore";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -6,7 +11,7 @@ firebase.initializeApp({
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 });
 
-export const dbRef = firebase.database();
+export const dbRef = firebase.firestore();

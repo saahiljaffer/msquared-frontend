@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { B1 } from "../Fonts/Fonts";
 
 const Container = styled.div`
-  border: ${props => `1px solid ${props.theme.colors.foreground.quaternary}`};
+  border: ${(props) => `1px solid ${props.theme.colors.foreground.quaternary}`};
   padding: 0.5rem;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -22,14 +22,14 @@ const ContentContainer = styled.div`
 
 class Accordion extends PureComponent {
   static propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
   };
 
   state = { isExpanded: false };
 
   toggleIsExpanded = () => {
-    this.setState(prevState => ({
-      isExpanded: !prevState.isExpanded
+    this.setState((prevState) => ({
+      isExpanded: !prevState.isExpanded,
     }));
   };
 

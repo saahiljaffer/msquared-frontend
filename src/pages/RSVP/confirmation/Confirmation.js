@@ -14,7 +14,7 @@ const MainHeading = styled(H5)`
 `;
 
 const SubHeading = styled(S1)`
-  color: ${props => props.theme.colors.foreground.tertiary};
+  color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
 export default ({ guests, goToHome }) => (
@@ -25,7 +25,7 @@ export default ({ guests, goToHome }) => (
         Thank you for responding. We hope you have a wonderful time.
       </SubHeading>
     </HeadingContainer>
-    {guests.map(guest => (
+    {guests.map((guest) => (
       <GuestDetails key={guest.name} guest={guest} />
     ))}
 

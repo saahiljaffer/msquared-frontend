@@ -12,7 +12,7 @@ const Title = styled(B1)`
 const MultiMatchForm = ({ potentialParties, onChooseParty }) => {
   const [chosenParty, setChosenParty] = useState(null);
 
-  const getPartyDisplayValue = party => {
+  const getPartyDisplayValue = (party) => {
     const guestNames = party.guests.reduce((result, guest) => {
       return result === "" ? guest.name : `${result}, ${guest.name}`;
     }, "");
@@ -20,18 +20,18 @@ const MultiMatchForm = ({ potentialParties, onChooseParty }) => {
     return party.location ? `${guestNames} (${party.location})` : guestNames;
   };
 
-  const options = potentialParties.map(party => ({
+  const options = potentialParties.map((party) => ({
     value: party.id,
-    label: getPartyDisplayValue(party)
+    label: getPartyDisplayValue(party),
   }));
 
-  const onChosenPartyChange = e => {
+  const onChosenPartyChange = (e) => {
     setChosenParty(e.target.value);
   };
 
   const onNext = () => {
     const chosenPartyValue = potentialParties.find(
-      party => party.id === chosenParty
+      (party) => party.id === chosenParty
     );
     onChooseParty(chosenPartyValue);
   };

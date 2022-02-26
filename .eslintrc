@@ -1,8 +1,6 @@
 {
-    "extends": "react-app",
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": "error"
-    }
+  "extends": "react-app",
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }
-  

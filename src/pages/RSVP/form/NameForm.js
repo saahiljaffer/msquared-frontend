@@ -9,7 +9,7 @@ import { required } from "../../../form/validations";
 
 const Title = styled(S1)`
   margin-bottom: 1rem;
-  color: ${props => props.theme.colors.foreground.secondary};
+  color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
 const NameForm = ({
@@ -18,7 +18,7 @@ const NameForm = ({
   submitting,
   pristine,
   onSubmit,
-  onCancel
+  onCancel,
 }) => (
   <form onSubmit={handleSubmit(onSubmit)}>
     <Title>
@@ -27,8 +27,14 @@ const NameForm = ({
     </Title>
 
     <Field
-      name="name"
-      label="Please enter your full name"
+      name="firstName"
+      label="Please enter your first name"
+      component={Input}
+      validate={required}
+    />
+    <Field
+      name="lastName"
+      label="Please enter your last name"
       component={Input}
       validate={required}
     />
@@ -49,5 +55,5 @@ const NameForm = ({
 );
 
 export default reduxForm({
-  form: "rsvpnameform"
+  form: "rsvpnameform",
 })(NameForm);

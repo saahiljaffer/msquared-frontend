@@ -22,7 +22,7 @@ const Label = styled(B1)`
 export default ({ label, options, input }) => (
   <Container>
     {label && <Label>{label}</Label>}
-    {options.map(option => (
+    {options.map((option) => (
       <RadioContainer key={option.value}>
         <Radio
           label={option.label}

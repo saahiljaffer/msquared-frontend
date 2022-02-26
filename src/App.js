@@ -8,7 +8,7 @@ import {
   RSVP_ROUTE,
   WEDDING_DAY,
   AFTER_PARTY,
-  RESPONSES
+  RESPONSES,
 } from "./routes/routes";
 import "./firebase";
 

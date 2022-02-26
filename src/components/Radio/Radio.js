@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { B1 } from "../Fonts/Fonts";
 
 const Label = styled(B1)`
-  color: ${props => props.theme.colors.foreground.tertiary};
+  color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
 const Container = styled.label`
@@ -22,7 +22,7 @@ const CheckboxContainer = styled.span`
   height: 2rem;
   width: 2rem;
   border-radius: 1rem;
-  background-color: ${props => props.theme.colors.foreground.quintenary};
+  background-color: ${(props) => props.theme.colors.foreground.quintenary};
 `;
 
 const CheckMark = styled(FontAwesomeIcon)`
@@ -30,7 +30,7 @@ const CheckMark = styled(FontAwesomeIcon)`
   top: 0.5rem;
   left: 0.5rem;
   visibility: hidden;
-  color: ${props => props.theme.colors.foreground.quintenary};
+  color: ${(props) => props.theme.colors.foreground.quintenary};
 `;
 
 const Input = styled.input`
@@ -41,7 +41,7 @@ const Input = styled.input`
   width: 0;
 
   :checked ~ ${CheckboxContainer} {
-    background-color: ${props => props.theme.colors.foreground.tertiary};
+    background-color: ${(props) => props.theme.colors.foreground.tertiary};
 
     ${CheckMark} {
       visibility: visible;
@@ -49,7 +49,7 @@ const Input = styled.input`
   }
 
   :checked ~ ${Label} {
-    color: ${props => props.theme.colors.foreground.secondary};
+    color: ${(props) => props.theme.colors.foreground.secondary};
   }
 `;
 

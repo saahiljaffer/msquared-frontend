@@ -1,263 +1,135 @@
-import React, { Fragment, Component } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import { dbRef } from "../../firebase";
 import NameForm from "./form/NameForm";
 import GuestsForm from "./form/GuestsForm";
 import MultiMatchForm from "./form/MultiMatchForm";
 import Confirmation from "./confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
+import { useHistory } from "react-router-dom";
 
-const RetryContent = styled.span`
-  text-decoration: underline;
-`;
-const RetryButton = ({ close }) => (
-  <RetryContent onClick={close}>Retry</RetryContent>
-);
+function RSVP(props) {
+  const [chosenParty, setChosenParty] = useState(null);
+  const [potentialParties, setPotentialParties] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
+  const [loadingPartiesErrorId, setLoadingPartiesErrorId] = useState(null);
+  const [guests, setGuests] = useState(null);
 
-class RSVP extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      chosenParty: null,
-      potentialParties: null,
-      allParties: null,
-      showConfirmation: false,
-      isLoading: false,
-      loadingPartiesErrorId: null
-    };
-  }
-
-  componentDidMount() {
-    this.loadParties();
-  }
-
-  goToHome = () => {
-    const { history } = this.props;
-    history.push(HOME.path);
-  };
-
-  loadParties = () => {
-    const { loadingPartiesErrorId } = this.state;
-
-    if (loadingPartiesErrorId) {
-      alerts.close(loadingPartiesErrorId);
+  useEffect(() => {
+    if (chosenParty && chosenParty.pk) {
+      fetch(`http://127.0.0.1:8000/guests/${chosenParty.pk}/`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setGuests(data);
+        })
+        .then(() => {
+          setLoading(false);
+        });
     }
+  }, [chosenParty]);
 
-    this.setState({ isLoading: true, loadingPartiesErrorId: null });
-
-    const partiesRef = dbRef.ref("parties");
-    partiesRef.once(
-      "value",
-      snapshot => {
-        const parties = [];
-        snapshot.forEach(party => {
-          parties.push({
-            ...party.val(),
-            id: party.key
-          });
-        });
-
-        this.setState({
-          allParties: parties,
-          isLoading: false
-        });
-      },
-      error => {
-        console.error("Could not retrieve parties", error);
-        const loadingPartiesErrorId = alerts.showError(
-          "An error has occurred. Please try again.",
-          {
-            closeButton: RetryButton,
-            onClose: () => {
-              this.setState({ loadingPartiesErrorId: null }, () =>
-                this.loadParties()
-              );
-            }
-          }
-        );
-        this.setState({
-          loadingPartiesErrorId,
-          isLoading: false
-        });
-      }
-    );
-  };
-
-  getPartyWithGuestName = name => {
-    const { allParties } = this.state;
-
-    const nameToFind = name.toLowerCase().replace(/ /g, "");
-    return allParties.filter(party => {
-      return party.guests.find(guest => {
-        const guestsName = guest.name.toLowerCase().replace(/ /g, "");
-
-        return guestsName === nameToFind;
-      });
-    });
-  };
-
-  /**
-   * Search for a party containing a guest with a matching name.
-   */
-  onNameFormSubmit = values => {
-    const { name } = values;
-    const potentialParties = this.getPartyWithGuestName(name);
-    let foundParty;
-    if (potentialParties.length === 1) {
-      foundParty = potentialParties[0];
-    } else if (potentialParties.length > 1) {
-      this.setState({ potentialParties });
-      return;
+  useEffect(() => {
+    if (chosenParty) {
+      console.log(chosenParty);
     }
-
-    const { partyNotFoundAlert } = this.state;
-    if (!foundParty && !partyNotFoundAlert) {
-      const notFoundAlert = alerts.showError(
-        "We could not find your invite. Please check your spelling and try again.",
-        { onClose: () => this.setState({ partyNotFoundAlert: null }) }
-      );
-      this.setState({ partyNotFoundAlert: notFoundAlert });
-    } else if (foundParty && foundParty.hasResponded) {
+    if (chosenParty && chosenParty.fields.hasResponded) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);
       }
-
-      // Already RSVP'd, show confirmation
-      this.setState({
-        chosenParty: foundParty,
-        showConfirmation: true,
-        partyNotFoundAlert: null
-      });
+      setPartyNotFoundAlert(null);
+      setShowConfirmation(true);
       alerts.showSuccess(
         "You have already responded. Please find your details below."
       );
-    } else if (foundParty) {
-      if (partyNotFoundAlert) {
-        alerts.close(partyNotFoundAlert);
-      }
-      this.setState({ chosenParty: foundParty, partyNotFoundAlert: null });
     }
-  };
+  }, [chosenParty]);
 
-  renderNameForm = () => {
-    return (
-      <NameForm onSubmit={this.onNameFormSubmit} onCancel={this.goToHome} />
-    );
-  };
-
-  shouldRenderNameForm = () => {
-    const { allParties, chosenParty, potentialParties, isLoading } = this.state;
-
-    return (
-      allParties &&
-      allParties.length &&
-      !chosenParty &&
-      !potentialParties &&
-      !isLoading
-    );
-  };
-
-  shouldRenderGuestsForm = () => {
-    const { chosenParty, showConfirmation, isLoading } = this.state;
-
-    return !!chosenParty && !showConfirmation && !isLoading;
-  };
-
-  shouldRenderMultiMatchForm = () => {
-    const { chosenParty, potentialParties } = this.state;
-
-    return !chosenParty && potentialParties && potentialParties.length;
-  };
-
-  shouldRenderConfirmation = () => {
-    const { showConfirmation, isLoading } = this.state;
-    return showConfirmation && !isLoading;
-  };
-
-  onUpdateGuests = updatedGuests => {
-    const { chosenParty } = this.state;
-    const updatedParty = {
-      ...chosenParty,
-      guests: updatedGuests,
-      hasResponded: true
-    };
-
-    this.setState({ isLoading: true });
-
-    const partyRef = dbRef.ref(`parties/${updatedParty.id}`);
-    partyRef.set(updatedParty, error => {
-      if (error) {
-        console.error(error);
+  useEffect(() => {
+    if (potentialParties && potentialParties.length === 1) {
+      setChosenParty(potentialParties[0]);
+      setPotentialParties(null);
+    } else if (potentialParties) {
+      setPartyNotFoundAlert(
         alerts.showError(
-          "An error has occurred submitting your response. Please try again"
-        );
-      } else {
-        this.setState({
-          chosenParty: updatedParty,
-          showConfirmation: true,
-          isLoading: false
-        });
-      }
-    });
-  };
+          "We could not find your invite. Please check your spelling and try again.",
+          { onClose: () => setPartyNotFoundAlert(null) }
+        )
+      );
+    }
+  }, [potentialParties]);
 
-  renderGuestsForm = () => {
-    const { chosenParty } = this.state;
-    return (
-      <GuestsForm
-        guests={chosenParty.guests}
-        updateGuests={this.onUpdateGuests}
-        onCancel={this.goToHome}
-      />
-    );
-  };
+  return (
+    <PageWithNav>
+      <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
+      {loading && <LoadingIndicator />}
+      {!chosenParty && !potentialParties && !loading && (
+        <NameForm
+          onSubmit={(values) => {
+            const { firstName, lastName } = values;
+            if (loadingPartiesErrorId) {
+              alerts.close(loadingPartiesErrorId);
+            }
 
-  renderConfirmationScreen() {
-    const { chosenParty } = this.state;
-    return (
-      <Confirmation guests={chosenParty.guests} goToHome={this.goToHome} />
-    );
-  }
+            setLoadingPartiesErrorId(null);
+            setLoading(true);
 
-  onChooseSingleParty = party => {
-    this.setState({ chosenParty: party, potentialParties: null });
-  };
-
-  renderMultiMatchForm = () => {
-    const { potentialParties } = this.state;
-
-    return (
-      <MultiMatchForm
-        potentialParties={potentialParties}
-        onChooseParty={this.onChooseSingleParty}
-      />
-    );
-  };
-
-  render() {
-    const { isLoading } = this.state;
-    return (
-      <PageWithNav>
-        <Fragment>
-          <AlertContainer
-            template={AlertTemplate}
-            closeButton={AlertCloseButton}
-          />
-          {isLoading && <LoadingIndicator />}
-          {this.shouldRenderNameForm() && this.renderNameForm()}
-          {this.shouldRenderGuestsForm() && this.renderGuestsForm()}
-          {this.shouldRenderConfirmation() && this.renderConfirmationScreen()}
-          {this.shouldRenderMultiMatchForm() && this.renderMultiMatchForm()}
-        </Fragment>
-      </PageWithNav>
-    );
-  }
+            fetch(
+              `http://127.0.0.1:8000/parties/?first_name=${firstName}&last_name=${lastName}`
+            )
+              .then((response) => response.json())
+              .then((data) => setPotentialParties(data))
+              .then(() => setLoading(false));
+          }}
+          onCancel={() => {
+            let history = useHistory();
+            history.push(HOME.path);
+          }}
+        />
+      )}
+      {!!chosenParty && !showConfirmation && !!guests && !loading && (
+        <GuestsForm
+          guests={guests}
+          updateGuests={(updatedGuests) => {
+            setLoading(true);
+            console.log(JSON.stringify(updatedGuests));
+            fetch(`http://127.0.0.1:8000/guests/${chosenParty.pk}/`, {
+              method: "POST",
+              body: JSON.stringify(updatedGuests),
+            }).then(() => setLoading(false));
+          }}
+          onCancel={() => {
+            let history = useHistory();
+            history.push(HOME.path);
+          }}
+        />
+      )}
+      {false && showConfirmation && !loading && (
+        <Confirmation
+          guests={guests}
+          goToHome={() => {
+            let history = useHistory();
+            history.push(HOME.path);
+          }}
+        />
+      )}
+      {!chosenParty && potentialParties && potentialParties.length > 1 && (
+        <MultiMatchForm
+          potentialParties={potentialParties}
+          onChooseParty={(party) => {
+            setChosenParty(party);
+            setPotentialParties(null);
+          }}
+        />
+      )}
+    </PageWithNav>
+  );
 }
 
 export default RSVP;

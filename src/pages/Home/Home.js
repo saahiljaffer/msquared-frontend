@@ -4,7 +4,7 @@ import { H2 } from "../../components/Fonts/Secondary";
 import { S1 } from "../../components/Fonts/Fonts";
 import Button, {
   TYPES as ButtonTypes,
-  STYLES as ButtonStyles
+  STYLES as ButtonStyles,
 } from "../../components/Button/Button";
 import PageContainer from "../../components/PageContainer/PageContainer";
 import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
@@ -31,7 +31,7 @@ const MainTitle = styled(H2)`
 `;
 
 const SubTitle = styled(S1)`
-  color: ${props => props.theme.colors.foreground.secondary};
+  color: ${(props) => props.theme.colors.foreground.secondary};
   margin-bottom: 1rem;
   text-align: center;
 `;
@@ -39,7 +39,7 @@ const SubTitle = styled(S1)`
 const DaysLeft = styled(Countdown)`
   text-align: center;
   margin-bottom: 1rem;
-  color: ${props => props.theme.colors.foreground.secondary};
+  color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
 const WEDDING_DATE = new Date(2019, 9, 11);

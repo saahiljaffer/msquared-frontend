@@ -5,6 +5,6 @@ export default styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: ${props =>
+  border-bottom: ${(props) =>
     `1px solid ${props.theme.colors.background.secondary}`};
 `;

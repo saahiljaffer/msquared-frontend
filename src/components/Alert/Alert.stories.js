@@ -16,7 +16,9 @@ stories.add("Alert", () => (
 
       <button
         onClick={() =>
-          alerts.show("Default", { onClose: id => console.log(`Closed ${id}`) })
+          alerts.show("Default", {
+            onClose: (id) => console.log(`Closed ${id}`),
+          })
         }
       >
         Default

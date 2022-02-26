@@ -7,37 +7,37 @@ import Responses from "../pages/Responses/Responses";
 const HOME = {
   path: "/",
   title: "Home",
-  component: Home
+  component: Home,
 };
 
 const RSVP_ROUTE = {
   path: "/rsvp",
   title: "RSVP",
-  component: RSVP
+  component: RSVP,
 };
 
 const WEDDING_DAY = {
   path: "/wedding",
   title: "Wedding Day",
-  component: WeddingDay
+  component: WeddingDay,
 };
 
 const AFTER_PARTY = {
   path: "/after",
   title: "After Party",
-  component: AfterParty
+  component: AfterParty,
 };
 
 const RESPONSES = {
   path: "/responses",
   title: "Responses",
-  component: Responses
+  component: Responses,
 };
 
 const ALL_ROUTES = [HOME, RSVP_ROUTE, WEDDING_DAY, AFTER_PARTY, RESPONSES];
 
-const getTitleByPath = pathname => {
-  const matchingRoute = ALL_ROUTES.find(route => route.path === pathname);
+const getTitleByPath = (pathname) => {
+  const matchingRoute = ALL_ROUTES.find((route) => route.path === pathname);
   if (matchingRoute) {
     return matchingRoute.title;
   }
@@ -51,5 +51,5 @@ export {
   WEDDING_DAY,
   AFTER_PARTY,
   RESPONSES,
-  getTitleByPath
+  getTitleByPath,
 };

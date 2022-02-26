@@ -5,7 +5,7 @@ const ButtonGroupItem = styled.div``;
 
 const ButtonGroupContainer = styled.div`
   display: flex;
-  justify-content: ${props => (props.left ? "flex-start" : "flex-end")};
+  justify-content: ${(props) => (props.left ? "flex-start" : "flex-end")};
   margin-bottom: 1rem;
 
   ${ButtonGroupItem} {
@@ -20,7 +20,7 @@ const ButtonGroupContainer = styled.div`
 const VerticalButtonGroupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${props => (props.center ? "center" : "flex-start")};
+  align-items: ${(props) => (props.center ? "center" : "flex-start")};
   margin-bottom: 1rem;
 
   ${ButtonGroupItem} {
@@ -38,7 +38,7 @@ const btnGroupContainerWithWrappedChildren = (
 ) => {
   return (
     <Container {...otherProps}>
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child) => {
         return (
           <ButtonGroupItem>
             {React.cloneElement(child, child.props)}
@@ -49,10 +49,10 @@ const btnGroupContainerWithWrappedChildren = (
   );
 };
 
-const ButtonGroup = props =>
+const ButtonGroup = (props) =>
   btnGroupContainerWithWrappedChildren(ButtonGroupContainer, props);
 
-const VerticalButtonGroup = props =>
+const VerticalButtonGroup = (props) =>
   btnGroupContainerWithWrappedChildren(VerticalButtonGroupContainer, props);
 
 export { ButtonGroup, VerticalButtonGroup };

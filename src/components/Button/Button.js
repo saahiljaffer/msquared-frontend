@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 export const TYPES = {
   DEFAULT: "default",
-  OUTLINE: "outline"
+  OUTLINE: "outline",
 };
 
 export const STYLES = {
   DEFAULT: "default",
   PRIMARY: "primary",
-  ACCENT: "accent"
+  ACCENT: "accent",
 };
 
-const getBackgroundColor = props => {
+const getBackgroundColor = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return "none";
   }
@@ -29,7 +29,7 @@ const getBackgroundColor = props => {
   }
 };
 
-const getDisabledBackgroundColor = props => {
+const getDisabledBackgroundColor = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return "none";
   }
@@ -45,7 +45,7 @@ const getDisabledBackgroundColor = props => {
   }
 };
 
-const getFontColor = props => {
+const getFontColor = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return props.theme.colors.foreground.secondary;
   }
@@ -62,7 +62,7 @@ const getFontColor = props => {
   }
 };
 
-const getDisabledFontColor = props => {
+const getDisabledFontColor = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return props.theme.colors.foreground.quaternary;
   }
@@ -78,7 +78,7 @@ const getDisabledFontColor = props => {
   }
 };
 
-const getBorder = props => {
+const getBorder = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return `1px solid ${props.theme.colors.foreground.secondary}`;
   }
@@ -86,7 +86,7 @@ const getBorder = props => {
   return "none";
 };
 
-const getDisabledBorder = props => {
+const getDisabledBorder = (props) => {
   if (props.buttonType === TYPES.OUTLINE) {
     return `1px solid ${props.theme.colors.foreground.quaternary}`;
   }
@@ -97,20 +97,20 @@ const getDisabledBorder = props => {
 const StyledButton = styled.button`
   min-height: 2rem;
   border-radius: 1rem;
-  font-size: ${props => props.theme.fonts.button.size};
-  font-weight: ${props => props.theme.fonts.button.weight};
-  letter-spacing: ${props => props.theme.fonts.button.letterspacing};
+  font-size: ${(props) => props.theme.fonts.button.size};
+  font-weight: ${(props) => props.theme.fonts.button.weight};
+  letter-spacing: ${(props) => props.theme.fonts.button.letterspacing};
   font-family: "Rubik", sans-serif;
   text-transform: uppercase;
-  background: ${props =>
+  background: ${(props) =>
     props.disabled
       ? getDisabledBackgroundColor(props)
       : getBackgroundColor(props)};
-  color: ${props =>
+  color: ${(props) =>
     props.disabled ? getDisabledFontColor(props) : getFontColor(props)};
   padding-left: 1rem;
   padding-right: 1rem;
-  border: ${props =>
+  border: ${(props) =>
     props.disabled ? getDisabledBorder(props) : getBorder(props)};
   cursor: pointer;
 
@@ -121,13 +121,13 @@ const StyledButton = styled.button`
 
 StyledButton.propTypes = {
   buttonType: PropTypes.oneOf([TYPES.DEFAULT, TYPES.OUTLINE]),
-  buttonStyle: PropTypes.oneOf([STYLES.DEFAULT, STYLES.PRIMARY, STYLES.ACCENT])
+  buttonStyle: PropTypes.oneOf([STYLES.DEFAULT, STYLES.PRIMARY, STYLES.ACCENT]),
 };
 
 StyledButton.defaultProps = {
   buttonType: TYPES.DEFAULT,
   buttonStyle: STYLES.DEFAULT,
-  type: "button"
+  type: "button",
 };
 
 export default StyledButton;

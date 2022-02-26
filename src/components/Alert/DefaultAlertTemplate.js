@@ -36,9 +36,9 @@ const Container = styled.div`
   align-items: center;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: ${props =>
+  background-color: ${(props) =>
     getBackgroundColor(props.theme, props.alertType)};
-  color: ${props => getFontColor(props.theme, props.alertType)};
+  color: ${(props) => getFontColor(props.theme, props.alertType)};
   margin-bottom: 1rem;
 `;
 

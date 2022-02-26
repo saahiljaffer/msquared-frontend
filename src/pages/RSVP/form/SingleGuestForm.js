@@ -13,7 +13,7 @@ import { required } from "../../../form/validations";
 
 const ChildrensMenuDesc = styled(B2)`
   margin-bottom: 2rem;
-  border-left: 4px solid ${props => props.theme.colors.foreground.secondary};
+  border-left: 4px solid ${(props) => props.theme.colors.foreground.secondary};
   padding-left: 0.5rem;
 `;
 
@@ -22,14 +22,14 @@ class SingleGuestForm extends Component {
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     cancelBtnLabel: PropTypes.func.isRequired,
-    initialValues: PropTypes.object
+    initialValues: PropTypes.object,
   };
 
   static defaultProps = {
-    initialValues: {}
+    initialValues: {},
   };
 
-  onGuestFormSubmit = values => {
+  onGuestFormSubmit = (values) => {
     const { onSubmit, reset } = this.props;
     onSubmit(values);
     reset();
@@ -49,16 +49,17 @@ class SingleGuestForm extends Component {
       isAttending,
       cancelBtnLabel,
       initialValues: { plusOne, isChild },
-      isBringingPlusOne
+      isBringingPlusOne,
     } = this.props;
     return (
       <form onSubmit={handleSubmit(this.onGuestFormSubmit)}>
         <Field
+          type="radio"
           name="isAttending"
           label="Will you be joining us for our wedding ceremony?"
           options={[
-            { label: "Wouldn’t miss it for the World!", value: "Yes" },
-            { label: "Sorry, I will have to miss the fun", value: "No" }
+            { label: "Wouldn’t miss it for the World!", value: "true" },
+            { label: "Sorry, I will have to miss the fun", value: "false" },
           ]}
           validate={required}
           component={RadioGroup}
@@ -81,13 +82,13 @@ class SingleGuestForm extends Component {
                 {
                   label:
                     "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
-                  value: "Beef"
+                  value: "Beef",
                 },
                 {
                   label:
                     "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
-                  value: "Salmon"
-                }
+                  value: "Salmon",
+                },
               ]}
               component={RadioGroup}
               validate={required}
@@ -107,7 +108,7 @@ class SingleGuestForm extends Component {
                   label="Will you be bringing a guest?"
                   options={[
                     { label: "Yes", value: "Yes" },
-                    { label: "No", value: "No" }
+                    { label: "No", value: "No" },
                   ]}
                   component={RadioGroup}
                   validate={required}
@@ -129,13 +130,13 @@ class SingleGuestForm extends Component {
                         {
                           label:
                             "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
-                          value: "Beef"
+                          value: "Beef",
                         },
                         {
                           label:
                             "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
-                          value: "Salmon"
-                        }
+                          value: "Salmon",
+                        },
                       ]}
                       component={RadioGroup}
                       validate={required}
@@ -159,7 +160,7 @@ class SingleGuestForm extends Component {
           label="Will you be joining us for the after party?"
           options={[
             { label: "Let the good times roll!", value: "Yes" },
-            { label: "Sorry, the show must go on without me", value: "No" }
+            { label: "Sorry, the show must go on without me", value: "No" },
           ]}
           validate={required}
           component={RadioGroup}
@@ -184,7 +185,7 @@ class SingleGuestForm extends Component {
 
 SingleGuestForm = reduxForm({
   form: "singleGuestForm",
-  enableReinitialize: true
+  enableReinitialize: true,
 })(SingleGuestForm);
 
 const selector = formValueSelector("singleGuestForm");
@@ -195,7 +196,7 @@ const mapStateToProps = (state, { initialValues }) => {
   return {
     isAttending,
     isBringingPlusOne,
-    initialValues
+    initialValues,
   };
 };
 

@@ -21,7 +21,7 @@ const AnswerContainer = styled.div`
 `;
 
 const AnswerText = styled(B2)`
-  color: ${props => props.theme.colors.foreground.tertiary};
+  color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
 export default ({ guest }) => (

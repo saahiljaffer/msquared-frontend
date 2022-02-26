@@ -15,15 +15,15 @@ const StyledTextArea = styled.textarea`
   width: fill-available;
   height: 2rem;
   padding: 0.25rem;
-  background-color: ${props => props.theme.colors.foreground.quintenary};
-  font-size: ${props => props.theme.fonts.b1.size};
-  font-weight: ${props => props.theme.fonts.b1.weight};
-  letter-spacing: ${props => props.theme.fonts.b1.letterspacing};
-  color: ${props => props.theme.colors.foreground.secondary};
+  background-color: ${(props) => props.theme.colors.foreground.quintenary};
+  font-size: ${(props) => props.theme.fonts.b1.size};
+  font-weight: ${(props) => props.theme.fonts.b1.weight};
+  letter-spacing: ${(props) => props.theme.fonts.b1.letterspacing};
+  color: ${(props) => props.theme.colors.foreground.secondary};
   border: none;
   border-radius: 0.25rem;
   ::placeholder {
-    color: ${props => props.theme.colors.foreground.tertiary};
+    color: ${(props) => props.theme.colors.foreground.tertiary};
   }
 `;
 
@@ -37,7 +37,7 @@ const TextArea = ({ label, placeholder, input, rows }) => (
 TextArea.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  input: PropTypes.object.isRequired
+  input: PropTypes.object.isRequired,
 };
 
 export default TextArea;

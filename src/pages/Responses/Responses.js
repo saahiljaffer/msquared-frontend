@@ -26,11 +26,11 @@ const Responses = () => {
     const partiesRef = dbRef.ref("parties");
     partiesRef.once(
       "value",
-      snapshot => {
+      (snapshot) => {
         const guests = [];
         let responses = 0;
         let parties = 0;
-        snapshot.forEach(party => {
+        snapshot.forEach((party) => {
           const partyVal = party.val();
           guests.push(...partyVal.guests);
           parties++;
@@ -44,7 +44,7 @@ const Responses = () => {
         setNumParties(parties);
         setIsLoading(false);
       },
-      error => {
+      (error) => {
         console.error("Could not retrieve parties", error);
       }
     );
@@ -70,7 +70,7 @@ const Responses = () => {
               <th>Dietary Requirements</th>
             </thead>
             <tbody>
-              {allGuests.map(guest => (
+              {allGuests.map((guest) => (
                 <tr>
                   <TD>{guest.name}</TD>
                   <TD>{guest.isAttending || "-"}</TD>
