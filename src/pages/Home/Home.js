@@ -1,105 +1,113 @@
-import React, { PureComponent } from "react";
-import styled from "styled-components";
-import { H2 } from "../../components/Fonts/Secondary";
-import { S1 } from "../../components/Fonts/Fonts";
-import Button, {
-  TYPES as ButtonTypes,
-  STYLES as ButtonStyles,
-} from "../../components/Button/Button";
-import PageContainer from "../../components/PageContainer/PageContainer";
-import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
-import Countdown from "../../components/Countdown/Countdown";
-import { RSVP_ROUTE, WEDDING_DAY, AFTER_PARTY } from "../../routes/routes";
-import banner from "./Banner.jpg";
+import React, { useEffect, useState } from "react";
+import { AlertContainer, alerts } from "react-very-simple-alerts";
+import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
+import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+import PageWithNav from "../helpers/PageWithNav";
+import NameForm from "../RSVP/form/NameForm";
+import GuestsForm from "../RSVP/form/GuestsForm";
+import MultiMatchForm from "../RSVP/form/MultiMatchForm";
+import Confirmation from "../RSVP/confirmation/Confirmation";
+import { HOME } from "../../routes/routes";
+import { useHistory } from "react-router-dom";
+import Landing from "./Landing";
+import { store } from "../../reducers/index";
 
-const Banner = styled.img`
-  margin-bottom: 1rem;
-  width: 100%;
-`;
+function RSVP(props) {
+  const [chosenParty, setChosenParty] = useState(null);
+  const [potentialParties, setPotentialParties] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
+  const [loadingPartiesErrorId, setLoadingPartiesErrorId] = useState(null);
+  const [guests, setGuests] = useState(null);
 
-const HomeContainer = styled(PageContainer)`
-  margin-top: 4rem;
+  useEffect(() => {
+    if (chosenParty && chosenParty.pk) {
+      fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setGuests(data);
+        })
+        .then(() => {
+          setLoading(false);
+        });
+    }
+  }, [chosenParty]);
 
-  @media (min-width: 768px) {
-    margin-top: 9rem;
-  }
-`;
+  useEffect(() => {
+    if (chosenParty) {
+      console.log(chosenParty);
+      // The actions can be serialized, logged or stored and later replayed.
+      store.dispatch({ type: "counter/incremented" });
+    }
+    if (chosenParty && chosenParty.fields.hasResponded) {
+      if (partyNotFoundAlert) {
+        alerts.close(partyNotFoundAlert);
+      }
+      setPartyNotFoundAlert(null);
+      setShowConfirmation(true);
+      alerts.showSuccess(
+        "You have already responded. Please find your details below."
+      );
+    }
+  }, [chosenParty]);
 
-const MainTitle = styled(H2)`
-  margin-bottom: 0.5rem;
-  text-align: center;
-`;
+  useEffect(() => {
+    if (potentialParties && potentialParties.length === 1) {
+      setChosenParty(potentialParties[0]);
+      setPotentialParties(null);
+    } else if (potentialParties) {
+      setPartyNotFoundAlert(
+        alerts.showError(
+          "We could not find your invite. Please check your spelling and try again.",
+          { onClose: () => setPartyNotFoundAlert(null) }
+        )
+      );
+    }
+  }, [potentialParties]);
 
-const SubTitle = styled(S1)`
-  color: ${(props) => props.theme.colors.foreground.secondary};
-  margin-bottom: 1rem;
-  text-align: center;
-`;
+  let history = useHistory();
 
-const DaysLeft = styled(Countdown)`
-  text-align: center;
-  margin-bottom: 1rem;
-  color: ${(props) => props.theme.colors.foreground.secondary};
-`;
+  return (
+    <PageWithNav>
+      <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
+      {loading && <LoadingIndicator />}
+      {!chosenParty && !potentialParties && !loading && (
+        <NameForm
+          onSubmit={(values) => {
+            const { firstName, lastName } = values;
+            if (loadingPartiesErrorId) {
+              alerts.close(loadingPartiesErrorId);
+            }
 
-const WEDDING_DATE = new Date(2022, 5, 4);
-const TODAY = new Date();
+            setLoadingPartiesErrorId(null);
+            setLoading(true);
 
-class Home extends PureComponent {
-  goToRSVP = () => {
-    const { history } = this.props;
-    history.push(RSVP_ROUTE.path);
-  };
-
-  goToWeddingDay = () => {
-    const { history } = this.props;
-    history.push(WEDDING_DAY.path);
-  };
-
-  goToAfterParty = () => {
-    const { history } = this.props;
-    history.push(AFTER_PARTY.path);
-  };
-
-  render() {
-    return (
-      <HomeContainer>
-        <Banner src={banner} alt="Banner" />
-        <MainTitle>Maysum & Malika</MainTitle>
-        <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
-        <SubTitle>
-          Welcome to our wedding website. We’ve created this website as a
-          helpful resource for all of the need-to-know details in the lead up to
-          our big day. Here you’ll find the schedule for the day, venue
-          directions, along with accommodation and transport options.
-        </SubTitle>
-        <SubTitle>
-          Don’t forget to RSVP and let us know about any dietary preferences
-          too.
-        </SubTitle>
-        <SubTitle>
-          We are so looking forward to celebrating with you all!
-        </SubTitle>
-        <VerticalButtonGroup center>
-          <Button
-            buttonType={ButtonTypes.OUTLINE}
-            onClick={this.goToWeddingDay}
-          >
-            Wedding Day
-          </Button>
-          <Button
-            buttonType={ButtonTypes.OUTLINE}
-            onClick={this.goToAfterParty}
-          >
-            After Party
-          </Button>
-          <Button buttonStyle={ButtonStyles.PRIMARY} onClick={this.goToRSVP}>
-            RSVP
-          </Button>
-        </VerticalButtonGroup>
-      </HomeContainer>
-    );
-  }
+            fetch(
+              `${process.env.REACT_APP_API_URL}/parties/?first_name=${firstName}&last_name=${lastName}`
+            )
+              .then((response) => response.json())
+              .then((data) => setPotentialParties(data))
+              .then(() => setLoading(false));
+          }}
+        />
+      )}
+      {!!chosenParty && !showConfirmation && !!guests && !loading && (
+        <Landing />
+      )}
+      {!chosenParty && potentialParties && potentialParties.length > 1 && (
+        <MultiMatchForm
+          potentialParties={potentialParties}
+          onChooseParty={(party) => {
+            setChosenParty(party);
+            setPotentialParties(null);
+          }}
+        />
+      )}
+    </PageWithNav>
+  );
 }
 
-export default Home;
+export default RSVP;
