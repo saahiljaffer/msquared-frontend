@@ -22,7 +22,7 @@ function RSVP(props) {
 
   useEffect(() => {
     if (chosenParty && chosenParty.pk) {
-      fetch(`http://127.0.0.1:8000/guests/${chosenParty.pk}/`)
+      fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -80,7 +80,7 @@ function RSVP(props) {
             setLoading(true);
 
             fetch(
-              `http://127.0.0.1:8000/parties/?first_name=${firstName}&last_name=${lastName}`
+              `${process.env.REACT_APP_API_URL}/parties/?first_name=${firstName}&last_name=${lastName}`
             )
               .then((response) => response.json())
               .then((data) => setPotentialParties(data))
@@ -98,10 +98,13 @@ function RSVP(props) {
           updateGuests={(updatedGuests) => {
             setLoading(true);
             console.log(JSON.stringify(updatedGuests));
-            fetch(`http://127.0.0.1:8000/guests/${chosenParty.pk}/`, {
-              method: "POST",
-              body: JSON.stringify(updatedGuests),
-            }).then(() => setLoading(false));
+            fetch(
+              `${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`,
+              {
+                method: "POST",
+                body: JSON.stringify(updatedGuests),
+              }
+            ).then(() => setLoading(false));
           }}
           onCancel={() => {
             let history = useHistory();

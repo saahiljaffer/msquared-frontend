@@ -54,12 +54,11 @@ class SingleGuestForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.onGuestFormSubmit)}>
         <Field
-          type="radio"
           name="isAttending"
-          label="Will you be joining us for our wedding ceremony?"
+          label="Will you be joining us for the Nikkah?"
           options={[
-            { label: "Wouldn’t miss it for the World!", value: "true" },
-            { label: "Sorry, I will have to miss the fun", value: "false" },
+            { label: "Let the good times roll!", value: "True" },
+            { label: "Sorry, the show must go on without me", value: "False" },
           ]}
           validate={required}
           component={RadioGroup}
