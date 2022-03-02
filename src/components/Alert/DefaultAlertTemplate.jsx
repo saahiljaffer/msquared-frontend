@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 import { ALERT_TYPES } from "react-very-simple-alerts";

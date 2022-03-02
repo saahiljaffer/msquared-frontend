@@ -1,3 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable no-class-assign */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/static-property-placement */
 import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -14,6 +19,7 @@ import { required } from "../../../form/validations";
 const reactFinalForm =
   ({ form, ...config }) =>
   (component) =>
+  // eslint-disable-next-line react/function-component-definition
   (props) =>
     <Form {...config} {...props} component={component} />;
 
@@ -195,17 +201,15 @@ SingleGuestForm = reactFinalForm({
 
 // const formState = useFormState();
 
-const mapStateToProps = (state, { initialValues }) => {
+const mapStateToProps = (state, { initialValues }) =>
   // const isAttending = formState.values["isAttending"];
   // const isBringingPlusOne = formState.values["isBringingPlusOne"];
 
-  return {
+  ({
     // isAttending,
     // isBringingPlusOne,
     initialValues,
-  };
-};
-
+  });
 SingleGuestForm = connect(mapStateToProps)(SingleGuestForm);
 
 export default SingleGuestForm;

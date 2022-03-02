@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
 /* eslint-disable import/no-cycle */
 import React from "react";
 import styled from "styled-components";
@@ -15,7 +17,7 @@ const Title = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
-function NameForm({ handleSubmit, invalid, submitting, pristine, onSubmit }) {
+function NameForm({ onSubmit }) {
   return (
     <Form onSubmit={onSubmit}>
       {({ handleSubmit, invalid, submitting, pristine }) => (

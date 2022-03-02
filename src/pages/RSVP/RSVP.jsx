@@ -58,7 +58,7 @@ function RSVP() {
     }
   }, [potentialParties]);
 
-  let history = useHistory();
+  const history = useHistory();
 
   return (
     <PageWithNav>
@@ -69,7 +69,6 @@ function RSVP() {
           guests={guests}
           updateGuests={(updatedGuests) => {
             setLoading(true);
-            console.log(JSON.stringify(updatedGuests));
             fetch(
               `${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`,
               {

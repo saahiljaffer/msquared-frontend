@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import { useHistory } from "react-router-dom";
@@ -11,7 +12,7 @@ import MultiMatchForm from "../RSVP/form/MultiMatchForm";
 import Landing from "./Landing";
 import { setChosenParty } from "../../store/party/partySlice";
 
-function RSVP(props) {
+function RSVP() {
   // const [chosenParty, setChosenParty] = useState(null);
   const [potentialParties, setPotentialParties] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -21,6 +22,7 @@ function RSVP(props) {
   const [guests, setGuests] = useState(null);
   const chosenParty = useSelector((state) => state.party.details);
   const partyLoaded = useSelector((state) => state.party.hasLoaded);
+  const history = useHistory();
 
   useEffect(() => {
     // alert(partyLoaded);
@@ -28,7 +30,6 @@ function RSVP(props) {
       fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setGuests(data);
         })
         .then(() => {
@@ -38,10 +39,6 @@ function RSVP(props) {
   }, [partyLoaded]);
 
   useEffect(() => {
-    if (partyLoaded && chosenParty) {
-      console.log(chosenParty);
-      // The actions can be serialized, logged or stored and later replayed.
-    }
     if (partyLoaded && chosenParty && chosenParty.fields.hasResponded) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);
@@ -70,8 +67,6 @@ function RSVP(props) {
       );
     }
   }, [potentialParties]);
-
-  let history = useHistory();
 
   return (
     <PageWithNav>

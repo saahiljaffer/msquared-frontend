@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 /* eslint-disable import/no-cycle */
 import React, { Fragment } from "react";
 import styled from "styled-components";
@@ -22,7 +24,7 @@ const SubHeading = styled(S1)`
 
 export default function Confirmation({ guests }) {
   return (
-    <Fragment>
+    <>
       <HeadingContainer>
         <MainHeading>You're all set!</MainHeading>
         <SubHeading>
@@ -38,6 +40,6 @@ export default function Confirmation({ guests }) {
           <Link to={HOME.path}>Back to home</Link>
         </Button>
       </ButtonGroup>
-    </Fragment>
+    </>
   );
 }

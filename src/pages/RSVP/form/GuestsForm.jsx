@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import styled from "styled-components";
 import { H5, S1 } from "../../../components/Fonts/Fonts";
 import SingleGuestForm from "./SingleGuestForm";
+
 const CurrentGuestHeader = styled.div`
   margin-bottom: 1rem;
 `;
@@ -37,7 +39,7 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
       <SingleGuestForm
         onSubmit={(values) => {
           const currentUpdatedGuests = [...updatedGuests];
-          const currentGuest = guests[currentGuestIdx].pk;
+          // const currentGuest = guests[currentGuestIdx].pk;
 
           const updatedGuest = {
             pk: currentGuest,

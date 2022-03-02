@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/no-cycle */
 import React, { Fragment, Component } from "react";
 import { withRouter } from "react-router-dom";
@@ -15,12 +16,12 @@ class PageWithNav extends Component {
   render() {
     const { location, children } = this.props;
     return (
-      <Fragment>
+      <>
         <Nav>
           <H3 onClick={this.goToHome}>{getTitleByPath(location.pathname)}</H3>
         </Nav>
         <PageContainer>{children}</PageContainer>
-      </Fragment>
+      </>
     );
   }
 }

@@ -45,7 +45,7 @@ const DirectionsFrame = styled.iframe`
   border: none;
 `;
 
-export default function () {
+export default function WeddingDay() {
   return (
     <PageWithNav>
       <>

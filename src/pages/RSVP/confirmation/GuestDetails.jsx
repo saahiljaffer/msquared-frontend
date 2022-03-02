@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 import { H6, B1, B2 } from "../../../components/Fonts/Fonts";
