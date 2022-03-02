@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import partyReducer from "../features/counter/counterSlice";
+import partyReducer from "../store/party/partySlice";
 
 export default configureStore({
   reducer: { party: partyReducer },

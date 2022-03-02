@@ -12,18 +12,22 @@ import { HOME } from "../../routes/routes";
 import { useHistory } from "react-router-dom";
 import Landing from "./Landing";
 import { useSelector, useDispatch } from "react-redux";
-import { setPartyId } from "../../features/counter/counterSlice";
+import { setPartyId } from "../../store/party/partySlice";
+import { setChosenParty } from "../../store/party/partySlice";
 
 function RSVP(props) {
-  const [chosenParty, setChosenParty] = useState(null);
+  // const [chosenParty, setChosenParty] = useState(null);
   const [potentialParties, setPotentialParties] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
   const [loadingPartiesErrorId, setLoadingPartiesErrorId] = useState(null);
   const [guests, setGuests] = useState(null);
+  const chosenParty = useSelector((state) => state.party.details);
+  const partyLoaded = useSelector((state) => state.party.hasLoaded);
 
   useEffect(() => {
+    // alert(partyLoaded);
     if (chosenParty && chosenParty.pk) {
       fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
         .then((response) => response.json())
@@ -35,14 +39,14 @@ function RSVP(props) {
           setLoading(false);
         });
     }
-  }, [chosenParty]);
+  }, [partyLoaded]);
 
   useEffect(() => {
-    if (chosenParty) {
+    if (partyLoaded && chosenParty) {
       console.log(chosenParty);
       // The actions can be serialized, logged or stored and later replayed.
     }
-    if (chosenParty && chosenParty.fields.hasResponded) {
+    if (partyLoaded && chosenParty && chosenParty.fields.hasResponded) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);
       }
@@ -57,9 +61,10 @@ function RSVP(props) {
 
   useEffect(() => {
     if (potentialParties && potentialParties.length === 1) {
-      setChosenParty(potentialParties[0]);
-      dispatch(setPartyId({ partyId: potentialParties[0].pk }));
+      // setChosenParty(potentialParties[0]);
+      dispatch(setChosenParty(potentialParties[0]));
       setPotentialParties(null);
+      history.push("/");
     } else if (potentialParties) {
       setPartyNotFoundAlert(
         alerts.showError(
@@ -76,7 +81,7 @@ function RSVP(props) {
     <PageWithNav>
       <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
       {loading && <LoadingIndicator />}
-      {!chosenParty && !potentialParties && !loading && (
+      {!partyLoaded && !potentialParties && !loading && (
         <NameForm
           onSubmit={(values) => {
             const { firstName, lastName } = values;
@@ -96,14 +101,15 @@ function RSVP(props) {
           }}
         />
       )}
-      {!!chosenParty && !showConfirmation && !!guests && !loading && (
+      {!!partyLoaded && !showConfirmation && !!guests && !loading && (
         <Landing />
       )}
-      {!chosenParty && potentialParties && potentialParties.length > 1 && (
+      {!partyLoaded && potentialParties && potentialParties.length > 1 && (
         <MultiMatchForm
           potentialParties={potentialParties}
           onChooseParty={(party) => {
-            setChosenParty(party);
+            dispatch(setChosenParty(party));
+            // setChosenParty(party);
             setPotentialParties(null);
           }}
         />
