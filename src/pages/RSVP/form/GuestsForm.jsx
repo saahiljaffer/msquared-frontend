@@ -42,7 +42,7 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
           // const currentGuest = guests[currentGuestIdx].pk;
 
           const updatedGuest = {
-            pk: currentGuest,
+            ...currentGuest,
             ...values,
           };
 

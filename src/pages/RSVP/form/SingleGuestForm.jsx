@@ -16,13 +16,6 @@ import Button, { STYLES, TYPES } from "../../../components/Button/Button";
 import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
 import { required } from "../../../form/validations";
 
-const reactFinalForm =
-  ({ form, ...config }) =>
-  (component) =>
-  // eslint-disable-next-line react/function-component-definition
-  (props) =>
-    <Form {...config} {...props} component={component} />;
-
 const ChildrensMenuDesc = styled(B2)`
   margin-bottom: 2rem;
   border-left: 4px solid ${(props) => props.theme.colors.foreground.secondary};
@@ -42,162 +35,165 @@ class SingleGuestForm extends Component {
   };
 
   onGuestFormSubmit = (values) => {
-    const { onSubmit, reset } = this.props;
+    const { onSubmit } = this.props;
     onSubmit(values);
-    reset();
   };
 
   onGuestFormCancel = () => {
-    const { onCancel, reset } = this.props;
+    const { onCancel } = this.props;
     onCancel();
-    reset();
   };
 
   render() {
     const {
-      handleSubmit,
-      invalid,
-      submitting,
       isAttending,
       cancelBtnLabel,
       initialValues: { plusOne, isChild },
       isBringingPlusOne,
     } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.onGuestFormSubmit)}>
-        <Field
-          name="isAttending"
-          label="Will you be joining us for the Nikkah?"
-          options={[
-            { label: "Let the good times roll!", value: "True" },
-            { label: "Sorry, the show must go on without me", value: "False" },
-          ]}
-          validate={required}
-          component={RadioGroup}
-        />
-
-        {isChild && (
-          <ChildrensMenuDesc>
-            For any of our smaller guests they can decide on the day whether to
-            have half portion of the main meal or a children’s menu will also be
-            available
-          </ChildrensMenuDesc>
-        )}
-
-        {isAttending && isAttending === "Yes" && !isChild && (
-          <div>
+      <Form enableReinitialize onSubmit={this.onGuestFormSubmit}>
+        {({ handleSubmit, invalid, form, submitting }) => (
+          <form onSubmit={handleSubmit}>
             <Field
-              name="meal"
-              label="Please select your main course"
+              name="isAttending"
+              label="Will you be joining us for the Nikkah?"
               options={[
+                { label: "Let the good times roll!", value: "True" },
                 {
-                  label:
-                    "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
-                  value: "Beef",
-                },
-                {
-                  label:
-                    "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
-                  value: "Salmon",
+                  label: "Sorry, the show must go on without me",
+                  value: "False",
                 },
               ]}
-              component={RadioGroup}
               validate={required}
-            />
-            <Field
-              name="dietaryRequirements"
-              label="Please advise of any dietary requirements or if you would prefer
-              a vegetarian option"
-              rows="3"
-              component={TextArea}
+              component={RadioGroup}
             />
 
-            {plusOne && (
+            {isChild && (
+              <ChildrensMenuDesc>
+                For any of our smaller guests they can decide on the day whether
+                to have half portion of the main meal or a children’s menu will
+                also be available
+              </ChildrensMenuDesc>
+            )}
+
+            {isAttending && isAttending === "Yes" && !isChild && (
               <div>
                 <Field
-                  name="isBringingPlusOne"
-                  label="Will you be bringing a guest?"
+                  name="meal"
+                  label="Please select your main course"
                   options={[
-                    { label: "Yes", value: "Yes" },
-                    { label: "No", value: "No" },
+                    {
+                      label:
+                        "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
+                      value: "Beef",
+                    },
+                    {
+                      label:
+                        "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
+                      value: "Salmon",
+                    },
                   ]}
                   component={RadioGroup}
                   validate={required}
                 />
+                <Field
+                  name="dietaryRequirements"
+                  label="Please advise of any dietary requirements or if you would prefer
+              a vegetarian option"
+                  rows="3"
+                  component={TextArea}
+                />
 
-                {isBringingPlusOne && isBringingPlusOne === "Yes" && (
+                {plusOne && (
                   <div>
                     <Field
-                      name="guestName"
-                      label="Please enter your guests full name"
-                      component={Input}
-                      validate={required}
-                    />
-
-                    <Field
-                      name="guestMeal"
-                      label="Please select a main course for your guest"
+                      name="isBringingPlusOne"
+                      label="Will you be bringing a guest?"
                       options={[
-                        {
-                          label:
-                            "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
-                          value: "Beef",
-                        },
-                        {
-                          label:
-                            "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
-                          value: "Salmon",
-                        },
+                        { label: "Yes", value: "Yes" },
+                        { label: "No", value: "No" },
                       ]}
                       component={RadioGroup}
                       validate={required}
                     />
-                    <Field
-                      name="guestDietaryRequirements"
-                      label="Please advise of any dietary requirements for your guest or if they would prefer
+
+                    {isBringingPlusOne && isBringingPlusOne === "Yes" && (
+                      <div>
+                        <Field
+                          name="guestName"
+                          label="Please enter your guests full name"
+                          component={Input}
+                          validate={required}
+                        />
+
+                        <Field
+                          name="guestMeal"
+                          label="Please select a main course for your guest"
+                          options={[
+                            {
+                              label:
+                                "8oz Roasted Sirloin of Prime Irish Beef, Celeriac & Horseradish, Red Wine & Roasted Onion Gravy",
+                              value: "Beef",
+                            },
+                            {
+                              label:
+                                "Oven Baked Pave of Salmon, Pinot Grigio Leeks, Saffron & Prawn Veloute",
+                              value: "Salmon",
+                            },
+                          ]}
+                          component={RadioGroup}
+                          validate={required}
+                        />
+                        <Field
+                          name="guestDietaryRequirements"
+                          label="Please advise of any dietary requirements for your guest or if they would prefer
                     a vegetarian option"
-                      rows="3"
-                      component={TextArea}
-                    />
+                          rows="3"
+                          component={TextArea}
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             )}
-          </div>
+
+            <Field
+              name="isAttendingAfterParty"
+              label="Will you be joining us for the after party?"
+              options={[
+                { label: "Let the good times roll!", value: "Yes" },
+                { label: "Sorry, the show must go on without me", value: "No" },
+              ]}
+              validate={required}
+              component={RadioGroup}
+            />
+
+            <ButtonGroup right>
+              <Button
+                buttonType={TYPES.OUTLINE}
+                onClick={() => {
+                  this.onGuestFormCancel();
+                  form.reset();
+                }}
+              >
+                {cancelBtnLabel()}
+              </Button>
+              <Button
+                buttonStyle={STYLES.PRIMARY}
+                type="submit"
+                disabled={invalid || submitting}
+              >
+                Next
+              </Button>
+            </ButtonGroup>
+          </form>
         )}
-
-        <Field
-          name="isAttendingAfterParty"
-          label="Will you be joining us for the after party?"
-          options={[
-            { label: "Let the good times roll!", value: "Yes" },
-            { label: "Sorry, the show must go on without me", value: "No" },
-          ]}
-          validate={required}
-          component={RadioGroup}
-        />
-
-        <ButtonGroup right>
-          <Button buttonType={TYPES.OUTLINE} onClick={this.onGuestFormCancel}>
-            {cancelBtnLabel()}
-          </Button>
-          <Button
-            buttonStyle={STYLES.PRIMARY}
-            type="submit"
-            disabled={invalid || submitting}
-          >
-            Next
-          </Button>
-        </ButtonGroup>
-      </form>
+      </Form>
     );
   }
 }
-
-SingleGuestForm = reactFinalForm({
-  form: "singleGuestForm",
-  enableReinitialize: true,
-})(SingleGuestForm);
 
 // const formState = useFormState();
 

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
@@ -11,8 +12,8 @@ import Confirmation from "./confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
 
 function RSVP() {
-  const [chosenParty, setChosenParty] = useState(null);
-  const [potentialParties, setPotentialParties] = useState(null);
+  const chosenParty = useSelector((state) => state.party.details);
+  // const partyLoaded = useSelector((state) => state.party.hasLoaded);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
@@ -44,20 +45,6 @@ function RSVP() {
     }
   }, [chosenParty]);
 
-  useEffect(() => {
-    if (potentialParties && potentialParties.length === 1) {
-      setChosenParty(potentialParties[0]);
-      setPotentialParties(null);
-    } else if (potentialParties) {
-      setPartyNotFoundAlert(
-        alerts.showError(
-          "We could not find your invite. Please check your spelling and try again.",
-          { onClose: () => setPartyNotFoundAlert(null) }
-        )
-      );
-    }
-  }, [potentialParties]);
-
   const history = useHistory();
 
   return (
@@ -68,6 +55,8 @@ function RSVP() {
         <GuestsForm
           guests={guests}
           updateGuests={(updatedGuests) => {
+            console.log(updatedGuests);
+
             setLoading(true);
             fetch(
               `${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`,
