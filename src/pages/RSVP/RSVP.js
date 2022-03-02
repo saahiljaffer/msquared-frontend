@@ -4,12 +4,11 @@ import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import NameForm from "./form/NameForm";
-import GuestsForm from "./form/GuestsForm";
-import MultiMatchForm from "./form/MultiMatchForm";
-import Confirmation from "./confirmation/Confirmation";
+import GuestsForm from "../RSVP/form/GuestsForm";
+import Confirmation from "../RSVP/confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 function RSVP(props) {
   const [chosenParty, setChosenParty] = useState(null);
@@ -17,8 +16,8 @@ function RSVP(props) {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
-  const [loadingPartiesErrorId, setLoadingPartiesErrorId] = useState(null);
   const [guests, setGuests] = useState(null);
+  const count = useSelector((state) => state.party.partyID);
 
   useEffect(() => {
     if (chosenParty && chosenParty.pk) {
@@ -64,34 +63,12 @@ function RSVP(props) {
     }
   }, [potentialParties]);
 
+  let history = useHistory();
+
   return (
     <PageWithNav>
       <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
       {loading && <LoadingIndicator />}
-      {!chosenParty && !potentialParties && !loading && (
-        <NameForm
-          onSubmit={(values) => {
-            const { firstName, lastName } = values;
-            if (loadingPartiesErrorId) {
-              alerts.close(loadingPartiesErrorId);
-            }
-
-            setLoadingPartiesErrorId(null);
-            setLoading(true);
-
-            fetch(
-              `${process.env.REACT_APP_API_URL}/parties/?first_name=${firstName}&last_name=${lastName}`
-            )
-              .then((response) => response.json())
-              .then((data) => setPotentialParties(data))
-              .then(() => setLoading(false));
-          }}
-          onCancel={() => {
-            let history = useHistory();
-            history.push(HOME.path);
-          }}
-        />
-      )}
       {!!chosenParty && !showConfirmation && !!guests && !loading && (
         <GuestsForm
           guests={guests}
@@ -107,29 +84,11 @@ function RSVP(props) {
             ).then(() => setLoading(false));
           }}
           onCancel={() => {
-            let history = useHistory();
             history.push(HOME.path);
           }}
         />
       )}
-      {false && showConfirmation && !loading && (
-        <Confirmation
-          guests={guests}
-          goToHome={() => {
-            let history = useHistory();
-            history.push(HOME.path);
-          }}
-        />
-      )}
-      {!chosenParty && potentialParties && potentialParties.length > 1 && (
-        <MultiMatchForm
-          potentialParties={potentialParties}
-          onChooseParty={(party) => {
-            setChosenParty(party);
-            setPotentialParties(null);
-          }}
-        />
-      )}
+      {showConfirmation && !loading && <Confirmation guests={guests} />}
     </PageWithNav>
   );
 }

@@ -2,14 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import store from "./app/store";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "./fontawesome/initFaIcons";
-import reducers from "./reducers";
-
-const store = createStore(reducers);
 
 ReactDOM.render(
   <Provider store={store}>
