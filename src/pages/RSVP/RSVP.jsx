@@ -1,15 +1,16 @@
+/* eslint-disable import/no-cycle */
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
+import { useHistory } from "react-router-dom";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import GuestsForm from "../RSVP/form/GuestsForm";
-import Confirmation from "../RSVP/confirmation/Confirmation";
+import GuestsForm from "./form/GuestsForm";
+import Confirmation from "./confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
-import { useHistory } from "react-router-dom";
 
-function RSVP(props) {
+function RSVP() {
   const [chosenParty, setChosenParty] = useState(null);
   const [potentialParties, setPotentialParties] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -22,7 +23,6 @@ function RSVP(props) {
       fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setGuests(data);
         })
         .then(() => {
@@ -32,9 +32,6 @@ function RSVP(props) {
   }, [chosenParty]);
 
   useEffect(() => {
-    if (chosenParty) {
-      console.log(chosenParty);
-    }
     if (chosenParty && chosenParty.fields.hasResponded) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);

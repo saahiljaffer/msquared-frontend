@@ -1,5 +1,7 @@
+/* eslint-disable import/no-cycle */
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { H2 } from "../../components/Fonts/Secondary";
 import { S1 } from "../../components/Fonts/Fonts";
 import Button, {
@@ -10,7 +12,6 @@ import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 import Countdown from "../../components/Countdown/Countdown";
 import { RSVP_ROUTE, WEDDING_DAY, AFTER_PARTY } from "../../routes/routes";
 import banner from "./Banner.jpg";
-import { Link } from "react-router-dom";
 
 const Banner = styled.img`
   margin-bottom: 1rem;
@@ -37,7 +38,7 @@ const DaysLeft = styled(Countdown)`
 const WEDDING_DATE = new Date(2022, 5, 4);
 const TODAY = new Date();
 
-let Landing = () => {
+function Landing() {
   return (
     <>
       <Banner src={banner} alt="Banner" />
@@ -68,6 +69,6 @@ let Landing = () => {
       </VerticalButtonGroup>
     </>
   );
-};
+}
 
 export default Landing;

@@ -7,8 +7,10 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export default () => (
-  <Container>
-    <FontAwesomeIcon icon="spinner" spin />
-  </Container>
-);
+export default function LoadingIndicator() {
+  return (
+    <Container>
+      <FontAwesomeIcon icon="spinner" spin />
+    </Container>
+  );
+}

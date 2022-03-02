@@ -9,13 +9,15 @@ const Title = styled(B1)`
   margin-bottom: 1rem;
 `;
 
-const MultiMatchForm = ({ potentialParties, onChooseParty }) => {
+function MultiMatchForm({ potentialParties, onChooseParty }) {
   const [chosenParty, setChosenParty] = useState(null);
 
   const getPartyDisplayValue = (party) => {
-    const guestNames = party.guests.reduce((result, guest) => {
-      return result === "" ? guest.name : `${result}, ${guest.name}`;
-    }, "");
+    const guestNames = party.guests.reduce(
+      (result, guest) =>
+        result === "" ? guest.name : `${result}, ${guest.name}`,
+      ""
+    );
 
     return party.location ? `${guestNames} (${party.location})` : guestNames;
   };
@@ -60,6 +62,6 @@ const MultiMatchForm = ({ potentialParties, onChooseParty }) => {
       </ButtonGroup>
     </div>
   );
-};
+}
 
 export default MultiMatchForm;

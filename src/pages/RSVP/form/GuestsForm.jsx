@@ -14,14 +14,13 @@ const GuestNumberIndicator = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
-let GuestsForm = ({ guests, updateGuests, onCancel }) => {
+function GuestsForm({ guests, updateGuests, onCancel }) {
   const [currentGuestIdx, setCurrentGuestIdx] = useState(0);
   const numberOfGuests = guests.length;
   const [updatedGuests, setUpdatedGuests] = useState([]);
 
-  let getGuestFormCancelBtnLabel = () => {
-    return currentGuestIdx > 0 ? "Previous" : "Cancel";
-  };
+  const getGuestFormCancelBtnLabel = () =>
+    currentGuestIdx > 0 ? "Previous" : "Cancel";
 
   const initialGuestValues =
     updatedGuests[currentGuestIdx] || guests[currentGuestIdx] || {};
@@ -40,15 +39,10 @@ let GuestsForm = ({ guests, updateGuests, onCancel }) => {
           const currentUpdatedGuests = [...updatedGuests];
           const currentGuest = guests[currentGuestIdx].pk;
 
-          console.log(currentGuest);
-          console.log({ ...values });
-
           const updatedGuest = {
             pk: currentGuest,
             ...values,
           };
-
-          console.log(updatedGuest);
 
           const alreadyUpdatedIdx = currentUpdatedGuests.findIndex(
             (updated) => updated.pk === updatedGuest.pk
@@ -58,15 +52,12 @@ let GuestsForm = ({ guests, updateGuests, onCancel }) => {
           }
 
           const newUpdatedGuests = [...currentUpdatedGuests, updatedGuest];
-          console.log(newUpdatedGuests);
 
           if (currentGuestIdx === numberOfGuests - 1) {
-            console.log("last guest, calling update");
             updateGuests(newUpdatedGuests);
           } else {
             setCurrentGuestIdx((prevIndex) => prevIndex + 1);
             setUpdatedGuests(newUpdatedGuests);
-            console.log("guests updated", newUpdatedGuests);
           }
         }}
         onCancel={() => {
@@ -81,6 +72,6 @@ let GuestsForm = ({ guests, updateGuests, onCancel }) => {
       />
     </>
   );
-};
+}
 
 export default GuestsForm;

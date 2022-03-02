@@ -27,12 +27,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ label, placeholder, input, type }) => (
-  <Container>
-    {label && <Label>{label}</Label>}
-    <StyledInput type={type} {...input} placeholder={placeholder} />
-  </Container>
-);
+function Input({ label, placeholder, input, type }) {
+  return (
+    <Container>
+      {label && <Label>{label}</Label>}
+      <StyledInput type={type} {...input} placeholder={placeholder} />
+    </Container>
+  );
+}
 
 Input.propTypes = {
   label: PropTypes.string,

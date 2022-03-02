@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
 export const partySlice = createSlice({
@@ -9,7 +10,7 @@ export const partySlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      const payload = action.payload;
+      const { payload } = action;
       state.details = payload;
       state.hasLoaded = true;
     },

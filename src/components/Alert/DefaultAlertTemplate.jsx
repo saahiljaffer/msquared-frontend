@@ -42,6 +42,6 @@ const Container = styled.div`
   margin-bottom: 1rem;
 `;
 
-export default ({ children, ...props }) => (
-  <Container {...props}>{children}</Container>
-);
+export default function DefaultAlertTemplate({ children, ...props }) {
+  return <Container {...props}>{children}</Container>;
+}

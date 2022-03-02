@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,12 +54,14 @@ const Input = styled.input`
   }
 `;
 
-export default ({ label, checked, onChange, value }) => (
-  <Container>
-    <Input type="radio" checked={checked} onChange={onChange} value={value} />
-    <Label>{label}</Label>
-    <CheckboxContainer>
-      <CheckMark icon="check" />
-    </CheckboxContainer>
-  </Container>
-);
+export default function Radio({ label, checked, onChange, value }) {
+  return (
+    <Container>
+      <Input type="radio" checked={checked} onChange={onChange} value={value} />
+      <Label>{label}</Label>
+      <CheckboxContainer>
+        <CheckMark icon="check" />
+      </CheckboxContainer>
+    </Container>
+  );
+}

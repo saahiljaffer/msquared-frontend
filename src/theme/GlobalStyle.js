@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600");
     @import url("https://fonts.googleapis.com/css?family=Cookie");
 
@@ -30,3 +30,5 @@ export const GlobalStyle = createGlobalStyle`
         margin-block-end: 0;
     }
 `;
+
+export default GlobalStyle;

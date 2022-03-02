@@ -1,17 +1,19 @@
 import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
-import StoryContainer from "../StorybookContainer/StorybookContainer";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
+import StoryContainer from "../StorybookContainer/StorybookContainer";
 import CloseBtn from "./DefaultAlertCloseBtn";
 import Template from "./DefaultAlertTemplate";
 
 const stories = storiesOf("Components", module);
 
-const AlertComponent = ({ children }) => <Fragment>{children}</Fragment>;
+function AlertComponent({ children }) {
+  return <>{children}</>;
+}
 
 stories.add("Alert", () => (
   <StoryContainer>
-    <Fragment>
+    <>
       <AlertContainer template={Template} closeButton={CloseBtn} />
 
       <button
@@ -40,6 +42,6 @@ stories.add("Alert", () => (
       >
         No close button
       </button>
-    </Fragment>
+    </>
   </StoryContainer>
 ));

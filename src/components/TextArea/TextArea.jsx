@@ -27,12 +27,14 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-const TextArea = ({ label, placeholder, input, rows }) => (
-  <Container>
-    {label && <Label>{label}</Label>}
-    <StyledTextArea rows={rows} {...input} placeholder={placeholder} />
-  </Container>
-);
+function TextArea({ label, placeholder, input, rows }) {
+  return (
+    <Container>
+      {label && <Label>{label}</Label>}
+      <StyledTextArea rows={rows} {...input} placeholder={placeholder} />
+    </Container>
+  );
+}
 
 TextArea.propTypes = {
   label: PropTypes.string,

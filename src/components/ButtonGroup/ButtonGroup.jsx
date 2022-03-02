@@ -35,19 +35,15 @@ const VerticalButtonGroupContainer = styled.div`
 const btnGroupContainerWithWrappedChildren = (
   Container,
   { children, ...otherProps }
-) => {
-  return (
-    <Container {...otherProps}>
-      {React.Children.map(children, (child) => {
-        return (
-          <ButtonGroupItem>
-            {React.cloneElement(child, child.props)}
-          </ButtonGroupItem>
-        );
-      })}
-    </Container>
-  );
-};
+) => (
+  <Container {...otherProps}>
+    {React.Children.map(children, (child) => (
+      <ButtonGroupItem>
+        {React.cloneElement(child, child.props)}
+      </ButtonGroupItem>
+    ))}
+  </Container>
+);
 
 const ButtonGroup = (props) =>
   btnGroupContainerWithWrappedChildren(ButtonGroupContainer, props);

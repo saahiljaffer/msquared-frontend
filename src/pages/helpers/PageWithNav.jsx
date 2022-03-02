@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import React, { Fragment, Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";

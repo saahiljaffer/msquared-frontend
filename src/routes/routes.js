@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import Home from "../pages/Home/Home";
 import RSVP from "../pages/RSVP/RSVP";
 import WeddingDay from "../pages/WeddingDay/WeddingDay";

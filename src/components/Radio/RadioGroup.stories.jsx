@@ -11,7 +11,6 @@ const store = new Store({
 const stories = storiesOf("Components", module);
 stories.add("Radio", () => {
   const onInputOneChange = (e) => {
-    console.log("change", e.target.value);
     store.set({ inputOneVal: e.target.value });
   };
   return (

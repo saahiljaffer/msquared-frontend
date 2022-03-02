@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { H5, S1 } from "../../../components/Fonts/Fonts";
 import SingleGuestForm from "./SingleGuestForm";
+
 const CurrentGuestHeader = styled.div`
   margin-bottom: 1rem;
 `;
@@ -14,14 +15,13 @@ const GuestNumberIndicator = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
-let GuestsForm = ({ guests, updateGuests, onCancel }) => {
+function GuestsForm({ guests, updateGuests, onCancel }) {
   const [currentGuestIdx, setCurrentGuestIdx] = useState(0);
   const numberOfGuests = guests.length;
   const [updatedGuests, setUpdatedGuests] = useState([]);
 
-  let getGuestFormCancelBtnLabel = () => {
-    return currentGuestIdx > 0 ? "Previous" : "Cancel";
-  };
+  const getGuestFormCancelBtnLabel = () =>
+    currentGuestIdx > 0 ? "Previous" : "Cancel";
 
   const initialGuestValues =
     updatedGuests[currentGuestIdx] || guests[currentGuestIdx] || {};
@@ -81,6 +81,6 @@ let GuestsForm = ({ guests, updateGuests, onCancel }) => {
       />
     </>
   );
-};
+}
 
 export default GuestsForm;

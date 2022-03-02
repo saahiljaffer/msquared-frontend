@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
 import NameForm from "../RSVP/form/NameForm";
 import MultiMatchForm from "../RSVP/form/MultiMatchForm";
-import { useHistory } from "react-router-dom";
 import Landing from "./Landing";
-import { useSelector, useDispatch } from "react-redux";
 import { setChosenParty } from "../../store/party/partySlice";
 
 function RSVP(props) {
