@@ -11,7 +11,8 @@ import Confirmation from "../RSVP/confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
 import { useHistory } from "react-router-dom";
 import Landing from "./Landing";
-import { store } from "../../reducers/index";
+import { useSelector, useDispatch } from "react-redux";
+import { setPartyId } from "../../features/counter/counterSlice";
 
 function RSVP(props) {
   const [chosenParty, setChosenParty] = useState(null);
@@ -40,7 +41,6 @@ function RSVP(props) {
     if (chosenParty) {
       console.log(chosenParty);
       // The actions can be serialized, logged or stored and later replayed.
-      store.dispatch({ type: "counter/incremented" });
     }
     if (chosenParty && chosenParty.fields.hasResponded) {
       if (partyNotFoundAlert) {
@@ -53,10 +53,12 @@ function RSVP(props) {
       );
     }
   }, [chosenParty]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (potentialParties && potentialParties.length === 1) {
       setChosenParty(potentialParties[0]);
+      dispatch(setPartyId({ partyId: potentialParties[0].pk }));
       setPotentialParties(null);
     } else if (potentialParties) {
       setPartyNotFoundAlert(

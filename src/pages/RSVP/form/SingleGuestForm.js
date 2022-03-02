@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Field, reduxForm, formValueSelector } from "redux-form";
+import { Form, Field, useFormState } from "react-final-form";
 import { connect } from "react-redux";
 import RadioGroup from "../../../components/Radio/RadioGroup";
 import TextArea from "../../../components/TextArea/TextArea";
@@ -10,6 +10,12 @@ import { B2 } from "../../../components/Fonts/Fonts";
 import Button, { STYLES, TYPES } from "../../../components/Button/Button";
 import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
 import { required } from "../../../form/validations";
+
+const reactFinalForm =
+  ({ form, ...config }) =>
+  (component) =>
+  (props) =>
+    <Form {...config} {...props} component={component} />;
 
 const ChildrensMenuDesc = styled(B2)`
   margin-bottom: 2rem;
@@ -182,19 +188,20 @@ class SingleGuestForm extends Component {
   }
 }
 
-SingleGuestForm = reduxForm({
+SingleGuestForm = reactFinalForm({
   form: "singleGuestForm",
   enableReinitialize: true,
 })(SingleGuestForm);
 
-const selector = formValueSelector("singleGuestForm");
+// const formState = useFormState();
+
 const mapStateToProps = (state, { initialValues }) => {
-  const isAttending = selector(state, "isAttending");
-  const isBringingPlusOne = selector(state, "isBringingPlusOne");
+  // const isAttending = formState.values["isAttending"];
+  // const isBringingPlusOne = formState.values["isBringingPlusOne"];
 
   return {
-    isAttending,
-    isBringingPlusOne,
+    // isAttending,
+    // isBringingPlusOne,
     initialValues,
   };
 };
