@@ -5,14 +5,10 @@ import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
 import NameForm from "../RSVP/form/NameForm";
-import GuestsForm from "../RSVP/form/GuestsForm";
 import MultiMatchForm from "../RSVP/form/MultiMatchForm";
-import Confirmation from "../RSVP/confirmation/Confirmation";
-import { HOME } from "../../routes/routes";
 import { useHistory } from "react-router-dom";
 import Landing from "./Landing";
 import { useSelector, useDispatch } from "react-redux";
-import { setPartyId } from "../../store/party/partySlice";
 import { setChosenParty } from "../../store/party/partySlice";
 
 function RSVP(props) {

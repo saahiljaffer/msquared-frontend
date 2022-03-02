@@ -6,7 +6,6 @@ import Button, {
   TYPES as ButtonTypes,
   STYLES as ButtonStyles,
 } from "../../components/Button/Button";
-import PageContainer from "../../components/PageContainer/PageContainer";
 import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 import Countdown from "../../components/Countdown/Countdown";
 import { RSVP_ROUTE, WEDDING_DAY, AFTER_PARTY } from "../../routes/routes";
@@ -16,14 +15,6 @@ import { Link } from "react-router-dom";
 const Banner = styled.img`
   margin-bottom: 1rem;
   width: 100%;
-`;
-
-const HomeContainer = styled(PageContainer)`
-  margin-top: 4rem;
-
-  @media (min-width: 768px) {
-    margin-top: 9rem;
-  }
 `;
 
 const MainTitle = styled(H2)`

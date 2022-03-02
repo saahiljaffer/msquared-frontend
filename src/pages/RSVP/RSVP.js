@@ -8,7 +8,6 @@ import GuestsForm from "../RSVP/form/GuestsForm";
 import Confirmation from "../RSVP/confirmation/Confirmation";
 import { HOME } from "../../routes/routes";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
 function RSVP(props) {
   const [chosenParty, setChosenParty] = useState(null);
@@ -17,7 +16,6 @@ function RSVP(props) {
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
   const [guests, setGuests] = useState(null);
-  const count = useSelector((state) => state.party.partyID);
 
   useEffect(() => {
     if (chosenParty && chosenParty.pk) {
