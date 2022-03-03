@@ -1,8 +1,8 @@
 /* eslint-disable import/no-cycle */
-import Home from "../pages/Home/Home";
-import RSVP from "../pages/RSVP/RSVP";
-import WeddingDay from "../pages/WeddingDay/WeddingDay";
-import AfterParty from "../pages/AfterParty/AfterParty";
+import Home from "../pages/Login";
+import RSVP from "../pages/RSVP";
+import WeddingDay from "../pages/WeddingDay";
+import AfterParty from "../pages/AfterParty";
 
 const HOME = {
   path: "/",

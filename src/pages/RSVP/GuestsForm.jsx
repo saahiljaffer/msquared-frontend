@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import styled from "styled-components";
-import { H5, S1 } from "../../../components/Fonts/Fonts";
+import { H5, S1 } from "../../components/Fonts/Fonts";
 import SingleGuestForm from "./SingleGuestForm";
 
 const CurrentGuestHeader = styled.div`
@@ -38,17 +39,12 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
       <SingleGuestForm
         onSubmit={(values) => {
           const currentUpdatedGuests = [...updatedGuests];
-          const currentGuest = guests[currentGuestIdx].pk;
-
-          console.log(currentGuest);
-          console.log({ ...values });
+          // const currentGuest = guests[currentGuestIdx].pk;
 
           const updatedGuest = {
-            pk: currentGuest,
+            ...currentGuest,
             ...values,
           };
-
-          console.log(updatedGuest);
 
           const alreadyUpdatedIdx = currentUpdatedGuests.findIndex(
             (updated) => updated.pk === updatedGuest.pk
@@ -58,15 +54,12 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
           }
 
           const newUpdatedGuests = [...currentUpdatedGuests, updatedGuest];
-          console.log(newUpdatedGuests);
 
           if (currentGuestIdx === numberOfGuests - 1) {
-            console.log("last guest, calling update");
             updateGuests(newUpdatedGuests);
           } else {
             setCurrentGuestIdx((prevIndex) => prevIndex + 1);
             setUpdatedGuests(newUpdatedGuests);
-            console.log("guests updated", newUpdatedGuests);
           }
         }}
         onCancel={() => {
@@ -78,6 +71,8 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
         }}
         cancelBtnLabel={getGuestFormCancelBtnLabel}
         initialValues={initialGuestValues}
+        currentGuest={currentGuest}
+        guestNumberIndicatorText={guestNumberIndicatorText}
       />
     </>
   );

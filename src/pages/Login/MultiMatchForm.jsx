@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import styled from "styled-components";
-import RadioGroup from "../../../components/Radio/RadioGroup";
-import { B1 } from "../../../components/Fonts/Fonts";
-import Button, { STYLES } from "../../../components/Button/Button";
-import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
+import RadioGroup from "../../components/Radio/RadioGroup";
+import { B1 } from "../../components/Fonts/Fonts";
+import Button, { STYLES } from "../../components/Button/Button";
+import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 
 const Title = styled(B1)`
   margin-bottom: 1rem;

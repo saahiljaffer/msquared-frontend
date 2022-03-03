@@ -7,10 +7,10 @@ import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import NameForm from "../RSVP/form/NameForm";
-import MultiMatchForm from "../RSVP/form/MultiMatchForm";
-import Landing from "./Landing";
-import { setChosenParty } from "../../store/party/partySlice";
+import NameForm from "./NameForm";
+import MultiMatchForm from "./MultiMatchForm";
+import Landing from "../Landing";
+import { setChosenParty } from "../../store/partySlice";
 
 function RSVP() {
   // const [chosenParty, setChosenParty] = useState(null);

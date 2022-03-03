@@ -2,18 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import GuestsForm from "./form/GuestsForm";
-import Confirmation from "./confirmation/Confirmation";
+import GuestsForm from "./GuestsForm";
+import Confirmation from "./Confirmation";
 import { HOME } from "../../routes/routes";
+import { setChosenParty } from "../../store/partySlice";
 
 function RSVP() {
   const chosenParty = useSelector((state) => state.party.details);
-  // const partyLoaded = useSelector((state) => state.party.hasLoaded);
+  const partyResponded = useSelector(
+    (state) => state.party.details.fields.has_responded
+  );
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
@@ -33,7 +36,7 @@ function RSVP() {
   }, [chosenParty]);
 
   useEffect(() => {
-    if (chosenParty && chosenParty.fields.hasResponded) {
+    if (partyResponded && guests) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);
       }
@@ -43,9 +46,10 @@ function RSVP() {
         "You have already responded. Please find your details below."
       );
     }
-  }, [chosenParty]);
+  }, [partyResponded, guests]);
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <PageWithNav>
@@ -55,8 +59,6 @@ function RSVP() {
         <GuestsForm
           guests={guests}
           updateGuests={(updatedGuests) => {
-            console.log(updatedGuests);
-
             setLoading(true);
             fetch(
               `${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`,
@@ -64,7 +66,11 @@ function RSVP() {
                 method: "POST",
                 body: JSON.stringify(updatedGuests),
               }
-            ).then(() => setLoading(false));
+            );
+            fetch(`${process.env.REACT_APP_API_URL}/parties/${chosenParty.pk}/`)
+              .then((response) => response.json())
+              .then((data) => dispatch(setChosenParty(data[0])))
+              .then(() => setLoading(false));
           }}
           onCancel={() => {
             history.push(HOME.path);

@@ -4,11 +4,11 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { H5, S1 } from "../../../components/Fonts/Fonts";
-import Button, { TYPES } from "../../../components/Button/Button";
-import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
+import { H5, S1 } from "../../components/Fonts/Fonts";
+import Button, { TYPES } from "../../components/Button/Button";
+import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 import GuestDetails from "./GuestDetails";
-import { HOME } from "../../../routes/routes";
+import { HOME } from "../../routes/routes";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -32,7 +32,7 @@ export default function Confirmation({ guests }) {
         </SubHeading>
       </HeadingContainer>
       {guests.map((guest) => (
-        <GuestDetails key={guest.name} guest={guest} />
+        <GuestDetails key={guest.pk} guest={guest} />
       ))}
 
       <ButtonGroup right>
