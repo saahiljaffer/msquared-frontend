@@ -31,48 +31,44 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
   const guestNumberIndicatorText = `${currentGuestIdx + 1}/${numberOfGuests}`;
 
   return (
-    <>
-      <CurrentGuestHeader>
-        <GuestName>{`${currentGuest.fields.first_name} ${currentGuest.fields.last_name}`}</GuestName>
-        <GuestNumberIndicator>{guestNumberIndicatorText}</GuestNumberIndicator>
-      </CurrentGuestHeader>
-      <SingleGuestForm
-        onSubmit={(values) => {
-          const currentUpdatedGuests = [...updatedGuests];
-          // const currentGuest = guests[currentGuestIdx].pk;
+    <SingleGuestForm
+      onSubmit={(values) => {
+        const currentUpdatedGuests = [...updatedGuests];
+        // const currentGuest = guests[currentGuestIdx].pk;
 
-          const updatedGuest = {
-            ...currentGuest,
-            ...values,
-          };
+        const updatedGuest = {
+          ...currentGuest,
+          ...values,
+        };
 
-          const alreadyUpdatedIdx = currentUpdatedGuests.findIndex(
-            (updated) => updated.pk === updatedGuest.pk
-          );
-          if (alreadyUpdatedIdx > -1) {
-            currentUpdatedGuests.splice(alreadyUpdatedIdx, 1);
-          }
+        const alreadyUpdatedIdx = currentUpdatedGuests.findIndex(
+          (updated) => updated.pk === updatedGuest.pk
+        );
+        if (alreadyUpdatedIdx > -1) {
+          currentUpdatedGuests.splice(alreadyUpdatedIdx, 1);
+        }
 
-          const newUpdatedGuests = [...currentUpdatedGuests, updatedGuest];
+        const newUpdatedGuests = [...currentUpdatedGuests, updatedGuest];
 
-          if (currentGuestIdx === numberOfGuests - 1) {
-            updateGuests(newUpdatedGuests);
-          } else {
-            setCurrentGuestIdx((prevIndex) => prevIndex + 1);
-            setUpdatedGuests(newUpdatedGuests);
-          }
-        }}
-        onCancel={() => {
-          if (currentGuestIdx - 1 >= 0) {
-            setCurrentGuestIdx((prevIndex) => prevIndex - 1);
-          } else {
-            onCancel();
-          }
-        }}
-        cancelBtnLabel={getGuestFormCancelBtnLabel}
-        initialValues={initialGuestValues}
-      />
-    </>
+        if (currentGuestIdx === numberOfGuests - 1) {
+          updateGuests(newUpdatedGuests);
+        } else {
+          setCurrentGuestIdx((prevIndex) => prevIndex + 1);
+          setUpdatedGuests(newUpdatedGuests);
+        }
+      }}
+      onCancel={() => {
+        if (currentGuestIdx - 1 >= 0) {
+          setCurrentGuestIdx((prevIndex) => prevIndex - 1);
+        } else {
+          onCancel();
+        }
+      }}
+      cancelBtnLabel={getGuestFormCancelBtnLabel}
+      initialValues={initialGuestValues}
+      currentGuest={currentGuest}
+      guestNumberIndicatorText={guestNumberIndicatorText}
+    />
   );
 }
 
