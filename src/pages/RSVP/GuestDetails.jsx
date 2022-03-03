@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
-import { H6, B1, B2 } from "../../../components/Fonts/Fonts";
+import { H6, B1, B2 } from "../../components/Fonts/Fonts";
 
 const GuestContainer = styled.section`
   margin-bottom: 1rem;

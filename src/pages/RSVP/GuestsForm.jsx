@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import styled from "styled-components";
-import { H5, S1 } from "../../../components/Fonts/Fonts";
+import { H5, S1 } from "../../components/Fonts/Fonts";
 import SingleGuestForm from "./SingleGuestForm";
 
 const CurrentGuestHeader = styled.div`

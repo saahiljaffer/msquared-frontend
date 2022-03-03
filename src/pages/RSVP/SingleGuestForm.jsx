@@ -6,11 +6,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Form, Field } from "react-final-form";
-import { H5, S1 } from "../../../components/Fonts/Fonts";
-import RadioGroup from "../../../components/Radio/RadioGroup";
-import Button, { STYLES, TYPES } from "../../../components/Button/Button";
-import { ButtonGroup } from "../../../components/ButtonGroup/ButtonGroup";
-import { required } from "../../../form/validations";
+import { H5, S1 } from "../../components/Fonts/Fonts";
+import RadioGroup from "../../components/Radio/RadioGroup";
+import Button, { STYLES, TYPES } from "../../components/Button/Button";
+import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
+import { required } from "../../utils/validations";
 
 const CurrentGuestHeader = styled.div`
   margin-bottom: 1rem;

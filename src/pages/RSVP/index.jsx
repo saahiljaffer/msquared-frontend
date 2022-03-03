@@ -7,8 +7,8 @@ import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import PageWithNav from "../helpers/PageWithNav";
-import GuestsForm from "./form/GuestsForm";
-import Confirmation from "./confirmation/Confirmation";
+import GuestsForm from "./GuestsForm";
+import Confirmation from "./Confirmation";
 import { HOME } from "../../routes/routes";
 
 function RSVP() {
