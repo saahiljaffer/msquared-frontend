@@ -28,46 +28,19 @@ const AnswerText = styled(B2)`
 export default function GuestDetails({ guest }) {
   return (
     <GuestContainer>
-      <GuestName>{guest.name}</GuestName>
+      <GuestName>
+        {guest.fields.first_name}
+        {guest.fields.last_name}
+      </GuestName>
       <AnswerContainer>
         <B1>Is attending wedding day?</B1>
-        <AnswerText>{guest.isAttending}</AnswerText>
+        <AnswerText>{guest.fields_is_attending}</AnswerText>
       </AnswerContainer>
-
-      {guest.isAttending && guest.isAttending === "Yes" && !guest.isChild && (
-        <AnswerContainer>
-          <B1>Meal Choice</B1>
-          <AnswerText>{guest.meal}</AnswerText>
-        </AnswerContainer>
-      )}
 
       <AnswerContainer>
         <B1>Is attending after party?</B1>
-        <AnswerText>{guest.isAttendingAfterParty}</AnswerText>
+        <AnswerText>{guest.fields.is_attending_reception}</AnswerText>
       </AnswerContainer>
-
-      {guest.plusOne && (
-        <div>
-          <AnswerContainer>
-            <B1>Will you be bringing a guest?</B1>
-            <AnswerText>{guest.isBringingPlusOne}</AnswerText>
-          </AnswerContainer>
-
-          {guest.isBringingPlusOne === "Yes" && (
-            <div>
-              <AnswerContainer>
-                <B1>Guest Name</B1>
-                <AnswerText>{guest.guestName}</AnswerText>
-              </AnswerContainer>
-
-              <AnswerContainer>
-                <B1>Guest Meal Choice</B1>
-                <AnswerText>{guest.guestMeal}</AnswerText>
-              </AnswerContainer>
-            </div>
-          )}
-        </div>
-      )}
     </GuestContainer>
   );
 }

@@ -32,7 +32,7 @@ export default function Confirmation({ guests }) {
         </SubHeading>
       </HeadingContainer>
       {guests.map((guest) => (
-        <GuestDetails key={guest.name} guest={guest} />
+        <GuestDetails key={guest.pk} guest={guest} />
       ))}
 
       <ButtonGroup right>
