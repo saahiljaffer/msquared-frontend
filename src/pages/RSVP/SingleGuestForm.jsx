@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-class-assign */
 /* eslint-disable react/prop-types */
@@ -15,22 +17,13 @@ function SingleGuestForm({ onSubmit, onCancel, cancelBtnLabel }) {
     <Form enableReinitialize onSubmit={onSubmit}>
       {({ invalid, form, submitting }) => (
         <form>
+          <p>Will you be joining us for the Nikkah</p>
+          <input type="radio" id="html" name="fav_language" value={true} />
+          <label htmlFor="html">Yes</label>
+          <input type="radio" id="css" name="fav_language" value={false} />
+          <label htmlFor="css">No</label>
           <Field
-            name="isAttending"
-            label="Will you be joining us for the Nikkah?"
-            options={[
-              { label: "Let the good times roll!", value: "True" },
-              {
-                label: "Sorry, the show must go on without me",
-                value: "False",
-              },
-            ]}
-            validate={required}
-            component={RadioGroup}
-          />
-
-          <Field
-            name="isAttendingAfterParty"
+            name="isAttendingReception"
             label="Will you be joining us for the after party?"
             options={[
               { label: "Let the good times roll!", value: "Yes" },
@@ -39,7 +32,6 @@ function SingleGuestForm({ onSubmit, onCancel, cancelBtnLabel }) {
             validate={required}
             component={RadioGroup}
           />
-
           <ButtonGroup right>
             <Button
               buttonType={TYPES.OUTLINE}
@@ -53,9 +45,10 @@ function SingleGuestForm({ onSubmit, onCancel, cancelBtnLabel }) {
             <Button
               buttonStyle={STYLES.PRIMARY}
               disabled={invalid || submitting}
+              type="submit"
               onClick={() => {
                 form.reset();
-                onSubmit();
+                // onSubmit();
               }}
             >
               Next

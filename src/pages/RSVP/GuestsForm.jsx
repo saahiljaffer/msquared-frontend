@@ -43,7 +43,8 @@ function GuestsForm({ guests, updateGuests, onCancel }) {
 
           const updatedGuest = {
             ...currentGuest,
-            ...values,
+            is_attending: values.isAttending,
+            is_attending_reception: values.isAttendingReception,
           };
 
           const alreadyUpdatedIdx = currentUpdatedGuests.findIndex(
