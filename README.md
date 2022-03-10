@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a07670ed-a8d8-410b-bde4-684bc42cac8c/deploy-status)](https://app.netlify.com/sites/wizardly-mahavira-fdd0d2/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
