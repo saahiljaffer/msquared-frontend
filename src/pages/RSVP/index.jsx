@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable import/no-cycle */
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -38,13 +36,13 @@ function Landing() {
       <Banner src={banner} alt="Banner" />
       <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
       <SubTitle>
-        Welcome to our wedding website. We've created this website as a helpful
+        Welcome to our wedding website. Weve created this website as a helpful
         resource for all of the need-to-know details in the lead up to our big
-        day. Here you'll find the schedule for the day, venue directions, along
+        day. Here youll find the schedule for the day, venue directions, along
         with accommodation and transport options.
       </SubTitle>
       <SubTitle>
-        Don't forget to RSVP and let us know about any dietary preferences too.
+        Dont forget to RSVP and let us know about any dietary preferences too.
       </SubTitle>
       <SubTitle>
         We are so looking forward to celebrating with you all!

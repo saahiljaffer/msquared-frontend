@@ -11,10 +11,10 @@ function ComponentToWrap({ alerts }) {
   return <button onClick={() => alerts.show("My alert")}>show alert</button>;
 }
 
-ComponentToWrap = withAlerts(ComponentToWrap);
+const Alert = withAlerts(ComponentToWrap);
 
 stories.add("HOC Alert", () => (
   <StoryContainer>
-    <ComponentToWrap />
+    <Alert />
   </StoryContainer>
 ));

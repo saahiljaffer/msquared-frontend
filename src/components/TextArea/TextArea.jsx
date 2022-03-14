@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
