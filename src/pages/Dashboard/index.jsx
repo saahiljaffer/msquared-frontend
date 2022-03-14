@@ -3,7 +3,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { H2 } from "../../components/Fonts/Secondary";
 import { S1 } from "../../components/Fonts/Fonts";
 import Button, {
   TYPES as ButtonTypes,
@@ -16,11 +15,6 @@ import banner from "./Banner.jpg";
 const Banner = styled.img`
   margin-bottom: 1rem;
   width: 100%;
-`;
-
-const MainTitle = styled(H2)`
-  margin-bottom: 0.5rem;
-  text-align: center;
 `;
 
 const SubTitle = styled(S1)`
@@ -42,7 +36,6 @@ function Landing() {
   return (
     <>
       <Banner src={banner} alt="Banner" />
-      <MainTitle>Maysum & Malika</MainTitle>
       <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
       <SubTitle>
         Welcome to our wedding website. We've created this website as a helpful

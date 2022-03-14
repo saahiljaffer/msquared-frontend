@@ -1,28 +1,39 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable import/no-cycle */
-import React, { Component } from "react";
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
-import { H3 } from "../../components/Fonts/Secondary";
+import { H2 } from "../../components/Fonts/Secondary";
 import PageContainer from "../../components/PageContainer/PageContainer";
-// import { HOME, getTitleByPath } from "../../routes/routes";
 
-class PageWithNav extends Component {
-  goToHome = () => {
-    const { history } = this.props;
-    history.push("/");
-  };
+const MainTitle = styled(H2)`
+  margin-bottom: 0.5rem;
+  text-align: center;
+`;
 
-  render() {
-    const { children } = this.props;
-    return (
-      <>
-        <Nav>
-          <H3 onClick={this.goToHome}>Go Home</H3>
-        </Nav>
-        <PageContainer>{children}</PageContainer>
-      </>
-    );
-  }
+function PageWithNav({ children }) {
+  const navigate = useNavigate;
+  return (
+    <>
+      <Nav>
+        <MainTitle
+          onClick={() => {
+            navigate.push("/");
+          }}
+        >
+          Maysum and Malika
+        </MainTitle>
+      </Nav>
+      <PageContainer>{children}</PageContainer>
+    </>
+  );
 }
+
+PageWithNav.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
 
 export default PageWithNav;
