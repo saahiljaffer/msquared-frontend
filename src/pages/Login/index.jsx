@@ -79,12 +79,7 @@ function Login() {
     /> */}
 
         <ButtonGroup right>
-          <Button
-            buttonStyle={STYLES.PRIMARY}
-            onClick={() => {
-              console.log("next");
-            }}
-          >
+          <Button buttonStyle={STYLES.PRIMARY} onClick={() => {}}>
             Next
           </Button>
         </ButtonGroup>
