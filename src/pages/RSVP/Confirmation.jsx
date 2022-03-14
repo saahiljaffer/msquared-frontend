@@ -22,6 +22,7 @@ const SubHeading = styled(S1)`
 
 function Confirmation() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
+  // eslint-disable-next-line no-unused-vars
   const { data, isLoading } = useGetGuests(chosenPartyId);
 
   return (

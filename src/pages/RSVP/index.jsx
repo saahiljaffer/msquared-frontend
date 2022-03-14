@@ -19,7 +19,6 @@ function RSVP() {
     partyResponded = chosenParty.fields.has_responded;
   }
 
-  const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
   const { data, isLoading } = useGetGuests(chosenPartyId);
 
@@ -41,9 +40,9 @@ function RSVP() {
   return (
     <>
       <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
-      {loading && <LoadingIndicator />}
+      {isLoading && <LoadingIndicator />}
       {partyResponded}
-      {!!chosenPartyId && !partyResponded && !!data && !loading && (
+      {!!chosenPartyId && !partyResponded && !!data && !isLoading && (
         <GuestsForm
           guests={data}
           updateGuests={(updatedGuests) => {
@@ -54,7 +53,7 @@ function RSVP() {
           }}
         />
       )}
-      {!!partyResponded && !loading && <Confirmation guests={data} />}
+      {!!partyResponded && !isLoading && <Confirmation guests={data} />}
     </>
   );
 }
