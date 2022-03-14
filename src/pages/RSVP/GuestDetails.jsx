@@ -29,17 +29,18 @@ export default function GuestDetails({ guest }) {
   return (
     <GuestContainer>
       <GuestName>
-        {guest.fields.first_name}
-        {guest.fields.last_name}
+        {`${guest.fields.first_name} ${guest.fields.last_name}`}
       </GuestName>
       <AnswerContainer>
         <B1>Is attending wedding day?</B1>
-        <AnswerText>{guest.fields_is_attending}</AnswerText>
+        <AnswerText>{guest.fields.is_attending ? "Yes" : "No"}</AnswerText>
       </AnswerContainer>
 
       <AnswerContainer>
         <B1>Is attending after party?</B1>
-        <AnswerText>{guest.fields.is_attending_reception}</AnswerText>
+        <AnswerText>
+          {guest.fields.is_attending_reception ? "Yes" : "No"}
+        </AnswerText>
       </AnswerContainer>
     </GuestContainer>
   );

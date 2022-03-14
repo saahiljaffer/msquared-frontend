@@ -1,14 +1,12 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/prop-types */
-/* eslint-disable import/no-cycle */
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { H5, S1 } from "../../components/Fonts/Fonts";
-import Button, { TYPES } from "../../components/Button/Button";
+import Button, { TYPES } from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 import GuestDetails from "./GuestDetails";
-import { HOME } from "../../routes/routes";
+import { useGetGuests } from "../../api";
+import useStore from "../../store";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -22,24 +20,28 @@ const SubHeading = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
-export default function Confirmation({ guests }) {
+function Confirmation() {
+  const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const { data, isLoading } = useGetGuests(chosenPartyId);
+
   return (
     <>
       <HeadingContainer>
-        <MainHeading>You're all set!</MainHeading>
+        <MainHeading>Youre all set!</MainHeading>
         <SubHeading>
           Thank you for responding. We hope you have a wonderful time.
         </SubHeading>
       </HeadingContainer>
-      {guests.map((guest) => (
-        <GuestDetails key={guest.pk} guest={guest} />
-      ))}
+      {data &&
+        data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}
 
       <ButtonGroup right>
         <Button buttonType={TYPES.OUTLINE}>
-          <Link to={HOME.path}>Back to home</Link>
+          <Link to="/">Back to home</Link>
         </Button>
       </ButtonGroup>
     </>
   );
 }
+
+export default Confirmation;

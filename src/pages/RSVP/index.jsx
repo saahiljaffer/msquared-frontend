@@ -1,84 +1,61 @@
 /* eslint-disable import/no-cycle */
 import React, { useEffect, useState } from "react";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
-import PageWithNav from "../helpers/PageWithNav";
 import GuestsForm from "./GuestsForm";
 import Confirmation from "./Confirmation";
-import { HOME } from "../../routes/routes";
-import { setChosenParty } from "../../store/partySlice";
+import useStore from "../../store";
+import { useGetGuests, usePostGuests, useGetParty } from "../../api";
 
 function RSVP() {
-  const chosenParty = useSelector((state) => state.party.details);
-  const partyResponded = useSelector(
-    (state) => state.party.details.fields.has_responded
-  );
-  const [showConfirmation, setShowConfirmation] = useState(false);
+  const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const chosenParty = useGetParty(chosenPartyId).data;
+
+  let partyResponded;
+  if (chosenParty) {
+    partyResponded = chosenParty.fields.has_responded;
+  }
+
   const [loading, setLoading] = useState(false);
   const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
-  const [guests, setGuests] = useState(null);
+  const { data, isLoading } = useGetGuests(chosenPartyId);
 
   useEffect(() => {
-    if (chosenParty && chosenParty.pk) {
-      fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
-        .then((response) => response.json())
-        .then((data) => {
-          setGuests(data);
-        })
-        .then(() => {
-          setLoading(false);
-        });
-    }
-  }, [chosenParty]);
-
-  useEffect(() => {
-    if (partyResponded && guests) {
+    if (partyResponded && data) {
       if (partyNotFoundAlert) {
         alerts.close(partyNotFoundAlert);
       }
       setPartyNotFoundAlert(null);
-      setShowConfirmation(true);
       alerts.showSuccess(
         "You have already responded. Please find your details below."
       );
     }
-  }, [partyResponded, guests]);
+  }, [partyResponded, data]);
 
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const postGuests = usePostGuests();
 
   return (
-    <PageWithNav>
+    <>
       <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
       {loading && <LoadingIndicator />}
-      {!!chosenParty && !showConfirmation && !!guests && !loading && (
+      {partyResponded}
+      {!!chosenPartyId && !partyResponded && !!data && !loading && (
         <GuestsForm
-          guests={guests}
+          guests={data}
           updateGuests={(updatedGuests) => {
-            setLoading(true);
-            fetch(
-              `${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`,
-              {
-                method: "POST",
-                body: JSON.stringify(updatedGuests),
-              }
-            );
-            fetch(`${process.env.REACT_APP_API_URL}/parties/${chosenParty.pk}/`)
-              .then((response) => response.json())
-              .then((data) => dispatch(setChosenParty(data[0])))
-              .then(() => setLoading(false));
+            postGuests.mutate({ chosenPartyId, updatedGuests });
           }}
           onCancel={() => {
-            history.push(HOME.path);
+            navigate("/");
           }}
         />
       )}
-      {showConfirmation && !loading && <Confirmation guests={guests} />}
-    </PageWithNav>
+      {!!partyResponded && !loading && <Confirmation guests={data} />}
+    </>
   );
 }
 

@@ -1,24 +1,23 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-cycle */
-import React, { Fragment, Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react";
 import Nav from "../../components/Nav/Nav";
 import { H3 } from "../../components/Fonts/Secondary";
 import PageContainer from "../../components/PageContainer/PageContainer";
-import { HOME, getTitleByPath } from "../../routes/routes";
+// import { HOME, getTitleByPath } from "../../routes/routes";
 
 class PageWithNav extends Component {
   goToHome = () => {
     const { history } = this.props;
-    history.push(HOME.path);
+    history.push("/");
   };
 
   render() {
-    const { location, children } = this.props;
+    const { children } = this.props;
     return (
       <>
         <Nav>
-          <H3 onClick={this.goToHome}>{getTitleByPath(location.pathname)}</H3>
+          <H3 onClick={this.goToHome}>Go Home</H3>
         </Nav>
         <PageContainer>{children}</PageContainer>
       </>
@@ -26,4 +25,4 @@ class PageWithNav extends Component {
   }
 }
 
-export default withRouter(PageWithNav);
+export default PageWithNav;

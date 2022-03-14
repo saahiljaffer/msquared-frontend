@@ -8,10 +8,9 @@ import { S1 } from "../../components/Fonts/Fonts";
 import Button, {
   TYPES as ButtonTypes,
   STYLES as ButtonStyles,
-} from "../../components/Button/Button";
+} from "../../components/Button";
 import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
 import Countdown from "../../components/Countdown/Countdown";
-import { RSVP_ROUTE, WEDDING_DAY, AFTER_PARTY } from "../../routes/routes";
 import banner from "./Banner.jpg";
 
 const Banner = styled.img`
@@ -59,13 +58,13 @@ function Landing() {
       </SubTitle>
       <VerticalButtonGroup center>
         <Button buttonType={ButtonTypes.OUTLINE}>
-          <Link to={WEDDING_DAY.path}>Wedding Day</Link>
+          <Link to="/nikkah">Wedding Day</Link>
         </Button>
         <Button buttonType={ButtonTypes.OUTLINE}>
-          <Link to={AFTER_PARTY.path}>After Party</Link>
+          <Link to="/reception">After Party</Link>
         </Button>
         <Button buttonStyle={ButtonStyles.OUTLINE}>
-          <Link to={RSVP_ROUTE.path}>RSVP</Link>
+          <Link to="/rsvp">RSVP</Link>
         </Button>
       </VerticalButtonGroup>
     </>

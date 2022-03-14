@@ -1,112 +1,127 @@
-/* eslint-disable import/no-cycle */
-import React, { useEffect, useState } from "react";
-import { AlertContainer, alerts } from "react-very-simple-alerts";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
-import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
-import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
-import PageWithNav from "../helpers/PageWithNav";
-import NameForm from "./NameForm";
-import MultiMatchForm from "./MultiMatchForm";
-import Landing from "../Landing";
-import { setChosenParty } from "../../store/partySlice";
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Navigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { S1, B1 } from "../../components/Fonts/Fonts";
+import Button, { STYLES } from "../../components/Button";
+import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
+import useStore from "../../store";
+import { useGetPotentialParties } from "../../api";
 
-function RSVP() {
-  // const [chosenParty, setChosenParty] = useState(null);
-  const [potentialParties, setPotentialParties] = useState(null);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
-  const [loadingPartiesErrorId, setLoadingPartiesErrorId] = useState(null);
-  const [guests, setGuests] = useState(null);
-  const chosenParty = useSelector((state) => state.party.details);
-  const partyLoaded = useSelector((state) => state.party.hasLoaded);
-  const history = useHistory();
+const Title = styled(S1)`
+  margin-bottom: 1rem;
+  color: ${(props) => props.theme.colors.foreground.secondary};
+`;
+
+const StyledInput = styled.input`
+  width: fill-available;
+  height: 2rem;
+  padding: 0.25rem;
+  background-color: ${(props) => props.theme.colors.foreground.quintenary};
+  font-size: ${(props) => props.theme.fonts.b1.size};
+  font-weight: ${(props) => props.theme.fonts.b1.weight};
+  letter-spacing: ${(props) => props.theme.fonts.b1.letterspacing};
+  color: ${(props) => props.theme.colors.foreground.secondary};
+  border: none;
+  border-radius: 0.25rem;
+  ::placeholder {
+    color: ${(props) => props.theme.colors.foreground.tertiary};
+  }
+`;
+
+const Container = styled.div`
+  margin-bottom: 2rem;
+`;
+
+const Label = styled(B1)`
+  margin-bottom: 0.5rem;
+`;
+
+function Login() {
+  const {
+    register,
+    handleSubmit,
+    // TODO: handle errors
+    // eslint-disable-next-line no-unused-vars
+    formState: { errors },
+  } = useForm();
+  const name = useStore((state) => state.name);
+  const setName = useStore((state) => state.setName);
+  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
+  const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const { data, isLoading } = useGetPotentialParties(name);
 
   useEffect(() => {
-    // alert(partyLoaded);
-    if (chosenParty && chosenParty.pk) {
-      fetch(`${process.env.REACT_APP_API_URL}/guests/${chosenParty.pk}/`)
-        .then((response) => response.json())
-        .then((data) => {
-          setGuests(data);
-        })
-        .then(() => {
-          setLoading(false);
-        });
+    if (data && data.length === 1) {
+      setChosenPartyId(data[0].pk);
     }
-  }, [partyLoaded]);
+  }, [data]);
 
-  useEffect(() => {
-    if (partyLoaded && chosenParty && chosenParty.fields.hasResponded) {
-      if (partyNotFoundAlert) {
-        alerts.close(partyNotFoundAlert);
-      }
-      setPartyNotFoundAlert(null);
-      setShowConfirmation(true);
-      alerts.showSuccess(
-        "You have already responded. Please find your details below."
-      );
-    }
-  }, [chosenParty]);
-  const dispatch = useDispatch();
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  if (chosenPartyId) {
+    return <Navigate to="/" replace />;
+  }
+  if (data && data.length > 1) {
+    return (
+      <div>
+        <Title>
+          We have found more than one match in the guest list. Please select the
+          correct option from the list below.
+        </Title>
 
-  useEffect(() => {
-    if (potentialParties && potentialParties.length === 1) {
-      // setChosenParty(potentialParties[0]);
-      dispatch(setChosenParty(potentialParties[0]));
-      setPotentialParties(null);
-      history.push("/");
-    } else if (potentialParties) {
-      setPartyNotFoundAlert(
-        alerts.showError(
-          "We could not find your invite. Please check your spelling and try again.",
-          { onClose: () => setPartyNotFoundAlert(null) }
-        )
-      );
-    }
-  }, [potentialParties]);
+        {/* <RadioGroup
+      label="Options"
+      options={options}
+      input={{ value: chosenParty, onChange: onChosenPartyChange }}
+    /> */}
 
+        <ButtonGroup right>
+          <Button
+            buttonStyle={STYLES.PRIMARY}
+            onClick={() => {
+              console.log("next");
+            }}
+          >
+            Next
+          </Button>
+        </ButtonGroup>
+      </div>
+    );
+  }
   return (
-    <PageWithNav>
-      <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
-      {loading && <LoadingIndicator />}
-      {!partyLoaded && !potentialParties && !loading && (
-        <NameForm
-          onSubmit={(values) => {
-            const { firstName, lastName } = values;
-            if (loadingPartiesErrorId) {
-              alerts.close(loadingPartiesErrorId);
-            }
+    <form
+      onSubmit={handleSubmit((values) => {
+        setName(values);
+      })}
+    >
+      <Title>
+        If you are responding for you and a guest (or your family), you&#39;ll
+        be able to RSVP for your entire group.
+      </Title>
 
-            setLoadingPartiesErrorId(null);
-            setLoading(true);
+      <Container>
+        <Label>
+          Please enter your first name
+          <StyledInput name="firstName" {...register("firstName")} />
+        </Label>
+      </Container>
+      <Container>
+        <Label>
+          Please enter your last name
+          <StyledInput name="lastName" {...register("lastName")} />
+        </Label>
+      </Container>
 
-            fetch(
-              `${process.env.REACT_APP_API_URL}/parties/?first_name=${firstName}&last_name=${lastName}`
-            )
-              .then((response) => response.json())
-              .then((data) => setPotentialParties(data))
-              .then(() => setLoading(false));
-          }}
-        />
-      )}
-      {!!partyLoaded && !showConfirmation && !!guests && !loading && (
-        <Landing />
-      )}
-      {!partyLoaded && potentialParties && potentialParties.length > 1 && (
-        <MultiMatchForm
-          potentialParties={potentialParties}
-          onChooseParty={(party) => {
-            dispatch(setChosenParty(party));
-            // setChosenParty(party);
-            setPotentialParties(null);
-          }}
-        />
-      )}
-    </PageWithNav>
+      <ButtonGroup right>
+        <Button buttonStyle={STYLES.PRIMARY} type="submit">
+          Next
+        </Button>
+      </ButtonGroup>
+    </form>
   );
 }
 
-export default RSVP;
+export default Login;

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import PageWithNav from "../helpers/PageWithNav";
+import PageWithNav from "../PageWithNav";
 import { H5, B2, H6 } from "../../components/Fonts/Fonts";
 
 const HeadingContainer = styled.section`
