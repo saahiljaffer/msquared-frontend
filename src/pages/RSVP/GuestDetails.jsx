@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
-import { H6, B1, B2 } from "../../components/Fonts/Fonts";
+import PropTypes from "prop-types";
+import { H6, B1, B2 } from "../../components/Fonts";
 
 const GuestContainer = styled.section`
   margin-bottom: 1rem;
@@ -25,19 +25,18 @@ const AnswerText = styled(B2)`
   color: ${(props) => props.theme.colors.foreground.tertiary};
 `;
 
-export default function GuestDetails({ guest }) {
+function GuestDetails({ guest }) {
   return (
     <GuestContainer>
       <GuestName>
         {`${guest.fields.first_name} ${guest.fields.last_name}`}
       </GuestName>
       <AnswerContainer>
-        <B1>Is attending wedding day?</B1>
+        <B1>Is attending nikkah?</B1>
         <AnswerText>{guest.fields.is_attending ? "Yes" : "No"}</AnswerText>
       </AnswerContainer>
-
       <AnswerContainer>
-        <B1>Is attending after party?</B1>
+        <B1>Is attending reception?</B1>
         <AnswerText>
           {guest.fields.is_attending_reception ? "Yes" : "No"}
         </AnswerText>
@@ -45,3 +44,16 @@ export default function GuestDetails({ guest }) {
     </GuestContainer>
   );
 }
+
+GuestDetails.propTypes = {
+  guest: PropTypes.shape({
+    fields: PropTypes.shape({
+      first_name: PropTypes.string.isRequired,
+      last_name: PropTypes.string.isRequired,
+      is_attending: PropTypes.bool.isRequired,
+      is_attending_reception: PropTypes.bool.isRequired,
+    }),
+  }).isRequired,
+};
+
+export default GuestDetails;

@@ -1,7 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
 import React, { useMemo } from "react";
-import { H6 } from "../Fonts/Fonts";
+import PropTypes from "prop-types";
+import { H6 } from "../Fonts";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -18,5 +17,10 @@ function Countdown({ fromDate, toDate, ...rest }) {
     </H6>
   ) : null;
 }
+
+Countdown.propTypes = {
+  fromDate: PropTypes.instanceOf(Date).isRequired,
+  toDate: PropTypes.instanceOf(Date).isRequired,
+};
 
 export default Countdown;

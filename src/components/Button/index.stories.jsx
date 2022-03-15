@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import StoryContainer from "../StorybookContainer/StorybookContainer";
+import StoryContainer from "../StorybookContainer";
 import Button, { TYPES, STYLES } from ".";
-import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
+import { ButtonGroup } from "../ButtonGroup";
 
 const stories = storiesOf("Components", module);
 

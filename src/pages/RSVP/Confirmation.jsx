@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { H5, S1 } from "../../components/Fonts/Fonts";
+import { H5, S1 } from "../../components/Fonts";
 import Button, { TYPES } from "../../components/Button";
-import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
+import { ButtonGroup } from "../../components/ButtonGroup";
 import GuestDetails from "./GuestDetails";
 import { useGetGuests } from "../../api";
 import useStore from "../../store";

@@ -1,9 +1,12 @@
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable no-console */
 import React, { Fragment } from "react";
 import { storiesOf } from "@storybook/react";
+import PropTypes from "prop-types";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
-import StoryContainer from "../StorybookContainer/StorybookContainer";
+import StoryContainer from "../StorybookContainer";
 import CloseBtn from "./DefaultAlertCloseBtn";
-import Template from "./DefaultAlertTemplate";
+import Template from ".";
 
 const stories = storiesOf("Components", module);
 
@@ -22,13 +25,21 @@ stories.add("Alert", () => (
             onClose: (id) => console.log(`Closed ${id}`),
           })
         }
+        type="button"
       >
         Default
       </button>
-      <button onClick={() => alerts.showSuccess("Success")}>Success</button>
-      <button onClick={() => alerts.showWarning("Warning")}>Warning</button>
-      <button onClick={() => alerts.showError("Error")}>Error</button>
+      <button type="button" onClick={() => alerts.showSuccess("Success")}>
+        Success
+      </button>
+      <button type="button" onClick={() => alerts.showWarning("Warning")}>
+        Warning
+      </button>
+      <button type="button" onClick={() => alerts.showError("Error")}>
+        Error
+      </button>
       <button
+        type="button"
         onClick={() =>
           alerts.show(<AlertComponent>Custom alert component</AlertComponent>)
         }
@@ -36,6 +47,7 @@ stories.add("Alert", () => (
         Custom Component
       </button>
       <button
+        type="button"
         onClick={() =>
           alerts.show("Without close button", { closeButton: null })
         }
@@ -45,3 +57,10 @@ stories.add("Alert", () => (
     </>
   </StoryContainer>
 ));
+
+AlertComponent.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};

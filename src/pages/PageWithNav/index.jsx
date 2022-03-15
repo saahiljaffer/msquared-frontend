@@ -2,9 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../components/Nav";
 import { H2 } from "../../components/Fonts/Secondary";
-import PageContainer from "../../components/PageContainer/PageContainer";
+import PageContainer from "../../components/PageContainer";
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 const MainTitle = styled(H2)`
   margin-bottom: 0.5rem;
@@ -15,9 +19,9 @@ function PageWithNav({ children }) {
   return (
     <>
       <Nav>
-        <Link to="/">
+        <StyledLink to="/">
           <MainTitle>Maysum and Malika</MainTitle>
-        </Link>
+        </StyledLink>
       </Nav>
       <PageContainer>{children}</PageContainer>
     </>

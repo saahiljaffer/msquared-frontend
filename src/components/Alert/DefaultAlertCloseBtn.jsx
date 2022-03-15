@@ -1,7 +1,13 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
-export default function DefaultAlertCloseBtn({ close }) {
+function DefaultAlertCloseBtn({ close }) {
   return <FontAwesomeIcon icon="times" onClick={close} />;
 }
+
+DefaultAlertCloseBtn.propTypes = {
+  close: PropTypes.func.isRequired,
+};
+
+export default DefaultAlertCloseBtn;

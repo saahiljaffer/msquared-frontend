@@ -1,8 +1,8 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { State, Store } from "@sambego/storybook-state";
-import StoryContainer from "../StorybookContainer/StorybookContainer";
-import TextArea from "./TextArea";
+import StoryContainer from "../StorybookContainer";
+import TextArea from ".";
 
 const store = new Store({
   inputOneVal: "",

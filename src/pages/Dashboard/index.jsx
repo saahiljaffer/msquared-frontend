@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { S1 } from "../../components/Fonts/Fonts";
+import { S1 } from "../../components/Fonts";
 import Button, {
   TYPES as ButtonTypes,
   STYLES as ButtonStyles,
 } from "../../components/Button";
-import { VerticalButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
-import Countdown from "../../components/Countdown/Countdown";
+import Countdown from "../../components/Countdown";
 import banner from "./Banner.jpg";
+import useStore from "../../store";
+import { useGetParty } from "../../api";
 
 const Banner = styled.img`
   margin-bottom: 1rem;
@@ -27,10 +28,32 @@ const DaysLeft = styled(Countdown)`
   color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
+const ButtonGroupItem = styled(Link)`
+  text-decoration: none;
+`;
+
+const VerticalButtonGroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: ${(props) => (props.center ? "center" : "flex-start")};
+  margin-bottom: 1rem;
+
+  ${ButtonGroupItem} {
+    margin-bottom: 1rem;
+
+    :last-child {
+      margin-bottom: none;
+    }
+  }
+`;
+
 const WEDDING_DATE = new Date(2022, 5, 4);
 const TODAY = new Date();
 
 function Landing() {
+  const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const { data } = useGetParty(chosenPartyId);
+
   return (
     <>
       <Banner src={banner} alt="Banner" />
@@ -47,17 +70,21 @@ function Landing() {
       <SubTitle>
         We are so looking forward to celebrating with you all!
       </SubTitle>
-      <VerticalButtonGroup center>
-        <Button buttonType={ButtonTypes.OUTLINE}>
-          <Link to="/nikkah">Wedding Day</Link>
-        </Button>
-        <Button buttonType={ButtonTypes.OUTLINE}>
-          <Link to="/reception">After Party</Link>
-        </Button>
-        <Button buttonStyle={ButtonStyles.OUTLINE}>
-          <Link to="/rsvp">RSVP</Link>
-        </Button>
-      </VerticalButtonGroup>
+      <VerticalButtonGroupContainer center>
+        <ButtonGroupItem to="/nikkah">
+          <Button buttonType={ButtonTypes.OUTLINE}>Nikkah</Button>
+        </ButtonGroupItem>
+
+        {data && data?.fields?.is_invited_reception && (
+          <ButtonGroupItem to="/reception">
+            <Button buttonType={ButtonTypes.OUTLINE}>Reception</Button>
+          </ButtonGroupItem>
+        )}
+
+        <ButtonGroupItem to="/rsvp">
+          <Button buttonStyle={ButtonStyles.OUTLINE}>RSVP</Button>
+        </ButtonGroupItem>
+      </VerticalButtonGroupContainer>
     </>
   );
 }

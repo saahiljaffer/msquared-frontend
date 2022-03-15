@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import StoryContainer from "../StorybookContainer/StorybookContainer";
-import Accordion from "./Accordion";
+import StoryContainer from "../StorybookContainer";
+import Accordion from ".";
 
 const stories = storiesOf("Components", module);
 

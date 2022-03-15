@@ -1,7 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { ALERT_TYPES } from "react-very-simple-alerts";
 
 const getBackgroundColor = (theme, alertType) => {
@@ -44,6 +43,15 @@ const Container = styled.div`
   margin-bottom: 1rem;
 `;
 
-export default function DefaultAlertTemplate({ children, ...props }) {
+function DefaultAlertTemplate({ children, ...props }) {
   return <Container {...props}>{children}</Container>;
 }
+
+DefaultAlertTemplate.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+};
+
+export default DefaultAlertTemplate;

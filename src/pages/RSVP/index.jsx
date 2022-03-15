@@ -1,58 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { AlertContainer, alerts } from "react-very-simple-alerts";
-import { useNavigate } from "react-router-dom";
-import AlertTemplate from "../../components/Alert/DefaultAlertTemplate";
+import React from "react";
+import { AlertContainer } from "react-very-simple-alerts";
+import AlertTemplate from "../../components/Alert";
 import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
-import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+import LoadingIndicator from "../../components/LoadingIndicator";
 import GuestsForm from "./GuestsForm";
 import Confirmation from "./Confirmation";
 import useStore from "../../store";
-import { useGetGuests, usePostGuests, useGetParty } from "../../api";
+import { useGetParty } from "../../api";
 
 function RSVP() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
-  const chosenParty = useGetParty(chosenPartyId).data;
+  const { data, loading } = useGetParty(chosenPartyId);
 
   let partyResponded;
-  if (chosenParty) {
-    partyResponded = chosenParty.fields.has_responded;
+  if (data) {
+    partyResponded = data.fields.has_responded;
   }
-
-  const [partyNotFoundAlert, setPartyNotFoundAlert] = useState(null);
-  const { data, isLoading } = useGetGuests(chosenPartyId);
-
-  useEffect(() => {
-    if (partyResponded && data) {
-      if (partyNotFoundAlert) {
-        alerts.close(partyNotFoundAlert);
-      }
-      setPartyNotFoundAlert(null);
-      alerts.showSuccess(
-        "You have already responded. Please find your details below."
-      );
-    }
-  }, [partyResponded, data]);
-
-  const navigate = useNavigate();
-  const postGuests = usePostGuests();
 
   return (
     <>
       <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
-      {isLoading && <LoadingIndicator />}
-      {partyResponded}
-      {!!chosenPartyId && !partyResponded && !!data && !isLoading && (
-        <GuestsForm
-          guests={data}
-          updateGuests={(updatedGuests) => {
-            postGuests.mutate({ chosenPartyId, updatedGuests });
-          }}
-          onCancel={() => {
-            navigate("/");
-          }}
-        />
-      )}
-      {!!partyResponded && !isLoading && <Confirmation guests={data} />}
+      {loading && <LoadingIndicator />}
+      {!!chosenPartyId && !partyResponded && !loading && <GuestsForm />}
+      {!!partyResponded && !loading && <Confirmation />}
     </>
   );
 }

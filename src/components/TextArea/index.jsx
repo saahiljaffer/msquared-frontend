@@ -1,10 +1,7 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { B1 } from "../Fonts/Fonts";
+import { B1 } from "../Fonts";
 
 const Container = styled.div`
   margin-bottom: 2rem;
@@ -40,9 +37,10 @@ function TextArea({ label, placeholder, input, rows }) {
 }
 
 TextArea.propTypes = {
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  input: PropTypes.object.isRequired,
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  input: PropTypes.shape.isRequired,
+  rows: PropTypes.number.isRequired,
 };
 
 export default TextArea;

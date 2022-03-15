@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
-import { H5, H6, B2 } from "../../components/Fonts/Fonts";
+import { H5, H6, B2 } from "../../components/Fonts";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;

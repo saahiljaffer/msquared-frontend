@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { S1, B1 } from "../../components/Fonts/Fonts";
+import { S1, B1 } from "../../components/Fonts";
 import Button, { STYLES } from "../../components/Button";
-import { ButtonGroup } from "../../components/ButtonGroup/ButtonGroup";
+import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 
