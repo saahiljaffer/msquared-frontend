@@ -12,6 +12,11 @@ const MainHeader = styled(H5)`
 `;
 
 const VenueInfo = styled(H6)`
+  text-align: center;
+  color: ${(props) => props.theme.colors.background.quintenary};
+`;
+
+const VenueDetail = styled(B2)`
   margin-bottom: 1rem;
   text-align: center;
   color: ${(props) => props.theme.colors.background.quintenary};
@@ -33,29 +38,22 @@ const HotelName = styled(B2)`
   text-decoration: underline;
 `;
 
-const DirectionsContainer = styled.section`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
-const DirectionsFrame = styled.iframe`
-  border: none;
-`;
-
 export default function WeddingDay() {
   return (
     <>
       <HeadingContainer>
-        <MainHeader>11th October 2019</MainHeader>
-        <VenueInfo>Rockhill House</VenueInfo>
+        <MainHeader>4th June 2022</MainHeader>
+        <VenueInfo>Jaffari Community Centre</VenueInfo>
+        <VenueDetail>
+          9000 Bathurst Street, Vaughan Ontario, L4J 8A7
+        </VenueDetail>
         <B2>
-          Our wedding ceremony will take place at 2pm in The Gallery at Rockhill
-          House and the evening reception will follow in Rockhill House.
+          Our wedding ceremony will take place at 3pm at the Jaffari Community
+          Centre in Vaughan..
         </B2>
       </HeadingContainer>
 
-      <SectionTitle>Accomodation</SectionTitle>
+      <SectionTitle>Accommodation</SectionTitle>
       <P>
         There are a limited number of bedrooms available at Rockhill House and
         we would be delighted to have as many of our friends and family stay
@@ -83,18 +81,6 @@ export default function WeddingDay() {
         <HotelName>Station House Hotel, Letterkenny (074-9123100)</HotelName>
         €60 B&B per person sharing or €80 B&B for single occupancy room.
       </P>
-
-      <SectionTitle>Directions</SectionTitle>
-      <DirectionsContainer>
-        <DirectionsFrame
-          title="Directions"
-          width="300"
-          height="300"
-          src="https://maps.google.com/maps?q=rock%20hill%20house&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          scrolling="no"
-        />
-      </DirectionsContainer>
 
       <SectionTitle>Transport</SectionTitle>
       <P>

@@ -20,22 +20,25 @@ const GuestNumberIndicator = styled(S1)`
 
 function GuestsForm() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
-  const guests = useGetGuests(chosenPartyId).data;
+  const { data, isLoading } = useGetGuests(chosenPartyId);
   const postGuests = usePostGuests();
   const navigate = useNavigate();
   const [currentGuestIdx, setCurrentGuestIdx] = useState(0);
-  const numberOfGuests = guests.length;
+  const numberOfGuests = data?.length;
   const [updatedGuests, setUpdatedGuests] = useState([]);
 
   const getGuestFormCancelBtnLabel = () =>
     currentGuestIdx > 0 ? "Previous" : "Cancel";
 
   const initialGuestValues =
-    updatedGuests[currentGuestIdx] || guests[currentGuestIdx] || {};
+    updatedGuests[currentGuestIdx] || (data && data[currentGuestIdx]) || {};
 
-  const currentGuest = guests[currentGuestIdx];
+  const currentGuest = data && data[currentGuestIdx];
   const guestNumberIndicatorText = `${currentGuestIdx + 1}/${numberOfGuests}`;
 
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <>
       <CurrentGuestHeader>

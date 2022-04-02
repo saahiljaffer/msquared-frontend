@@ -12,6 +12,11 @@ const MainHeader = styled(H5)`
 `;
 
 const VenueInfo = styled(H6)`
+  text-align: center;
+  color: ${(props) => props.theme.colors.background.quintenary};
+`;
+
+const VenueDetail = styled(B2)`
   margin-bottom: 1rem;
   text-align: center;
   color: ${(props) => props.theme.colors.background.quintenary};
@@ -29,31 +34,21 @@ const P = styled(B2)`
   color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
-const DirectionsContainer = styled.section`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-`;
-
-const DirectionsFrame = styled.iframe`
-  border: none;
-`;
-
 export default function AfterParty() {
   return (
     <>
       <HeadingContainer>
-        <MainHeader>12th October 2019</MainHeader>
-        <VenueInfo>Arnolds Hotel</VenueInfo>
+        <MainHeader>5th June 2022</MainHeader>
+        <VenueInfo>Madison Greenhouse</VenueInfo>
+        <VenueDetail>160 Bayview Pkwy, Newmarket, Ontario, L3Y 3W3</VenueDetail>
         <B2>
           If your feet and head are not too delicate, we would be delighted if
-          you could join us for some more fun on Saturday, 12th October in
-          Arnolds Hotel, Dunfanaghy. We will be meeting from 6pm with food
-          served at 6.30pm and music to follow.
+          you could join us for some more fun on Sunday, 5th June at Madison
+          Greenhouse in Newmarket. We will be meeting from 10am.
         </B2>
       </HeadingContainer>
 
-      <SectionTitle>Accomodation</SectionTitle>
+      <SectionTitle>Accommodation</SectionTitle>
       <P>
         For those that would like to stay overnight, Arnolds Hotel have offered
         a special rate of €85 B&B per double/twin room based on 2 adults sharing
@@ -63,19 +58,6 @@ export default function AfterParty() {
         Please quote “Mc Hugh/Kerr wedding” when booking to avail of the
         discount (Tel 074-9136208)
       </P>
-
-      <SectionTitle>Directions</SectionTitle>
-      <DirectionsContainer>
-        <DirectionsFrame
-          title="Directions"
-          width="300"
-          height="300"
-          id="gmap_canvas"
-          src="https://maps.google.com/maps?q=arnolds%20hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          frameborder="0"
-          scrolling="no"
-        />
-      </DirectionsContainer>
 
       <SectionTitle>Transport</SectionTitle>
       <P>Dunfanaghy Taxi 085 7870164</P>
