@@ -7,7 +7,6 @@ import Button, {
   STYLES as ButtonStyles,
 } from "../../components/Button";
 import Countdown from "../../components/Countdown";
-import banner from "./Banner.jpg";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
 

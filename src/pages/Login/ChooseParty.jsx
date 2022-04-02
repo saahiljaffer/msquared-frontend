@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import { B1 } from "../../components/Fonts";
@@ -13,8 +13,8 @@ const Title = styled(B1)`
 
 function ChooseParty() {
   const name = useStore((state) => state.name);
-  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
-  const { data, isLoading } = useGetPotentialParties(name);
+  // const setChosenPartyId = useStore((state) => state.setChosenPartyId);
+  const { data } = useGetPotentialParties(name);
   //   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -69,12 +69,7 @@ function ChooseParty() {
       /> */}
 
       <ButtonGroup right>
-        <Button
-          buttonStyle={STYLES.PRIMARY}
-          onClick={() => {
-            console.log("next");
-          }}
-        >
+        <Button buttonStyle={STYLES.PRIMARY} onClick={() => {}}>
           Next
         </Button>
       </ButtonGroup>
