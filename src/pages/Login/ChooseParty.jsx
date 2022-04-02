@@ -17,11 +17,11 @@ function ChooseParty() {
   const { data, isLoading } = useGetPotentialParties(name);
   //   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (potentialParties && potentialParties.length === 1) {
-      setChosenPartyId(0);
-    }
-  }, [potentialParties]);
+  // useEffect(() => {
+  //   if (potentialParties && potentialParties.length === 1) {
+  //     setChosenPartyId(0);
+  //   }
+  // }, [potentialParties]);
 
   // const [chosenParty, setChosenParty] = useState(null);
 
@@ -59,7 +59,7 @@ function ChooseParty() {
       </Title>
 
       {data.map((option) => (
-        <pre>1</pre>
+        <pre>{option.pk}</pre>
       ))}
 
       {/* <RadioGroup

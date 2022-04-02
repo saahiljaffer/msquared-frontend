@@ -7,6 +7,7 @@ import Button, { STYLES } from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
+import ChooseParty from "./ChooseParty";
 
 const Title = styled(S1)`
   margin-bottom: 1rem;
@@ -53,7 +54,7 @@ function Login() {
 
   useEffect(() => {
     if (data && data.length === 1) {
-      setChosenPartyId(data[0].pk);
+      setChosenPartyId(data[0].fields.party);
     }
   }, [data]);
 
@@ -64,26 +65,7 @@ function Login() {
     return <Navigate to="/" replace />;
   }
   if (data && data.length > 1) {
-    return (
-      <div>
-        <Title>
-          We have found more than one match in the guest list. Please select the
-          correct option from the list below.
-        </Title>
-
-        {/* <RadioGroup
-      label="Options"
-      options={options}
-      input={{ value: chosenParty, onChange: onChosenPartyChange }}
-    /> */}
-
-        <ButtonGroup right>
-          <Button buttonStyle={STYLES.PRIMARY} onClick={() => {}}>
-            Next
-          </Button>
-        </ButtonGroup>
-      </div>
-    );
+    return <ChooseParty />;
   }
   return (
     <form

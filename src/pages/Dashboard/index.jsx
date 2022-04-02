@@ -11,11 +11,6 @@ import banner from "./Banner.jpg";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
 
-const Banner = styled.img`
-  margin-bottom: 1rem;
-  width: 100%;
-`;
-
 const SubTitle = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.secondary};
   margin-bottom: 1rem;
@@ -56,7 +51,6 @@ function Landing() {
 
   return (
     <>
-      <Banner src={banner} alt="Banner" />
       <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
       <SubTitle>
         Welcome to our wedding website. We have created this website as a

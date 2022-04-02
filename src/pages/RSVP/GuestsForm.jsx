@@ -1,3 +1,4 @@
+import { update } from "lodash";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -47,7 +48,7 @@ function GuestsForm() {
       </CurrentGuestHeader>
       <SingleGuestForm
         onSubmit={(values) => {
-          const currentUpdatedGuests = [...updatedGuests];
+          const currentUpdatedGuests = updatedGuests;
 
           const updatedGuest = {
             ...currentGuest,
@@ -65,13 +66,14 @@ function GuestsForm() {
             currentUpdatedGuests.splice(alreadyUpdatedIdx, 1);
           }
 
-          const newUpdatedGuests = [...currentUpdatedGuests, updatedGuest];
-
           if (currentGuestIdx === numberOfGuests - 1) {
-            postGuests.mutate({ chosenPartyId, updatedGuests });
+            postGuests.mutate({
+              chosenPartyId,
+              updatedGuests: [...updatedGuests, updatedGuest],
+            });
           } else {
+            setUpdatedGuests([...updatedGuests, updatedGuest]);
             setCurrentGuestIdx((prevIndex) => prevIndex + 1);
-            setUpdatedGuests(newUpdatedGuests);
           }
         }}
         onCancel={() => {

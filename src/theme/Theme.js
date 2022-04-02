@@ -2,7 +2,7 @@ export default {
   main: {
     colors: {
       background: {
-        default: "#FBFEF9",
+        default: "#bad1b7",
         secondary: "#B4CCA3",
         tertiary: "#92B27D",
         quaternary: "#6B994D",

@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Rubik", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background-color: #bad1b7;
     }
 
     h1,
