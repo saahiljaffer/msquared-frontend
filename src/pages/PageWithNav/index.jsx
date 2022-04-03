@@ -11,7 +11,7 @@ const StyledLink = styled(Link)`
 
 const MainTitle = styled.h1`
   text-align: center;
-  font-family: "Eu Alonira Personal Use";
+  font-family: "Eu Alonira";
   font-weight: normal;
   font-size: 1.5em;
   color: black;
