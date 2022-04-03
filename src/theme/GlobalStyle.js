@@ -16,8 +16,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Rubik", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: #bad1b7;
-    }
+        background-image: url("background.png");
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center; 
+        }
 
     h1,
     h2,
