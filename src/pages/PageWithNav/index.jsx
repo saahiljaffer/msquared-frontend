@@ -16,7 +16,7 @@ const MainTitle = styled.h1`
   text-align: center;
   font-family: "Eu Alonira Personal Use";
   font-weight: normal;
-  font-size: 42px;
+  font-size: 1em;
   color: #967d48;
 `;
 
