@@ -2,10 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { S1 } from "../../components/Fonts";
-import Button, {
-  TYPES as ButtonTypes,
-  STYLES as ButtonStyles,
-} from "../../components/Button";
+import Button from "../../components/Button";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
