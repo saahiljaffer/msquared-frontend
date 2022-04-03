@@ -91,7 +91,7 @@ function Login() {
         </Label>
       </Container>
 
-      <ButtonGroup right>
+      <ButtonGroup center>
         <Button buttonStyle={STYLES.PRIMARY} type="submit">
           Next
         </Button>

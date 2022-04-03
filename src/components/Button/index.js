@@ -96,7 +96,8 @@ const getDisabledBorder = (props) => {
 
 const StyledButton = styled.button`
   min-height: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.25rem;
+  width: 100%;
   font-size: ${(props) => props.theme.fonts.button.size};
   font-weight: ${(props) => props.theme.fonts.button.weight};
   letter-spacing: ${(props) => props.theme.fonts.button.letterspacing};

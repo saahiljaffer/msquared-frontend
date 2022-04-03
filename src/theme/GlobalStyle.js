@@ -17,12 +17,6 @@ const GlobalStyle = createGlobalStyle`
 
     :where(html) {
 
-        --smoky-black: #0F0500ff;
---metallic-sunburst: #A98B58ff;
---raw-umber: #83693Cff;
---metallic-sunburst-2: #A48A55ff;
---field-drab: #745B31ff;
-
         --gradient-30: radial-gradient(
       circle at bottom right, 
       hsl(118 20% 65%), hsl(118 20% 65% / 0%)
@@ -43,14 +37,20 @@ const GlobalStyle = createGlobalStyle`
   --noise-filter-5: contrast(200%) brightness(1000%);
 }
 
+body {
+  background: var(--gradient-30), var(--noise-1);
+        filter: var(--noise-filter-1);
+
+        /* background-color: hsl(118 20% 65%); */
+}
+
     body {
         margin: 0;
         padding: 0;
         font-family: "Space Grotesk", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background: var(--gradient-30), var(--noise-1);
-        filter: var(--noise-filter-1);
+        
         }
 
     h1,

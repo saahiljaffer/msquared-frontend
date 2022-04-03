@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const ButtonGroupItem = styled.div``;
+const ButtonGroupItem = styled.div`
+  width: 100%;
+`;
 
 const ButtonGroupContainer = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.left ? "flex-start" : "flex-end")};
+  justify-content: ${(props) => (props.center ? "center" : "flex-end")};
   margin-bottom: 1rem;
+
+  width: 100%;
 
   ${ButtonGroupItem} {
     margin-right: 0.5rem;
