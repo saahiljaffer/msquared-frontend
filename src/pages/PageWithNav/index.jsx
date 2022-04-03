@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
 import { H4 } from "../../components/Fonts/Secondary";
 import PageContainer from "../../components/PageContainer";
-import Button from "../../components/Button";
-import useStore from "../../store";
+// import Button from "../../components/Button";
+// import useStore from "../../store";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -14,17 +14,17 @@ const StyledLink = styled(Link)`
 
 const MainTitle = styled(H4)`
   text-align: center;
-  color: #967d48;
+  /* color: #967d48; */
 `;
 
-const ButtonContainer = styled.div`
-  position: absolute;
-  right: 3rem;
-`;
+// const ButtonContainer = styled.div`
+//   position: absolute;
+//   right: 3rem;
+// `;
 
 function PageWithNav({ children }) {
-  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
-  const setName = useStore((state) => state.setName);
+  // const setChosenPartyId = useStore((state) => state.setChosenPartyId);
+  // const setName = useStore((state) => state.setName);
 
   return (
     <>
@@ -32,7 +32,7 @@ function PageWithNav({ children }) {
         <StyledLink to="/">
           <MainTitle>Maysum and Malika</MainTitle>
         </StyledLink>
-        <ButtonContainer>
+        {/* <ButtonContainer>
           <Button
             onClick={() => {
               setChosenPartyId(undefined);
@@ -41,7 +41,7 @@ function PageWithNav({ children }) {
           >
             Logout
           </Button>
-        </ButtonContainer>
+        </ButtonContainer> */}
       </Nav>
       <PageContainer>{children}</PageContainer>
     </>
