@@ -2,7 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap');
-    @import url("/secondary.ttf");
+    @font-face {
+    font-family: 'Eu Alonira Personal Use';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Eu Alonira Personal Use'), url('/EuAloniraPersonalUse-8MqqA.woff') format('woff');
+    }
 
     html,
     body,

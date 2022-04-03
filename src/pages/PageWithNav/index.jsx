@@ -12,9 +12,11 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const MainTitle = styled(H4)`
+const MainTitle = styled.h1`
   text-align: center;
-  /* color: #967d48; */
+  font-family: "Eu Alonira Personal Use";
+  font-weight: normal;
+  font-size: 42px;
 `;
 
 // const ButtonContainer = styled.div`
@@ -29,9 +31,7 @@ function PageWithNav({ children }) {
   return (
     <>
       <Nav>
-        <StyledLink to="/">
-          <MainTitle>Maysum and Malika</MainTitle>
-        </StyledLink>
+        <MainTitle>Maysum and Malika</MainTitle>
         {/* <ButtonContainer>
           <Button
             onClick={() => {
