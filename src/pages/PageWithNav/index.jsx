@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
 import PageContainer from "../../components/PageContainer";
+import { H5 } from "../../components/Fonts/Secondary";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const MainTitle = styled.h1`
+const MainTitle = styled(H5)`
   text-align: center;
   font-family: "Eu Alonira";
   font-weight: normal;

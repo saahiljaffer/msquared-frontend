@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { H5, S1 } from "../../components/Fonts";
-import Button, { TYPES } from "../../components/Button";
+import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import GuestDetails from "./GuestDetails";
 import { useGetGuests } from "../../api";
@@ -16,9 +16,12 @@ const MainHeading = styled(H5)`
   margin-bottom: 0.25rem;
 `;
 
-const SubHeading = styled(S1)`
-  color: ${(props) => props.theme.colors.foreground.tertiary};
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;
+
+const SubHeading = styled(S1)``;
 
 function Confirmation() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
@@ -37,8 +40,8 @@ function Confirmation() {
         data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}
 
       <ButtonGroup right>
-        <Button buttonType={TYPES.OUTLINE}>
-          <Link to="/">Back to home</Link>
+        <Button>
+          <StyledLink to="/">Back to home</StyledLink>
         </Button>
       </ButtonGroup>
     </>

@@ -13,7 +13,7 @@ import { useGetParty } from "../../api";
 const SubTitle = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.secondary};
   margin-bottom: 1rem;
-  text-align: center;
+  /* text-align: center; */
 `;
 
 const DaysLeft = styled(Countdown)`
@@ -24,6 +24,7 @@ const DaysLeft = styled(Countdown)`
 
 const ButtonGroupItem = styled(Link)`
   text-decoration: none;
+  width: 100%;
 `;
 
 const VerticalButtonGroupContainer = styled.div`
@@ -65,17 +66,17 @@ function Landing() {
       </SubTitle>
       <VerticalButtonGroupContainer center>
         <ButtonGroupItem to="/nikkah">
-          <Button buttonType={ButtonTypes.OUTLINE}>Nikkah</Button>
+          <Button>Nikkah</Button>
         </ButtonGroupItem>
 
         {data && data?.fields?.is_invited_reception && (
           <ButtonGroupItem to="/reception">
-            <Button buttonType={ButtonTypes.OUTLINE}>Reception</Button>
+            <Button>Reception</Button>
           </ButtonGroupItem>
         )}
 
         <ButtonGroupItem to="/rsvp">
-          <Button buttonStyle={ButtonStyles.OUTLINE}>RSVP</Button>
+          <Button>RSVP</Button>
         </ButtonGroupItem>
       </VerticalButtonGroupContainer>
     </>

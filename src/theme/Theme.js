@@ -5,14 +5,14 @@ export default {
         default: "#bad1b7",
         secondary: "#B4CCA3",
         tertiary: "#92B27D",
-        quaternary: "#6B994D",
+        quaternary: "#848076",
         quintenary: "#537d36",
       },
       foreground: {
-        default: "#071013",
+        default: "#000000",
         secondary: "#2E454D",
         tertiary: "#738F99",
-        quaternary: "#B8C7CC",
+        quaternary: "#909090",
         quintenary: "#DAE3E5",
       },
       danger: {
@@ -51,13 +51,11 @@ export default {
       },
       h6: {
         size: "1.25rem",
-        weight: "500",
-        letterspacing: "0.15px",
+        weight: "400",
       },
       s1: {
         size: "1rem",
-        weight: "400",
-        letterspacing: "0.15px",
+        weight: "300",
       },
       s2: {
         size: "0.875rem",
@@ -66,13 +64,11 @@ export default {
       },
       b1: {
         size: "1rem",
-        weight: "400",
-        letterspacing: "0.5px",
+        weight: "300",
       },
       b2: {
         size: "0.875rem",
-        weight: "400",
-        letterspacing: "0.25px",
+        weight: "300",
       },
       button: {
         size: "0.875rem",

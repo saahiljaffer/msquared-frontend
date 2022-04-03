@@ -21,9 +21,7 @@ const AnswerContainer = styled.div`
   }
 `;
 
-const AnswerText = styled(B2)`
-  color: ${(props) => props.theme.colors.foreground.tertiary};
-`;
+const AnswerText = styled(B2)``;
 
 function GuestDetails({ guest }) {
   return (

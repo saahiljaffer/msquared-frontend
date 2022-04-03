@@ -92,9 +92,7 @@ function Login() {
       </Container>
 
       <ButtonGroup center>
-        <Button buttonStyle={STYLES.PRIMARY} type="submit">
-          Next
-        </Button>
+        <Button type="submit">Next</Button>
       </ButtonGroup>
     </form>
   );

@@ -21,7 +21,7 @@ export const H5 = styled.h5`
   color: ${(props) => props.theme.colors.foreground.default};
 `;
 
-export const H6 = styled.h6`
+export const H6 = styled.p`
   font-size: ${(props) => props.theme.fonts.h6.size};
   font-weight: ${(props) => props.theme.fonts.h6.weight};
   letter-spacing: ${(props) => props.theme.fonts.h6.letterspacing};
