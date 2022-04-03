@@ -17,6 +17,7 @@ const MainTitle = styled.h1`
   font-family: "Eu Alonira Personal Use";
   font-weight: normal;
   font-size: 42px;
+  color: #967d48;
 `;
 
 // const ButtonContainer = styled.div`
