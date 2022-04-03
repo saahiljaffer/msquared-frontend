@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
-import { H3 } from "../../components/Fonts/Secondary";
+import { H4 } from "../../components/Fonts/Secondary";
 import PageContainer from "../../components/PageContainer";
 import Button from "../../components/Button";
 import useStore from "../../store";
