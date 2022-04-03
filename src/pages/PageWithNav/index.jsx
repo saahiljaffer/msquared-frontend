@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const MainTitle = styled(H3)`
+const MainTitle = styled(H4)`
   text-align: center;
   color: #967d48;
 `;
