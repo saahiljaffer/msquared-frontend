@@ -10,16 +10,24 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
     }
 
+    :root {
+        --gradient-30: radial-gradient(
+      circle at top right, 
+      hsl(118 28% 50%), hsl(118 28% 50% / 0%)
+    ),
+    radial-gradient(
+      circle at bottom left, 
+      hsl(118 28% 84%), hsl(118 28% 84% / 0%)
+    );
+    }
+
     body {
         margin: 0;
         padding: 0;
         font-family: "Rubik", sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-image: url("background.png");
-        background-repeat: repeat;
-        background-attachment: fixed;
-        background-position: center; 
+        background: var(--gradient-30);
         }
 
     h1,
