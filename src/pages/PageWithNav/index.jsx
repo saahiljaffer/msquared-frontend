@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 
 const MainTitle = styled(H2)`
   text-align: center;
-  color: #917546;
+  /* color: #eeba0b; */
 `;
 
 const ButtonContainer = styled.div`
