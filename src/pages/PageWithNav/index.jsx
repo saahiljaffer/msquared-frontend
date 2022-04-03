@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
-import { H2 } from "../../components/Fonts/Secondary";
+import { H3 } from "../../components/Fonts/Secondary";
 import PageContainer from "../../components/PageContainer";
 import Button from "../../components/Button";
 import useStore from "../../store";
@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const MainTitle = styled(H2)`
+const MainTitle = styled(H3)`
   text-align: center;
   color: #967d48;
 `;
