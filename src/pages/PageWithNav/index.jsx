@@ -4,17 +4,16 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav";
 import PageContainer from "../../components/PageContainer";
-import { H5 } from "../../components/Fonts/Secondary";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const MainTitle = styled(H5)`
+const MainTitle = styled.img`
   text-align: center;
   font-family: "Eu Alonira";
   font-weight: normal;
-  font-size: 1.5em;
+  font-size: 2em;
   color: black;
 `;
 
@@ -23,7 +22,7 @@ function PageWithNav({ children }) {
     <>
       <Nav>
         <StyledLink to="/">
-          <MainTitle>Maysum and Malika</MainTitle>
+          <MainTitle src="/images/logo.png" width="64px" height="64px" />
         </StyledLink>
       </Nav>
       <PageContainer>{children}</PageContainer>

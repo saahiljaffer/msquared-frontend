@@ -11,22 +11,10 @@ const MainHeader = styled(H5)`
   text-align: center;
 `;
 
-const VenueInfo = styled(H6)`
-  text-align: center;
-  /* color: ${(props) => props.theme.colors.background.quintenary}; */
-`;
-
-const VenueDetail = styled(B2)`
-  margin-bottom: 1rem;
-  text-align: center;
-  /* color: ${(props) => props.theme.colors.background.quintenary}; */
-`;
-
 const SectionTitle = styled(H6)`
   margin-top: 2rem;
   margin-bottom: 1rem;
   text-align: center;
-  /* color: ${(props) => props.theme.colors.background.quintenary}; */
 `;
 
 const P = styled(B2)`
@@ -43,15 +31,15 @@ export default function WeddingDay() {
     <>
       <HeadingContainer>
         <MainHeader>4th June 2022</MainHeader>
-        <VenueInfo>Jaffari Community Centre</VenueInfo>
-        <VenueDetail>
-          9000 Bathurst Street, Vaughan Ontario, L4J 8A7
-        </VenueDetail>
-        <B2>
-          Our wedding ceremony will take place at 3pm at the Jaffari Community
-          Centre in Vaughan..
-        </B2>
       </HeadingContainer>
+
+      <SectionTitle>Venue</SectionTitle>
+      <P>Jaffari Community Centre</P>
+      <P>9000 Bathurst Street, Vaughan Ontario, L4J 8A7</P>
+      <P>
+        Our wedding ceremony will take place at 3pm at the Jaffari Community
+        Centre in Vaughan.
+      </P>
 
       <SectionTitle>Accommodation</SectionTitle>
       <P>
