@@ -10,7 +10,6 @@ import { useGetParty } from "../../api";
 const SubTitle = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.secondary};
   margin-bottom: 1rem;
-  /* text-align: center; */
 `;
 
 const DaysLeft = styled(Countdown)`
@@ -44,6 +43,8 @@ const TODAY = new Date();
 
 function Landing() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
+  const setName = useStore((state) => state.setName);
   const { data } = useGetParty(chosenPartyId);
 
   return (
@@ -75,6 +76,15 @@ function Landing() {
         <ButtonGroupItem to="/rsvp">
           <Button>RSVP</Button>
         </ButtonGroupItem>
+
+        <Button
+          onClick={() => {
+            setChosenPartyId(null);
+            setName(null);
+          }}
+        >
+          Logout
+        </Button>
       </VerticalButtonGroupContainer>
     </>
   );

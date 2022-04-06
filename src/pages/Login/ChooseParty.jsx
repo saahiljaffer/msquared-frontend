@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 // import { useNavigate } from "react-router-dom";
 import { B1 } from "../../components/Fonts";
-import Button, { STYLES } from "../../components/Button";
+import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
@@ -58,10 +58,22 @@ function ChooseParty() {
         correct option from the list below.
       </Title>
 
-      {data.map((option) => (
-        <pre>{option.pk}</pre>
+      {data.map((party) => (
+        <div
+          style={{
+            backgroundColor: "#fff",
+            padding: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          {party.party_id}
+          {party.map((guest) => (
+            <p>
+              {guest.first_name} {guest.last_name} {guest.email}
+            </p>
+          ))}
+        </div>
       ))}
-
       {/* <RadioGroup
         label="Options"
         options={options}
@@ -69,9 +81,7 @@ function ChooseParty() {
       /> */}
 
       <ButtonGroup right>
-        <Button buttonStyle={STYLES.PRIMARY} onClick={() => {}}>
-          Next
-        </Button>
+        <Button onClick={() => {}}>Next</Button>
       </ButtonGroup>
     </div>
   );
