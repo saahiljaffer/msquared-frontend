@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { H6, B1, B2 } from "../../components/Fonts";
+import { H6, S1 } from "../../components/Fonts";
 
 const GuestContainer = styled.section`
   margin-bottom: 1rem;
@@ -21,7 +21,7 @@ const AnswerContainer = styled.div`
   }
 `;
 
-const AnswerText = styled(B2)``;
+const AnswerText = styled(S1)``;
 
 function GuestDetails({ guest }) {
   return (
@@ -30,11 +30,17 @@ function GuestDetails({ guest }) {
         {`${guest.fields.first_name} ${guest.fields.last_name}`}
       </GuestName>
       <AnswerContainer>
-        <B1>Is attending nikkah?</B1>
+        <S1>Is attending mendhi?</S1>
+        <AnswerText>
+          {guest.fields.is_attending_mendhi ? "Yes" : "No"}
+        </AnswerText>
+      </AnswerContainer>
+      <AnswerContainer>
+        <S1>Is attending nikkah?</S1>
         <AnswerText>{guest.fields.is_attending ? "Yes" : "No"}</AnswerText>
       </AnswerContainer>
       <AnswerContainer>
-        <B1>Is attending reception?</B1>
+        <S1>Is attending reception?</S1>
         <AnswerText>
           {guest.fields.is_attending_reception ? "Yes" : "No"}
         </AnswerText>
@@ -50,6 +56,7 @@ GuestDetails.propTypes = {
       last_name: PropTypes.string.isRequired,
       is_attending: PropTypes.bool.isRequired,
       is_attending_reception: PropTypes.bool.isRequired,
+      is_attending_mendhi: PropTypes.bool.isRequired,
     }),
   }).isRequired,
 };

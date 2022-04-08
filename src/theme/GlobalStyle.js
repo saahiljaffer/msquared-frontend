@@ -63,8 +63,8 @@ const GlobalStyle = createGlobalStyle`
         --noise-filter-5: contrast(200%) brightness(1000%);
     }
 
-    body {
-        background: var(--gradient-30), var(--noise-1);
+    html, body, #root {
+        background-color: hsl(118 25% 80%);
     }
 
     body {

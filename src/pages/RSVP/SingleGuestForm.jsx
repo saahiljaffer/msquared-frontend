@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { B1 } from "../../components/Fonts";
+import { S1 } from "../../components/Fonts";
 import Button, { STYLES as ButtonStyles } from "../../components/Button";
 
 const Container = styled.form`
@@ -17,7 +17,7 @@ const QuestionContainer = styled.div`
   flex-direction: column;
 `;
 
-const Label = styled(B1)`
+const Label = styled(S1)`
   margin-bottom: 1rem;
 `;
 
@@ -72,13 +72,14 @@ function SingleGuestForm({ onSubmit }) {
   const {
     register,
     handleSubmit,
+    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
   return (
     <Container onSubmit={handleSubmit(onSubmit)}>
       {/* TODO: improve error design or use alert */}
-      {errors && <span>Please complete both fields</span>}
+      {false && <Label>Please complete both fields</Label>}
       <QuestionContainer>
         <Label>Will you be joining us for the nikkah</Label>
 
@@ -92,7 +93,7 @@ function SingleGuestForm({ onSubmit }) {
           <CheckboxContainer>
             <CheckMark icon="check" />
           </CheckboxContainer>
-          Yes
+          <Label>Yes</Label>
         </RadioLabel>
 
         <RadioLabel>
@@ -106,7 +107,7 @@ function SingleGuestForm({ onSubmit }) {
           <CheckboxContainer>
             <CheckMark icon="check" />
           </CheckboxContainer>
-          No
+          <Label>No</Label>
         </RadioLabel>
       </QuestionContainer>
 
@@ -123,7 +124,7 @@ function SingleGuestForm({ onSubmit }) {
           <CheckboxContainer>
             <CheckMark icon="check" />
           </CheckboxContainer>
-          Yes
+          <Label>Yes</Label>
         </RadioLabel>
 
         <RadioLabel>
@@ -137,7 +138,7 @@ function SingleGuestForm({ onSubmit }) {
           <CheckboxContainer>
             <CheckMark icon="check" />
           </CheckboxContainer>
-          No
+          <Label>No</Label>
         </RadioLabel>
       </QuestionContainer>
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export default styled.section`
   margin-left: 1rem;
   margin-right: 1rem;
+  padding-bottom: 3rem;
 
   @media (min-width: 768px) {
     margin-left: 6rem;

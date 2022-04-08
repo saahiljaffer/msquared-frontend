@@ -15,7 +15,7 @@ const GuestName = styled(H5)`
 `;
 
 const GuestNumberIndicator = styled(S1)`
-  color: ${(props) => props.theme.colors.foreground.tertiary};
+  /* color: ${(props) => props.theme.colors.foreground.tertiary}; */
 `;
 
 function GuestsForm() {
