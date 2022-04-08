@@ -12,6 +12,7 @@ import Nikkah from "./pages/Nikkah";
 import Reception from "./pages/Reception";
 import RSVP from "./pages/RSVP";
 import Login from "./pages/Login";
+import Mendhi from "./pages/Mendhi";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,10 @@ const routes = (isLoggedin) => [
   {
     path: "/reception",
     element: isLoggedin ? <Reception /> : <Navigate to="/login" replace />,
+  },
+  {
+    path: "/mendhi",
+    element: isLoggedin ? <Mendhi /> : <Navigate to="/login" replace />,
   },
   {
     path: "/rsvp",

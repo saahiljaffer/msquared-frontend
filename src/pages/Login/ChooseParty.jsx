@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-// import { useNavigate } from "react-router-dom";
 import { B1 } from "../../components/Fonts";
-import Button from "../../components/Button";
-import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 
@@ -11,46 +8,23 @@ const Title = styled(B1)`
   margin-bottom: 1rem;
 `;
 
+const Choice = styled.button`
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: inherit;
+  border: none;
+  padding-block: 20px;
+  width: 100%;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+`;
+
 function ChooseParty() {
   const name = useStore((state) => state.name);
-  // const setChosenPartyId = useStore((state) => state.setChosenPartyId);
+  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
   const { data } = useGetPotentialParties(name);
-  //   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (potentialParties && potentialParties.length === 1) {
-  //     setChosenPartyId(0);
-  //   }
-  // }, [potentialParties]);
-
-  // const [chosenParty, setChosenParty] = useState(null);
-
-  //   const getPartyDisplayValue = (party) => {
-  //     const guestNames = party.guests.reduce(
-  //       (result, guest) =>
-  //         result === "" ? guest.name : `${result}, ${guest.name}`,
-  //       ""
-  //     );
-
-  //   return party.location ? `${guestNames} (${party.location})` : guestNames;
-  // };
-
-  //   const options = potentialParties.map((party) => ({
-  //     value: party.id,
-  //     label: getPartyDisplayValue(party),
-  //   }));
-
-  // const onChosenPartyChange = (e) => {
-  //   setChosenParty(e.target.value);
-  // };
-
-  // const onNext = () => {
-  //   // const chosenPartyValue = potentialParties.find(
-  //   //   (party) => party.id === chosenParty
-  //   // );
-  //   // onChooseParty(chosenPartyValue);
-  // };
-
   return (
     <div>
       <Title>
@@ -59,30 +33,19 @@ function ChooseParty() {
       </Title>
 
       {data.map((party) => (
-        <div
-          style={{
-            backgroundColor: "#fff",
-            padding: "20px",
-            marginBottom: "20px",
+        <Choice
+          type="button"
+          onClick={() => {
+            setChosenPartyId(party[0].party_id);
           }}
         >
-          {party.party_id}
           {party.map((guest) => (
             <p>
               {guest.first_name} {guest.last_name} {guest.email}
             </p>
           ))}
-        </div>
+        </Choice>
       ))}
-      {/* <RadioGroup
-        label="Options"
-        options={options}
-        input={{ value: chosenParty, onChange: onChosenPartyChange }}
-      /> */}
-
-      <ButtonGroup right>
-        <Button onClick={() => {}}>Next</Button>
-      </ButtonGroup>
     </div>
   );
 }

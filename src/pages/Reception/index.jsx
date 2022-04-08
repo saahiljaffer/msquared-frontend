@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
-import { H5, H6, B2 } from "../../components/Fonts";
+import { H5, S1 } from "../../components/Fonts";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -11,45 +11,48 @@ const MainHeader = styled(H5)`
   text-align: center;
 `;
 
-const SectionTitle = styled(H6)`
-  margin-top: 2rem;
+const Section = styled.div`
   margin-bottom: 1rem;
   text-align: center;
 `;
 
-const P = styled(B2)`
+const P = styled(S1)`
+  color: ${(props) => props.theme.colors.foreground.secondary};
+`;
+
+const DirectionsContainer = styled.section`
+  display: flex;
+  justify-content: center;
   margin-bottom: 1rem;
 `;
 
-export default function Reception() {
+const DirectionsFrame = styled.iframe`
+  border: none;
+`;
+
+export default function WeddingDay() {
   return (
     <>
       <HeadingContainer>
-        <MainHeader>5th June 2022</MainHeader>
+        <MainHeader>Sunday June 5th, 2022 at 10:00 AM</MainHeader>
       </HeadingContainer>
 
-      <SectionTitle>Accommodation</SectionTitle>
-      <P>Madison Greenhouse</P>
-      <P>160 Bayview Pkwy, Newmarket, Ontario, L3Y 3W3</P>
-      <P>
-        If your feet and head are not too delicate, we would be delighted if you
-        could join us for some more fun on Sunday, 5th June at Madison
-        Greenhouse in Newmarket. We will be meeting from 10am.
-      </P>
+      <Section>
+        <P>Madison Greenhouse</P>
+        <P>160 Bayview Parkway</P>
+        <P>Newmarket, Ontario L3Y 3W3</P>
+      </Section>
 
-      <SectionTitle>Accommodation</SectionTitle>
-      <P>
-        For those that would like to stay overnight, Arnolds Hotel have offered
-        a special rate of €85 B&B per double/twin room based on 2 adults sharing
-        and €75 B&B per single occupancy room.
-      </P>
-      <P>
-        Please quote “Mc Hugh/Kerr wedding” when booking to avail of the
-        discount (Tel 074-9136208)
-      </P>
-
-      <SectionTitle>Transport</SectionTitle>
-      <P>Dunfanaghy Taxi 085 7870164</P>
+      <DirectionsContainer>
+        <DirectionsFrame
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2866.830882764716!2d-79.46007038406894!3d44.06620067910927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882acdede351a50d%3A0x2edb663f2da9493f!2sMadison%20Greenhouse%20Event%20Venue!5e0!3m2!1sen!2sus!4v1649448935530!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          allowFullScreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        />
+      </DirectionsContainer>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { H6 } from "../Fonts";
+import { S1 } from "../Fonts";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -12,9 +12,9 @@ function Countdown({ fromDate, toDate, ...rest }) {
   );
 
   return daysLeft && daysLeft > 0 ? (
-    <H6 {...rest}>
+    <S1 {...rest}>
       {daysLeft} {daysLeft > 1 ? "days" : "day"} to go!
-    </H6>
+    </S1>
   ) : null;
 }
 

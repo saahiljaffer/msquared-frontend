@@ -34,23 +34,20 @@ export default function WeddingDay() {
   return (
     <>
       <HeadingContainer>
-        <MainHeader>Saturday June 4th, 2022 at 3:00 PM</MainHeader>
+        <MainHeader>Thursday June 2th, 2022 at 4:30 PM</MainHeader>
       </HeadingContainer>
 
       <Section>
-        <P>Jaffari Community Centre</P>
-        <P>9000 Bathurst Street</P>
-        <P>Thornhill, Ontario L4J 8A7</P>
+        <P>Royal Gardens Party Room</P>
+        <P>370-376 Hwy 7</P>
+        <P>Richmond Hill, Ontario L4B 0C6</P>
       </Section>
 
       <DirectionsContainer>
         <DirectionsFrame
-          title="Directions"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.6760423718156!2d-79.46253268407473!3d43.84181467911536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2bf0ae02f717%3A0x926b8f95eda97f37!2sJaffari%20Community%20Centre!5e0!3m2!1sen!2sus!4v1649448705246!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.680614987092!2d-79.39797878407472!3d43.84171987911515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2b44f716eb59%3A0xe55ea4717c99aec4!2sRoyal%20Gardens%20Condominiums!5e0!3m2!1sen!2sus!4v1649449165711!5m2!1sen!2sus"
           width="600"
           height="450"
-          frameBorder="0"
-          scrolling="no"
           allowFullScreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"

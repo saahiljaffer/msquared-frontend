@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { S1 } from "../../components/Fonts";
+import { H3 } from "../../components/Fonts/Secondary";
 import Button from "../../components/Button";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
+
+const MainTitle = styled(H3)`
+  margin-bottom: 0.5rem;
+  text-align: center;
+`;
 
 const SubTitle = styled(S1)`
   color: ${(props) => props.theme.colors.foreground.secondary};
@@ -25,17 +31,17 @@ const ButtonGroupItem = styled(Link)`
 
 const VerticalButtonGroupContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 1rem;
   align-items: ${(props) => (props.center ? "center" : "flex-start")};
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+`;
 
-  ${ButtonGroupItem} {
-    margin-bottom: 1rem;
-
-    :last-child {
-      margin-bottom: none;
-    }
-  }
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const WEDDING_DATE = new Date(2022, 5, 4);
@@ -48,20 +54,16 @@ function Landing() {
   const { data } = useGetParty(chosenPartyId);
 
   return (
-    <>
+    <Container>
+      <MainTitle>Maysum & Malika 2022</MainTitle>
       <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
       <SubTitle>
-        Welcome to our wedding website. We have created this website as a
-        helpful resource for all of the need-to-know details in the lead up to
-        our big day. Here you will find the schedule for the day, venue
-        directions, along with accommodation and transport options.
+        Welcome to our wedding website. We are so excited to celebrate with you
+        all! As our big day is soon approaching, we would greatly appreciate it
+        if you could kindly take a few minutes to RSVP using the below tab, by
+        May 7, 2022.
       </SubTitle>
-      <SubTitle>
-        Dont forget to RSVP and let us know about any dietary preferences too.
-      </SubTitle>
-      <SubTitle>
-        We are so looking forward to celebrating with you all!
-      </SubTitle>
+      <img src="/images/splash.jpg" alt="" width="400" height="500" />
       <VerticalButtonGroupContainer center>
         <ButtonGroupItem to="/nikkah">
           <Button>Nikkah</Button>
@@ -73,6 +75,13 @@ function Landing() {
           </ButtonGroupItem>
         )}
 
+        {data && true && (
+          <ButtonGroupItem to="/mendhi">
+            <Button>Mendhi</Button>
+          </ButtonGroupItem>
+        )}
+      </VerticalButtonGroupContainer>
+      <VerticalButtonGroupContainer>
         <ButtonGroupItem to="/rsvp">
           <Button>RSVP</Button>
         </ButtonGroupItem>
@@ -86,7 +95,7 @@ function Landing() {
           Logout
         </Button>
       </VerticalButtonGroupContainer>
-    </>
+    </Container>
   );
 }
 

@@ -54,7 +54,7 @@ function Login() {
 
   useEffect(() => {
     if (data && data.length === 1) {
-      setChosenPartyId(data[0].fields.party);
+      setChosenPartyId(data[0][0].party_id);
     }
   }, [data]);
 

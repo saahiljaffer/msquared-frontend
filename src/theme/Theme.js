@@ -5,14 +5,14 @@ export default {
         default: "#bad1b7",
         secondary: "#B4CCA3",
         tertiary: "#92B27D",
-        quaternary: "#848076",
+        quaternary: "#fff",
         quintenary: "#537d36",
       },
       foreground: {
         default: "#000000",
         secondary: "#2E454D",
         tertiary: "#738F99",
-        quaternary: "#909090",
+        quaternary: "#fff",
         quintenary: "#DAE3E5",
       },
       danger: {
@@ -54,7 +54,7 @@ export default {
         weight: "400",
       },
       s1: {
-        size: "1rem",
+        size: "1.25rem",
         weight: "300",
       },
       s2: {
@@ -72,7 +72,7 @@ export default {
       },
       button: {
         size: "0.875rem",
-        weight: "500",
+        weight: "600",
         letterspacing: "1.25px",
       },
       caption: {

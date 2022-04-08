@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Eu Alonira';
         font-style: normal;
         font-weight: normal;
-        src: local('Eu Alonira'), url('/fonts/EuAlonira.woff') format('woff');
+        src: local('Eu Alonira'), url('/fonts/Eu Alonira.otf') format('opentype');
     }
 
     @font-face {
@@ -65,7 +65,6 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--gradient-30), var(--noise-1);
-              filter: var(--noise-filter-1);
     }
 
     body {

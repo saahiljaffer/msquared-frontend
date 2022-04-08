@@ -25,7 +25,7 @@ export default styled.section`
   }
 
   @media (min-width: 1920px) {
-    margin-left: 40rem;
-    margin-right: 40rem;
+    margin-left: 30rem;
+    margin-right: 30rem;
   }
 `;
