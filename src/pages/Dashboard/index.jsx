@@ -63,7 +63,7 @@ function Landing() {
         if you could kindly take a few minutes to RSVP using the below tab, by
         May 7, 2022.
       </SubTitle>
-      <img src="/images/splash.jpg" alt="" width="400" height="500" />
+      <img src="/images/splash.png" alt="" width="300" height="500" />
       <VerticalButtonGroupContainer center>
         <ButtonGroupItem to="/nikkah">
           <Button>Nikkah</Button>
