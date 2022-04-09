@@ -101,7 +101,6 @@ const StyledButton = styled.button`
   font-size: ${(props) => props.theme.fonts.button.size};
   font-weight: ${(props) => props.theme.fonts.button.weight};
   letter-spacing: ${(props) => props.theme.fonts.button.letterspacing};
-  font-family: "Rubik", sans-serif;
   text-transform: uppercase;
   background: ${(props) =>
     props.disabled

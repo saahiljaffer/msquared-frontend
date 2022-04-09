@@ -1,40 +1,49 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { S1 } from "../../components/Fonts";
-import { H3 } from "../../components/Fonts/Secondary";
+import { S2 } from "../../components/Fonts";
+import { H5 } from "../../components/Fonts/Secondary";
 import Button from "../../components/Button";
+import PrimaryButton from "../../components/Button/PrimaryButton";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
 
-const MainTitle = styled(H3)`
+const MainTitle = styled(H5)`
   margin-bottom: 0.5rem;
   text-align: center;
 `;
 
-const SubTitle = styled(S1)`
-  color: ${(props) => props.theme.colors.foreground.secondary};
+const SubTitle = styled(S2)`
   margin-bottom: 1rem;
 `;
 
 const DaysLeft = styled(Countdown)`
   text-align: center;
   margin-bottom: 1rem;
-  color: ${(props) => props.theme.colors.foreground.secondary};
 `;
 
 const ButtonGroupItem = styled(Link)`
   text-decoration: none;
-  width: 100%;
 `;
 
-const VerticalButtonGroupContainer = styled.div`
+const ButtonGroupContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+
+const FullButtonGroupContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   align-items: ${(props) => (props.center ? "center" : "flex-start")};
   margin-top: 1rem;
+  width: 100%;
 `;
 
 const Container = styled.div`
@@ -42,6 +51,12 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const Image = styled.img`
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
 `;
 
 const WEDDING_DATE = new Date(2022, 5, 4);
@@ -63,8 +78,7 @@ function Landing() {
         if you could kindly take a few minutes to RSVP using the below tab, by
         May 7, 2022.
       </SubTitle>
-      <img src="/images/splash.png" alt="" width="300" height="500" />
-      <VerticalButtonGroupContainer center>
+      <ButtonGroupContainer>
         <ButtonGroupItem to="/nikkah">
           <Button>Nikkah</Button>
         </ButtonGroupItem>
@@ -80,21 +94,22 @@ function Landing() {
             <Button>Mendhi</Button>
           </ButtonGroupItem>
         )}
-      </VerticalButtonGroupContainer>
-      <VerticalButtonGroupContainer>
-        <ButtonGroupItem to="/rsvp">
-          <Button>RSVP</Button>
+      </ButtonGroupContainer>
+      <FullButtonGroupContainer>
+        <ButtonGroupItem style={{ width: "100%" }} to="/rsvp">
+          <PrimaryButton>RSVP</PrimaryButton>
         </ButtonGroupItem>
 
-        <Button
+        <PrimaryButton
           onClick={() => {
             setChosenPartyId(null);
             setName(null);
           }}
         >
           Logout
-        </Button>
-      </VerticalButtonGroupContainer>
+        </PrimaryButton>
+      </FullButtonGroupContainer>
+      <Image src="/images/splash.png" alt="" />
     </Container>
   );
 }

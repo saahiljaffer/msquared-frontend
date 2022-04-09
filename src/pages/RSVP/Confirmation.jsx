@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { H5, S1 } from "../../components/Fonts";
+import { H5, S2 } from "../../components/Fonts";
 import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import GuestDetails from "./GuestDetails";
@@ -21,7 +21,9 @@ const StyledLink = styled(Link)`
   color: #000;
 `;
 
-const SubHeading = styled(S1)``;
+const SubHeading = styled(S2)`
+  color: ${(props) => props.theme.colors.foreground.secondary};
+`;
 
 function Confirmation() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
@@ -31,7 +33,7 @@ function Confirmation() {
   return (
     <>
       <HeadingContainer>
-        <MainHeading>Youre all set!</MainHeading>
+        <MainHeading>You are all set!</MainHeading>
         <SubHeading>
           Thank you for responding. We hope you have a wonderful time.
         </SubHeading>
@@ -40,9 +42,9 @@ function Confirmation() {
         data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}
 
       <ButtonGroup right>
-        <Button>
-          <StyledLink to="/">Back to home</StyledLink>
-        </Button>
+        <StyledLink to="/">
+          <Button>Back to home</Button>
+        </StyledLink>
       </ButtonGroup>
     </>
   );

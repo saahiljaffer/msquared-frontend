@@ -5,6 +5,14 @@ import {
   faCheck,
   faTimes,
   faSpinner,
+  faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faChevronRight, faChevronDown, faCheck, faTimes, faSpinner);
+library.add(
+  faChevronRight,
+  faChevronDown,
+  faCheck,
+  faTimes,
+  faSpinner,
+  faHouse
+);

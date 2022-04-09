@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Nav from "../../components/Nav";
 import PageContainer from "../../components/PageContainer";
 
@@ -21,6 +22,8 @@ function PageWithNav({ children }) {
   return (
     <>
       <Nav>
+        <FontAwesomeIcon icon="fa-house" />
+
         <StyledLink to="/">
           <MainTitle src="/images/logo.png" width="64px" height="64px" />
         </StyledLink>

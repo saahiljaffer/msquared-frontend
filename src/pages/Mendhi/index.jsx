@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { H5, S1 } from "../../components/Fonts";
+import { H5, S2 } from "../../components/Fonts";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -16,8 +16,8 @@ const Section = styled.div`
   text-align: center;
 `;
 
-const P = styled(S1)`
-  color: ${(props) => props.theme.colors.foreground.secondary};
+const P = styled(S2)`
+  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
 `;
 
 const DirectionsContainer = styled.section`

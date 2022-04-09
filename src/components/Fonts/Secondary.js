@@ -25,7 +25,7 @@ export const H4 = styled.h4`
 `;
 
 export const H5 = styled.h5`
-  font-size: ${(props) => props.theme.fonts.h5.size};
+  font-size: var(--font-size-fluid-2);
   font-weight: ${(props) => props.theme.fonts.h5.weight};
   letter-spacing: ${(props) => props.theme.fonts.h5.letterspacing};
   color: ${(props) => props.theme.colors.foreground.default};

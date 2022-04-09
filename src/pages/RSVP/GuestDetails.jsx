@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { H6, S1 } from "../../components/Fonts";
+import { H6, S2 } from "../../components/Fonts";
 
 const GuestContainer = styled.section`
   margin-bottom: 1rem;
@@ -21,7 +21,9 @@ const AnswerContainer = styled.div`
   }
 `;
 
-const AnswerText = styled(S1)``;
+const Answer = styled(S2)`
+  color: ${(props) => props.theme.colors.foreground.secondary};
+`;
 
 function GuestDetails({ guest }) {
   return (
@@ -30,20 +32,16 @@ function GuestDetails({ guest }) {
         {`${guest.fields.first_name} ${guest.fields.last_name}`}
       </GuestName>
       <AnswerContainer>
-        <S1>Is attending mendhi?</S1>
-        <AnswerText>
-          {guest.fields.is_attending_mendhi ? "Yes" : "No"}
-        </AnswerText>
+        <Answer>Is attending mendhi?</Answer>
+        <Answer>{guest.fields.is_attending_mendhi ? "Yes" : "No"}</Answer>
       </AnswerContainer>
       <AnswerContainer>
-        <S1>Is attending nikkah?</S1>
-        <AnswerText>{guest.fields.is_attending ? "Yes" : "No"}</AnswerText>
+        <Answer>Is attending nikkah?</Answer>
+        <Answer>{guest.fields.is_attending ? "Yes" : "No"}</Answer>
       </AnswerContainer>
       <AnswerContainer>
-        <S1>Is attending reception?</S1>
-        <AnswerText>
-          {guest.fields.is_attending_reception ? "Yes" : "No"}
-        </AnswerText>
+        <Answer>Is attending reception?</Answer>
+        <Answer>{guest.fields.is_attending_reception ? "Yes" : "No"}</Answer>
       </AnswerContainer>
     </GuestContainer>
   );

@@ -10,8 +10,8 @@ export default {
       },
       foreground: {
         default: "#000000",
-        secondary: "#2E454D",
-        tertiary: "#738F99",
+        secondary: "#A1AFA0",
+        tertiary: "#fff",
         quaternary: "#fff",
         quintenary: "#DAE3E5",
       },
@@ -54,13 +54,12 @@ export default {
         weight: "400",
       },
       s1: {
-        size: "1.25rem",
-        weight: "300",
+        size: "1.5rem",
+        weight: "500",
       },
       s2: {
-        size: "0.875rem",
-        weight: "500",
-        letterspacing: "0.1px",
+        size: "1rem",
+        weight: "400",
       },
       b1: {
         size: "1rem",
@@ -72,7 +71,7 @@ export default {
       },
       button: {
         size: "0.875rem",
-        weight: "600",
+        weight: "400",
         letterspacing: "1.25px",
       },
       caption: {
