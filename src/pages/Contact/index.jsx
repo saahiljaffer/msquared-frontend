@@ -80,8 +80,6 @@ function Login() {
       >
         <Title>Questions</Title>
 
-        {loading && <Alert variant="error">Loading</Alert>}
-
         <Container>
           <Label>
             Please enter your name

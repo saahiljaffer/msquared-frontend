@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGetGuests, usePostGuests } from "../../api";
 import { S1 } from "../../components/Fonts";
+import LoadingIndicator from "../../components/LoadingIndicator";
 import useStore from "../../store";
 import SingleGuestForm from "./SingleGuestForm";
 
@@ -36,7 +37,7 @@ function GuestsForm() {
   const guestNumberIndicatorText = `${currentGuestIdx + 1}/${numberOfGuests}`;
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <LoadingIndicator />;
   }
   return (
     <>
