@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { B1, S1, S2 } from "../../components/Fonts";
+import { B1 } from "../../components/Fonts";
 import Button, { STYLES as ButtonStyles } from "../../components/Button";
 
 const Container = styled.form`

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { S1, B1, S2 } from "../../components/Fonts";
+import { B1, S2 } from "../../components/Fonts";
 import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
