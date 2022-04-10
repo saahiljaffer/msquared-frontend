@@ -5,5 +5,8 @@ export default styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-bottom: 1px solid #4d724c; */
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  position: relative;
 `;

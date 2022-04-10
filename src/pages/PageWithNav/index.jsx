@@ -8,6 +8,11 @@ import PageContainer from "../../components/PageContainer";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: #000;
+  position: absolute;
+  left: 0;
+  margin-left: 20px;
+  width: 32px;
 `;
 
 const MainTitle = styled.img`
@@ -22,11 +27,11 @@ function PageWithNav({ children }) {
   return (
     <>
       <Nav>
-        <FontAwesomeIcon icon="fa-house" />
-
         <StyledLink to="/">
-          <MainTitle src="/images/logo.png" width="64px" height="64px" />
+          <FontAwesomeIcon icon="fa-house" size="lg" />
         </StyledLink>
+
+        <MainTitle src="/images/logo.png" width="64px" height="64px" />
       </Nav>
       <PageContainer>{children}</PageContainer>
     </>

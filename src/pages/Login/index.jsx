@@ -2,32 +2,33 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { S1, B1 } from "../../components/Fonts";
+import { S1, B1, S2 } from "../../components/Fonts";
 import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 import ChooseParty from "./ChooseParty";
 
-const Title = styled(S1)`
+const Title = styled(S2)`
   margin-bottom: 1rem;
-  color: ${(props) => props.theme.colors.foreground.secondary};
+  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
 `;
 
 const StyledInput = styled.input`
   width: fill-available;
   height: 2rem;
   padding: 0.25rem;
-  background-color: ${(props) => props.theme.colors.foreground.quintenary};
+  background-color: ${(props) => props.theme.colors.foreground.tertiary};
   font-size: ${(props) => props.theme.fonts.b1.size};
   font-weight: ${(props) => props.theme.fonts.b1.weight};
   letter-spacing: ${(props) => props.theme.fonts.b1.letterspacing};
-  color: ${(props) => props.theme.colors.foreground.secondary};
+  padding-left: 10px;
+  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
   border: none;
   border-radius: 0.25rem;
-  ::placeholder {
+  /* ::placeholder {
     color: ${(props) => props.theme.colors.foreground.tertiary};
-  }
+  } */
 `;
 
 const Container = styled.div`

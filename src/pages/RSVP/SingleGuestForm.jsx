@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { S1 } from "../../components/Fonts";
+import { B1, S1, S2 } from "../../components/Fonts";
 import Button, { STYLES as ButtonStyles } from "../../components/Button";
 
 const Container = styled.form`
@@ -15,15 +15,16 @@ const QuestionContainer = styled.div`
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 `;
 
-const Label = styled(S1)`
-  margin-bottom: 1rem;
+const Label = styled(B1)`
+  /* margin-bottom: 1rem; */
 `;
 
 const RadioLabel = styled.label`
   margin-bottom: 0.5rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   position: relative;
   min-height: 2rem;
@@ -72,16 +73,22 @@ function SingleGuestForm({ onSubmit }) {
   const {
     register,
     handleSubmit,
+    reset,
     // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container
+      onSubmit={handleSubmit((values) => {
+        reset();
+        onSubmit(values);
+      })}
+    >
       {/* TODO: improve error design or use alert */}
       {false && <Label>Please complete both fields</Label>}
       <QuestionContainer>
-        <Label>Will you be joining us for the nikkah</Label>
+        <Label>Will you be joining us for the nikkah?</Label>
 
         <RadioLabel>
           <Input
@@ -112,7 +119,7 @@ function SingleGuestForm({ onSubmit }) {
       </QuestionContainer>
 
       <QuestionContainer>
-        <Label>Will you be joining us for the reception</Label>
+        <Label>Will you be joining us for the reception?</Label>
 
         <RadioLabel>
           <Input
