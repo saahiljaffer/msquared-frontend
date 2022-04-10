@@ -7,44 +7,44 @@ export const STYLES = {
 };
 
 const getBackgroundColor = (props) => {
-  switch (props.buttonStyle) {
+  switch (props.variant) {
     case STYLES.DEFAULT:
       return props.theme.colors.background.secondary;
     case STYLES.SECONDARY:
       return props.theme.colors.background.tertiary;
     default:
-      throw new Error(`Invalid button style: ${props.buttonStyle}`);
+      throw new Error(`Invalid button style: ${props.variant}`);
   }
 };
 
 const getDisabledBackgroundColor = (props) => {
-  switch (props.buttonStyle) {
+  switch (props.variant) {
     case STYLES.DEFAULT:
     case STYLES.SECONDARY:
       return props.theme.colors.foreground.quintenary;
     default:
-      throw new Error(`Invalid button style: ${props.buttonStyle}`);
+      throw new Error(`Invalid button style: ${props.variant}`);
   }
 };
 
 const getFontColor = (props) => {
-  switch (props.buttonStyle) {
+  switch (props.variant) {
     case STYLES.DEFAULT:
       return props.theme.colors.foreground.default;
     case STYLES.SECONDARY:
       return props.theme.colors.foreground.quintenary;
     default:
-      throw new Error(`Invalid button style: ${props.buttonStyle}`);
+      throw new Error(`Invalid button style: ${props.variant}`);
   }
 };
 
 const getDisabledFontColor = (props) => {
-  switch (props.buttonStyle) {
+  switch (props.variant) {
     case STYLES.DEFAULT:
     case STYLES.SECONDARY:
       return props.theme.colors.foreground.tertiary;
     default:
-      throw new Error(`Invalid button style: ${props.buttonStyle}`);
+      throw new Error(`Invalid button style: ${props.variant}`);
   }
 };
 
@@ -72,11 +72,11 @@ const StyledButton = styled.button`
 `;
 
 StyledButton.propTypes = {
-  buttonStyle: PropTypes.oneOf([STYLES.DEFAULT, STYLES.SECONDARY]),
+  variant: PropTypes.oneOf([STYLES.DEFAULT, STYLES.SECONDARY]),
 };
 
 StyledButton.defaultProps = {
-  buttonStyle: STYLES.DEFAULT,
+  variant: STYLES.DEFAULT,
   type: "button",
 };
 

@@ -13,9 +13,7 @@ const MainHeading = styled(S1)`
   margin-bottom: 0.25rem;
 `;
 
-const SubHeading = styled(S1)`
-  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
-`;
+const SubHeading = styled(S1)``;
 
 function Confirmation() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);

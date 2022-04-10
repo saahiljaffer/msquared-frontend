@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { S2 } from "../../components/Fonts";
-import { H5 } from "../../components/Fonts/Secondary";
-import Button, { STYLES } from "../../components/Button";
+import Button from "../../components/Button";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
 
-const MainTitle = styled(H5)`
+const MainTitle = styled.h1`
+  font-size: var(--font-size-fluid-2);
+  font-weight: ${(props) => props.theme.fonts.h1.weight};
+  color: ${(props) => props.theme.colors.foreground.default};
+  font-family: "Eu Alonira";
   margin-bottom: 0.5rem;
   text-align: center;
 `;
@@ -77,18 +80,18 @@ function Landing() {
       </SubTitle>
       <ButtonGroupContainer>
         <ButtonGroupItem to="/nikkah">
-          <Button buttonStyle={STYLES.SECONDARY}>Nikkah</Button>
+          <Button variant="secondary">Nikkah</Button>
         </ButtonGroupItem>
 
         {data && data?.fields?.can_see_reception && (
           <ButtonGroupItem to="/reception">
-            <Button buttonStyle="secondary">Reception</Button>
+            <Button variant="secondary">Reception</Button>
           </ButtonGroupItem>
         )}
 
         {data && data?.fields?.can_see_mendhi && (
           <ButtonGroupItem to="/mendhi">
-            <Button>Mendhi</Button>
+            <Button variant="secondary">Mendhi</Button>
           </ButtonGroupItem>
         )}
       </ButtonGroupContainer>

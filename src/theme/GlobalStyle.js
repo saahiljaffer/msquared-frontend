@@ -50,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     html, body, #root {
-        background-color: hsl(118 25% 80%);
+        background-color: #c0d9bf;
     }
 
     body {

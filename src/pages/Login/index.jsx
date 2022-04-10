@@ -23,8 +23,8 @@ const StyledInput = styled.input`
   height: 2rem;
   padding: 0.25rem;
   background-color: ${(props) => props.theme.colors.foreground.tertiary};
-  font-size: ${(props) => props.theme.fonts.b1.size};
-  font-weight: ${(props) => props.theme.fonts.b1.weight};
+  font-size: ${(props) => props.theme.fonts.s2.size};
+  font-weight: ${(props) => props.theme.fonts.s2.weight};
   padding-left: 10px;
   /* color: ${(props) => props.theme.colors.foreground.secondary}; */
   border: none;

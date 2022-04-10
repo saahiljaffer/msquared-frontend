@@ -8,15 +8,14 @@ import SingleGuestForm from "./SingleGuestForm";
 
 const CurrentGuestHeader = styled.div`
   margin-bottom: 1rem;
+  display: flex;
 `;
 
 const GuestName = styled(S1)`
-  margin-bottom: 0.25rem;
+  flex-grow: 1;
 `;
 
-const GuestNumberIndicator = styled(S1)`
-  /* color: ${(props) => props.theme.colors.foreground.tertiary}; */
-`;
+const GuestNumberIndicator = styled(S1)``;
 
 function GuestsForm() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);

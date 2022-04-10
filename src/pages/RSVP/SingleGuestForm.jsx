@@ -43,7 +43,7 @@ const CheckboxContainer = styled.span`
   height: 2rem;
   width: 2rem;
   border-radius: 1rem;
-  background-color: ${(props) => props.theme.colors.foreground.quintenary};
+  background-color: ${(props) => props.theme.colors.background.tertiary};
 `;
 
 const CheckMark = styled(FontAwesomeIcon)`
