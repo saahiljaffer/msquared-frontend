@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { S1, S2 } from "../../components/Fonts";
+import NavBar from "../../components/NavBar";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -33,6 +34,7 @@ const DirectionsFrame = styled.iframe`
 export default function WeddingDay() {
   return (
     <>
+      <NavBar />
       <HeadingContainer>
         <MainHeader>Thursday June 2th, 2022 at 4:30 PM</MainHeader>
       </HeadingContainer>

@@ -3,23 +3,32 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Nav from "../../components/Nav";
-import PageContainer from "../../components/PageContainer";
 import useStore from "../../store";
+
+const Nav = styled.nav`
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  position: relative;
+`;
 
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000;
   position: absolute;
   left: 0;
-  margin-left: 20px;
+  margin-left: 0px;
 `;
 
 const StyledButton = styled.button`
   color: #000;
   position: absolute;
   right: 0;
-  margin-right: 20px;
+  margin-right: 0px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -33,18 +42,21 @@ const MainTitle = styled.img`
   color: black;
 `;
 
-function PageWithNav({ children }) {
+function NavBar({ showHome, showLogout }) {
   const setChosenPartyId = useStore((state) => state.setChosenPartyId);
   const setName = useStore((state) => state.setName);
+
   return (
-    <>
-      <Nav>
+    <Nav>
+      {showHome && (
         <StyledLink to="/">
           <FontAwesomeIcon icon="fa-house" size="lg" />
         </StyledLink>
+      )}
 
-        <MainTitle src="/images/logo.png" width="64px" height="64px" />
+      <MainTitle src="/images/logo.png" width="64px" height="64px" />
 
+      {showLogout && (
         <StyledButton
           onClick={() => {
             setChosenPartyId(null);
@@ -52,19 +64,25 @@ function PageWithNav({ children }) {
           }}
           type="button"
         >
-          <FontAwesomeIcon icon="fa-arrow-right-from-bracket" size="lg" />
+          <FontAwesomeIcon
+            alt="logout"
+            icon="fa-arrow-right-from-bracket"
+            size="lg"
+          />
         </StyledButton>
-      </Nav>
-      <PageContainer>{children}</PageContainer>
-    </>
+      )}
+    </Nav>
   );
 }
 
-PageWithNav.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+NavBar.propTypes = {
+  showHome: PropTypes.bool,
+  showLogout: PropTypes.bool,
 };
 
-export default PageWithNav;
+NavBar.defaultProps = {
+  showHome: true,
+  showLogout: true,
+};
+
+export default NavBar;

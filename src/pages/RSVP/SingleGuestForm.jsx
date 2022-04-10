@@ -4,24 +4,24 @@ import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ErrorMessage } from "@hookform/error-message";
 import { S2 } from "../../components/Fonts";
 import Button, { STYLES as ButtonStyles } from "../../components/Button";
+import Alert from "../../components/Alert";
 
 const Container = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const QuestionContainer = styled.div`
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `;
 
-const Label = styled(S2)`
-  /* margin-bottom: 1rem; */
+const QuestionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
+
+const Label = styled(S2)``;
 
 const RadioLabel = styled.label`
   margin-bottom: 0.5rem;
@@ -75,7 +75,6 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
     register,
     handleSubmit,
     reset,
-    // eslint-disable-next-line no-unused-vars
     formState: { errors },
   } = useForm();
 
@@ -86,8 +85,48 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
         onSubmit(values);
       })}
     >
-      {/* TODO: improve error design or use alert */}
-      {false && <Label>Please complete both fields</Label>}
+      {currentGuest?.fields?.is_invited_mendhi && (
+        <QuestionContainer>
+          <Label>Will you be joining us for the mendhi?</Label>
+
+          <RadioLabel>
+            <Input
+              type="radio"
+              name="is_attending_mendhi"
+              value
+              {...register("is_attending_mendhi", {
+                required: "This is required.",
+              })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>Yes</Label>
+          </RadioLabel>
+
+          <RadioLabel>
+            <Input
+              type="radio"
+              id="css"
+              name="is_attending_mendhi"
+              value={false}
+              {...register("is_attending_mendhi", {
+                required: "This is required.",
+              })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>No</Label>
+          </RadioLabel>
+          <ErrorMessage
+            errors={errors}
+            name="is_attending_mendhi"
+            render={({ message }) => <Alert variant="error">{message}</Alert>}
+          />
+        </QuestionContainer>
+      )}
+
       <QuestionContainer>
         <Label>Will you be joining us for the nikkah?</Label>
 
@@ -96,7 +135,9 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
             type="radio"
             name="is_attending_nikkah"
             value
-            {...register("is_attending_nikkah", { required: true })}
+            {...register("is_attending_nikkah", {
+              required: "This is required.",
+            })}
           />
           <CheckboxContainer>
             <CheckMark icon="check" />
@@ -110,13 +151,21 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
             id="css"
             name="is_attending_nikkah"
             value={false}
-            {...register("is_attending_nikkah", { required: true })}
+            {...register("is_attending_nikkah", {
+              required: "This is required.",
+            })}
           />
           <CheckboxContainer>
             <CheckMark icon="check" />
           </CheckboxContainer>
           <Label>No</Label>
         </RadioLabel>
+
+        <ErrorMessage
+          errors={errors}
+          name="is_attending_nikkah"
+          render={({ message }) => <Alert variant="error">{message}</Alert>}
+        />
       </QuestionContainer>
 
       {currentGuest.fields.is_invited_reception}
@@ -130,7 +179,9 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
               type="radio"
               name="is_attending_reception"
               value
-              {...register("is_attending_reception", { required: true })}
+              {...register("is_attending_reception", {
+                required: "This is required.",
+              })}
             />
             <CheckboxContainer>
               <CheckMark icon="check" />
@@ -144,46 +195,20 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
               id="css"
               name="is_attending_reception"
               value={false}
-              {...register("is_attending_reception", { required: true })}
+              {...register("is_attending_reception", {
+                required: "This is required.",
+              })}
             />
             <CheckboxContainer>
               <CheckMark icon="check" />
             </CheckboxContainer>
             <Label>No</Label>
           </RadioLabel>
-        </QuestionContainer>
-      )}
-
-      {currentGuest?.fields?.is_invited_mendhi && (
-        <QuestionContainer>
-          <Label>Will you be joining us for the mendhi?</Label>
-
-          <RadioLabel>
-            <Input
-              type="radio"
-              name="is_attending_mendhi"
-              value
-              {...register("is_attending_mendhi", { required: true })}
-            />
-            <CheckboxContainer>
-              <CheckMark icon="check" />
-            </CheckboxContainer>
-            <Label>Yes</Label>
-          </RadioLabel>
-
-          <RadioLabel>
-            <Input
-              type="radio"
-              id="css"
-              name="is_attending_mendhi"
-              value={false}
-              {...register("is_attending_mendhi", { required: true })}
-            />
-            <CheckboxContainer>
-              <CheckMark icon="check" />
-            </CheckboxContainer>
-            <Label>No</Label>
-          </RadioLabel>
+          <ErrorMessage
+            errors={errors}
+            name="is_attending_reception"
+            render={({ message }) => <Alert variant="error">{message}</Alert>}
+          />
         </QuestionContainer>
       )}
 

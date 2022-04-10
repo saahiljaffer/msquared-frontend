@@ -1,31 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { ALERT_TYPES } from "react-very-simple-alerts";
 
-const getBackgroundColor = (theme, alertType) => {
-  switch (alertType) {
-    case ALERT_TYPES.SUCCESS:
+const getBackgroundColor = (theme, variant) => {
+  switch (variant) {
+    case "success":
       return theme.colors.background.quaternary;
-    case ALERT_TYPES.ERROR:
+    case "error":
       return theme.colors.danger.default;
-    case ALERT_TYPES.WARN:
+    case "warn":
       return theme.colors.warning.default;
-    case ALERT_TYPES.DEFAULT:
+    case "default":
     default:
       return theme.colors.background.default;
   }
 };
 
-const getFontColor = (theme, alertType) => {
-  switch (alertType) {
-    case ALERT_TYPES.SUCCESS:
+const getFontColor = (theme, variant) => {
+  switch (variant) {
+    case "success":
       return theme.colors.background.default;
-    case ALERT_TYPES.ERROR:
+    case "error":
       return theme.colors.danger.verylight;
-    case ALERT_TYPES.WARN:
+    case "warn":
       return theme.colors.warning.verylight;
-    case ALERT_TYPES.DEFAULT:
+    case "default":
     default:
       return theme.colors.foreground.default;
   }
@@ -38,20 +37,19 @@ const Container = styled.div`
   padding: 0.5rem;
   border-radius: 0.25rem;
   background-color: ${(props) =>
-    getBackgroundColor(props.theme, props.alertType)};
-  color: ${(props) => getFontColor(props.theme, props.alertType)};
-  margin-bottom: 1rem;
+    getBackgroundColor(props.theme, props.variant)};
+  color: ${(props) => getFontColor(props.theme, props.variant)};
 `;
 
-function DefaultAlertTemplate({ children, ...props }) {
+function Alert({ children, ...props }) {
   return <Container {...props}>{children}</Container>;
 }
 
-DefaultAlertTemplate.propTypes = {
+Alert.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
 
-export default DefaultAlertTemplate;
+export default Alert;

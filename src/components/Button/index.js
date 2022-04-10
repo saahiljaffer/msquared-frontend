@@ -48,10 +48,22 @@ const getDisabledFontColor = (props) => {
   }
 };
 
+const getWidth = (props) => {
+  switch (props.variant) {
+    case STYLES.DEFAULT:
+      return "100%";
+    case STYLES.SECONDARY:
+      return "100%";
+    default:
+      throw new Error(`Invalid button style: ${props.variant}`);
+  }
+};
+
 const StyledButton = styled.button`
   min-height: 2rem;
   border-radius: 0.25rem;
-  width: 100%;
+  width: ${(props) => getWidth(props)};
+  font-family: "Niveau Grotesk", sans-serif;
   font-size: ${(props) => props.theme.fonts.button.size};
   font-weight: ${(props) => props.theme.fonts.button.weight};
   text-transform: uppercase;
@@ -65,6 +77,7 @@ const StyledButton = styled.button`
   padding-right: 1rem;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 
   :disabled {
     pointer-events: none;

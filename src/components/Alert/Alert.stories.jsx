@@ -5,7 +5,6 @@ import { storiesOf } from "@storybook/react";
 import PropTypes from "prop-types";
 import { AlertContainer, alerts } from "react-very-simple-alerts";
 import StoryContainer from "../StorybookContainer";
-import CloseBtn from "./DefaultAlertCloseBtn";
 import Template from ".";
 
 const stories = storiesOf("Components", module);
@@ -17,7 +16,7 @@ function AlertComponent({ children }) {
 stories.add("Alert", () => (
   <StoryContainer>
     <>
-      <AlertContainer template={Template} closeButton={CloseBtn} />
+      <AlertContainer template={Template} />
 
       <button
         onClick={() =>

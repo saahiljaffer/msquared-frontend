@@ -13,8 +13,6 @@ const MainHeading = styled(S1)`
   margin-bottom: 0.25rem;
 `;
 
-const SubHeading = styled(S1)``;
-
 function Confirmation() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
   // eslint-disable-next-line no-unused-vars
@@ -24,9 +22,6 @@ function Confirmation() {
     <>
       <HeadingContainer>
         <MainHeading>You are all set!</MainHeading>
-        <SubHeading>
-          Thank you for responding. We hope you have a wonderful time.
-        </SubHeading>
       </HeadingContainer>
       {data &&
         data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}

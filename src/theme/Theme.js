@@ -33,11 +33,11 @@ export default {
       },
       s2: {
         size: "1rem",
-        weight: "400",
+        weight: "300",
       },
       button: {
         size: "0.875rem",
-        weight: "400",
+        weight: "300",
       },
     },
   },

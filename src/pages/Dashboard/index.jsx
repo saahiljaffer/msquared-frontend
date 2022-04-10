@@ -6,6 +6,7 @@ import Button from "../../components/Button";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
+import NavBar from "../../components/NavBar";
 
 const MainTitle = styled.h1`
   font-size: var(--font-size-fluid-2);
@@ -16,9 +17,7 @@ const MainTitle = styled.h1`
   text-align: center;
 `;
 
-const SubTitle = styled(S2)`
-  margin-bottom: 0.5rem;
-`;
+const SubTitle = styled(S2)``;
 
 const DaysLeft = styled(Countdown)`
   text-align: center;
@@ -30,21 +29,10 @@ const ButtonGroupItem = styled(Link)`
 `;
 
 const ButtonGroupContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-auto-flow: column;
   gap: 1rem;
-  margin-top: 0.5rem;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-`;
-
-const FullButtonGroupContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: ${(props) => (props.center ? "center" : "flex-start")};
-  margin-top: 0.7rem;
+  margin-block: 1rem;
   width: 100%;
 `;
 
@@ -61,6 +49,10 @@ const Image = styled.img`
   max-width: 300px;
 `;
 
+const StyledLink = styled(Link)`
+  width: 100%;
+`;
+
 const WEDDING_DATE = new Date(2022, 5, 4);
 const TODAY = new Date();
 
@@ -69,39 +61,40 @@ function Landing() {
   const { data } = useGetParty(chosenPartyId);
 
   return (
-    <Container>
-      <MainTitle>Maysum & Malika 2022</MainTitle>
-      <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
-      <SubTitle>
-        Welcome to our wedding website. We are so excited to celebrate with you
-        all! As our big day is soon approaching, we would greatly appreciate it
-        if you could kindly take a few minutes to RSVP using the below tab, by
-        May 7, 2022.
-      </SubTitle>
-      <ButtonGroupContainer>
-        <ButtonGroupItem to="/nikkah">
-          <Button variant="secondary">Nikkah</Button>
-        </ButtonGroupItem>
+    <>
+      <NavBar showHome={false} />
+      <Container>
+        <MainTitle>Maysum & Malika 2022</MainTitle>
+        <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
+        <SubTitle>
+          Welcome to our wedding website. We are so excited to celebrate with
+          you all! As our big day is soon approaching, we would greatly
+          appreciate it if you could kindly take a few minutes to RSVP using the
+          below tab, by May 7, 2022.
+        </SubTitle>
+        <ButtonGroupContainer>
+          <Link to="/nikkah">
+            <Button variant="secondary">Nikkah</Button>
+          </Link>
+          {data && data?.fields?.can_see_reception && (
+            <ButtonGroupItem to="/reception">
+              <Button variant="secondary">Reception</Button>
+            </ButtonGroupItem>
+          )}
 
-        {data && data?.fields?.can_see_reception && (
-          <ButtonGroupItem to="/reception">
-            <Button variant="secondary">Reception</Button>
-          </ButtonGroupItem>
-        )}
+          {data && data?.fields?.can_see_mendhi && (
+            <StyledLink to="/mendhi">
+              <Button variant="secondary">Mendhi</Button>
+            </StyledLink>
+          )}
+        </ButtonGroupContainer>
 
-        {data && data?.fields?.can_see_mendhi && (
-          <ButtonGroupItem to="/mendhi">
-            <Button variant="secondary">Mendhi</Button>
-          </ButtonGroupItem>
-        )}
-      </ButtonGroupContainer>
-      <FullButtonGroupContainer>
-        <ButtonGroupItem style={{ width: "100%" }} to="/rsvp">
+        <StyledLink to="/rsvp">
           <Button>RSVP</Button>
-        </ButtonGroupItem>
-      </FullButtonGroupContainer>
-      <Image src="/images/splash.png" alt="" />
-    </Container>
+        </StyledLink>
+        <Image src="/images/splash.png" alt="" />
+      </Container>
+    </>
   );
 }
 

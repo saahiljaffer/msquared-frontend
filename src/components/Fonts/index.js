@@ -8,13 +8,13 @@ export const S1 = styled.p`
 
 export const S2 = styled.p`
   font-size: ${(props) => props.theme.fonts.s2.size};
-  font-weight: 300;
+  font-weight: ${(props) => props.theme.fonts.s2.weight};
   color: ${(props) => props.theme.colors.foreground.default};
 `;
 
 export const Button = styled.span`
   font-size: ${(props) => props.theme.fonts.button.size};
-  font-weight: 300;
+  font-weight: ${(props) => props.theme.fonts.button.weight};
   color: ${(props) => props.theme.colors.foreground.default};
   text-transform: uppercase;
 `;

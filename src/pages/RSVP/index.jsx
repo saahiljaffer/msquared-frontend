@@ -1,12 +1,10 @@
 import React from "react";
-import { AlertContainer } from "react-very-simple-alerts";
-import AlertTemplate from "../../components/Alert";
-import AlertCloseButton from "../../components/Alert/DefaultAlertCloseBtn";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import GuestsForm from "./GuestsForm";
 import Confirmation from "./Confirmation";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
+import NavBar from "../../components/NavBar";
 
 function RSVP() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
@@ -19,7 +17,7 @@ function RSVP() {
 
   return (
     <>
-      <AlertContainer template={AlertTemplate} closeButton={AlertCloseButton} />
+      <NavBar />
       {loading && <LoadingIndicator />}
       {!!chosenPartyId && !partyResponded && !loading && <GuestsForm />}
       {!!partyResponded && !loading && <Confirmation />}

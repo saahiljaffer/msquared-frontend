@@ -6,13 +6,13 @@ import { useRoutes, Navigate } from "react-router-dom";
 import useStore from "./store";
 import Themes from "./theme/Theme";
 import GlobalStyle from "./theme/GlobalStyle";
-import PageWithNav from "./pages/PageWithNav";
 import Dashboard from "./pages/Dashboard";
 import Nikkah from "./pages/Nikkah";
 import Reception from "./pages/Reception";
 import RSVP from "./pages/RSVP";
 import Login from "./pages/Login";
 import Mendhi from "./pages/Mendhi";
+import PageContainer from "./components/PageContainer";
 
 const queryClient = new QueryClient();
 
@@ -51,10 +51,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={Themes.main}>
-        <PageWithNav>
+        <PageContainer>
           {routing}
           <GlobalStyle />
-        </PageWithNav>
+        </PageContainer>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
