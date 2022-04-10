@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import StoryContainer from "../StorybookContainer";
-import Button, { TYPES, STYLES } from ".";
+import Button, { STYLES } from ".";
 import { ButtonGroup } from "../ButtonGroup";
 
 const stories = storiesOf("Components", module);
@@ -21,16 +21,6 @@ stories.add("Button", () => (
       </Button>
       <Button disabled buttonStyle={STYLES.ACCENT}>
         Accent
-      </Button>
-    </ButtonGroup>
-
-    <ButtonGroup left>
-      <Button buttonType={TYPES.OUTLINE}>Button</Button>
-    </ButtonGroup>
-
-    <ButtonGroup left>
-      <Button buttonType={TYPES.OUTLINE} disabled>
-        Button
       </Button>
     </ButtonGroup>
   </StoryContainer>

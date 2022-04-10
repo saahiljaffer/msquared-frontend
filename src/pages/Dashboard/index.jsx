@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { S2 } from "../../components/Fonts";
 import { H5 } from "../../components/Fonts/Secondary";
-import Button from "../../components/Button";
-import PrimaryButton from "../../components/Button/PrimaryButton";
+import Button, { STYLES } from "../../components/Button";
 import Countdown from "../../components/Countdown";
 import useStore from "../../store";
 import { useGetParty } from "../../api";
@@ -15,7 +14,7 @@ const MainTitle = styled(H5)`
 `;
 
 const SubTitle = styled(S2)`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const DaysLeft = styled(Countdown)`
@@ -31,7 +30,7 @@ const ButtonGroupContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -42,7 +41,7 @@ const FullButtonGroupContainer = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   align-items: ${(props) => (props.center ? "center" : "flex-start")};
-  margin-top: 1rem;
+  margin-top: 0.7rem;
   width: 100%;
 `;
 
@@ -64,8 +63,6 @@ const TODAY = new Date();
 
 function Landing() {
   const chosenPartyId = useStore((state) => state.chosenPartyId);
-  const setChosenPartyId = useStore((state) => state.setChosenPartyId);
-  const setName = useStore((state) => state.setName);
   const { data } = useGetParty(chosenPartyId);
 
   return (
@@ -80,16 +77,16 @@ function Landing() {
       </SubTitle>
       <ButtonGroupContainer>
         <ButtonGroupItem to="/nikkah">
-          <Button>Nikkah</Button>
+          <Button buttonStyle={STYLES.SECONDARY}>Nikkah</Button>
         </ButtonGroupItem>
 
-        {data && data?.fields?.is_invited_reception && (
+        {data && data?.fields?.can_see_reception && (
           <ButtonGroupItem to="/reception">
-            <Button>Reception</Button>
+            <Button buttonStyle="secondary">Reception</Button>
           </ButtonGroupItem>
         )}
 
-        {data && true && (
+        {data && data?.fields?.can_see_mendhi && (
           <ButtonGroupItem to="/mendhi">
             <Button>Mendhi</Button>
           </ButtonGroupItem>
@@ -97,17 +94,8 @@ function Landing() {
       </ButtonGroupContainer>
       <FullButtonGroupContainer>
         <ButtonGroupItem style={{ width: "100%" }} to="/rsvp">
-          <PrimaryButton>RSVP</PrimaryButton>
+          <Button>RSVP</Button>
         </ButtonGroupItem>
-
-        <PrimaryButton
-          onClick={() => {
-            setChosenPartyId(null);
-            setName(null);
-          }}
-        >
-          Logout
-        </PrimaryButton>
       </FullButtonGroupContainer>
       <Image src="/images/splash.png" alt="" />
     </Container>

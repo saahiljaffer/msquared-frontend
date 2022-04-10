@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { B1 } from "../../components/Fonts";
+import { S2 } from "../../components/Fonts";
 import Button, { STYLES as ButtonStyles } from "../../components/Button";
 
 const Container = styled.form`
@@ -18,7 +19,7 @@ const QuestionContainer = styled.div`
   gap: 1rem;
 `;
 
-const Label = styled(B1)`
+const Label = styled(S2)`
   /* margin-bottom: 1rem; */
 `;
 
@@ -50,7 +51,7 @@ const CheckMark = styled(FontAwesomeIcon)`
   top: 0.5rem;
   left: 0.5rem;
   visibility: hidden;
-  color: ${(props) => props.theme.colors.foreground.quintenary};
+  color: #000;
 `;
 
 const Input = styled.input`
@@ -69,7 +70,7 @@ const Input = styled.input`
   }
 `;
 
-function SingleGuestForm({ onSubmit }) {
+function SingleGuestForm({ onSubmit, currentGuest }) {
   const {
     register,
     handleSubmit,
@@ -93,9 +94,9 @@ function SingleGuestForm({ onSubmit }) {
         <RadioLabel>
           <Input
             type="radio"
-            name="is_attending"
+            name="is_attending_nikkah"
             value
-            {...register("is_attending", { required: true })}
+            {...register("is_attending_nikkah", { required: true })}
           />
           <CheckboxContainer>
             <CheckMark icon="check" />
@@ -107,9 +108,9 @@ function SingleGuestForm({ onSubmit }) {
           <Input
             type="radio"
             id="css"
-            name="is_attending"
+            name="is_attending_nikkah"
             value={false}
-            {...register("is_attending", { required: true })}
+            {...register("is_attending_nikkah", { required: true })}
           />
           <CheckboxContainer>
             <CheckMark icon="check" />
@@ -118,36 +119,73 @@ function SingleGuestForm({ onSubmit }) {
         </RadioLabel>
       </QuestionContainer>
 
-      <QuestionContainer>
-        <Label>Will you be joining us for the reception?</Label>
+      {currentGuest.fields.is_invited_reception}
 
-        <RadioLabel>
-          <Input
-            type="radio"
-            name="is_attending_reception"
-            value
-            {...register("is_attending_reception", { required: true })}
-          />
-          <CheckboxContainer>
-            <CheckMark icon="check" />
-          </CheckboxContainer>
-          <Label>Yes</Label>
-        </RadioLabel>
+      {currentGuest?.fields?.is_invited_reception && (
+        <QuestionContainer>
+          <Label>Will you be joining us for the reception?</Label>
 
-        <RadioLabel>
-          <Input
-            type="radio"
-            id="css"
-            name="is_attending_reception"
-            value={false}
-            {...register("is_attending_reception", { required: true })}
-          />
-          <CheckboxContainer>
-            <CheckMark icon="check" />
-          </CheckboxContainer>
-          <Label>No</Label>
-        </RadioLabel>
-      </QuestionContainer>
+          <RadioLabel>
+            <Input
+              type="radio"
+              name="is_attending_reception"
+              value
+              {...register("is_attending_reception", { required: true })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>Yes</Label>
+          </RadioLabel>
+
+          <RadioLabel>
+            <Input
+              type="radio"
+              id="css"
+              name="is_attending_reception"
+              value={false}
+              {...register("is_attending_reception", { required: true })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>No</Label>
+          </RadioLabel>
+        </QuestionContainer>
+      )}
+
+      {currentGuest?.fields?.is_invited_mendhi && (
+        <QuestionContainer>
+          <Label>Will you be joining us for the mendhi?</Label>
+
+          <RadioLabel>
+            <Input
+              type="radio"
+              name="is_attending_mendhi"
+              value
+              {...register("is_attending_mendhi", { required: true })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>Yes</Label>
+          </RadioLabel>
+
+          <RadioLabel>
+            <Input
+              type="radio"
+              id="css"
+              name="is_attending_mendhi"
+              value={false}
+              {...register("is_attending_mendhi", { required: true })}
+            />
+            <CheckboxContainer>
+              <CheckMark icon="check" />
+            </CheckboxContainer>
+            <Label>No</Label>
+          </RadioLabel>
+        </QuestionContainer>
+      )}
 
       <Button buttonStyle={ButtonStyles.OUTLINE} type="submit">
         Next

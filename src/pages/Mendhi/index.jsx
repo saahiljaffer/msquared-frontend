@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { H5, S2 } from "../../components/Fonts";
+import { S1, S2 } from "../../components/Fonts";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
 `;
 
-const MainHeader = styled(H5)`
+const MainHeader = styled(S1)`
   margin-bottom: 0.25rem;
   text-align: center;
 `;

@@ -1,9 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { H5, S2 } from "../../components/Fonts";
-import Button from "../../components/Button";
-import { ButtonGroup } from "../../components/ButtonGroup";
+import { S1 } from "../../components/Fonts";
 import GuestDetails from "./GuestDetails";
 import { useGetGuests } from "../../api";
 import useStore from "../../store";
@@ -12,17 +9,12 @@ const HeadingContainer = styled.section`
   margin-bottom: 1rem;
 `;
 
-const MainHeading = styled(H5)`
+const MainHeading = styled(S1)`
   margin-bottom: 0.25rem;
 `;
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #000;
-`;
-
-const SubHeading = styled(S2)`
-  color: ${(props) => props.theme.colors.foreground.secondary};
+const SubHeading = styled(S1)`
+  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
 `;
 
 function Confirmation() {
@@ -40,12 +32,6 @@ function Confirmation() {
       </HeadingContainer>
       {data &&
         data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}
-
-      <ButtonGroup right>
-        <StyledLink to="/">
-          <Button>Back to home</Button>
-        </StyledLink>
-      </ButtonGroup>
     </>
   );
 }

@@ -6,6 +6,7 @@ import {
   faTimes,
   faSpinner,
   faHouse,
+  faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -14,5 +15,6 @@ library.add(
   faCheck,
   faTimes,
   faSpinner,
-  faHouse
+  faHouse,
+  faArrowRightFromBracket
 );

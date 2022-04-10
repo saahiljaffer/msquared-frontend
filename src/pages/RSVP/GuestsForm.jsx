@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useGetGuests, usePostGuests } from "../../api";
-import { H5, S1 } from "../../components/Fonts";
+import { S1 } from "../../components/Fonts";
 import useStore from "../../store";
 import SingleGuestForm from "./SingleGuestForm";
 
@@ -10,7 +10,7 @@ const CurrentGuestHeader = styled.div`
   margin-bottom: 1rem;
 `;
 
-const GuestName = styled(H5)`
+const GuestName = styled(S1)`
   margin-bottom: 0.25rem;
 `;
 
@@ -54,8 +54,9 @@ function GuestsForm() {
             ...currentGuest,
             fields: {
               ...currentGuest.fields,
-              is_attending: values.is_attending,
+              is_attending_nikkah: values.is_attending_nikkah,
               is_attending_reception: values.is_attending_reception,
+              is_attending_mendhi: values.is_attending_mendhi,
             },
           };
 

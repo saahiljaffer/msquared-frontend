@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { B1 } from "../Fonts";
+import { S2 } from "../Fonts";
 
 const Container = styled.div`
   border: ${(props) => `1px solid ${props.theme.colors.foreground.quaternary}`};
@@ -31,7 +31,7 @@ function Accordion({ title, children }) {
   return (
     <Container onClick={toggleIsExpanded}>
       <TitleContainer>
-        <B1>{title}</B1>
+        <S2>{title}</S2>
         <FontAwesomeIcon icon={icon} />
       </TitleContainer>
 

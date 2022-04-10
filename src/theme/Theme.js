@@ -3,17 +3,11 @@ export default {
     colors: {
       background: {
         default: "#bad1b7",
-        secondary: "#B4CCA3",
-        tertiary: "#92B27D",
-        quaternary: "#fff",
-        quintenary: "#537d36",
+        secondary: "#A1AFA0",
+        tertiary: "#ffffff",
       },
       foreground: {
         default: "#000000",
-        secondary: "#A1AFA0",
-        tertiary: "#fff",
-        quaternary: "#fff",
-        quintenary: "#DAE3E5",
       },
       danger: {
         default: "#E15554",
@@ -32,30 +26,26 @@ export default {
       h2: {
         size: "3.75rem",
         weight: "400",
-        letterspacing: "-0.5px",
       },
       h3: {
         size: "3rem",
         weight: "400",
-        letterspacing: "0px",
       },
       h4: {
         size: "2.125rem",
         weight: "400",
-        letterspacing: "0.25px",
       },
       h5: {
         size: "1.5rem",
         weight: "400",
-        letterspacing: "0px",
       },
       h6: {
         size: "1.25rem",
         weight: "400",
       },
       s1: {
-        size: "1.5rem",
-        weight: "500",
+        size: "1.25rem",
+        weight: "400",
       },
       s2: {
         size: "1rem",
@@ -72,17 +62,14 @@ export default {
       button: {
         size: "0.875rem",
         weight: "400",
-        letterspacing: "1.25px",
       },
       caption: {
         size: "0.75rem",
         weight: "400",
-        letterspacing: "0.4px",
       },
       overline: {
         size: "0.625rem",
         weight: "400",
-        letterspacing: "1.5px",
       },
     },
   },

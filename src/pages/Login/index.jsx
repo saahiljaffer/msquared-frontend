@@ -2,14 +2,18 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { B1, S2 } from "../../components/Fonts";
+import { S1, S2 } from "../../components/Fonts";
 import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 import ChooseParty from "./ChooseParty";
 
-const Title = styled(S2)`
+const Title = styled(S1)`
+  margin-bottom: 1rem;
+`;
+
+const Text = styled(S2)`
   margin-bottom: 1rem;
   /* color: ${(props) => props.theme.colors.foreground.secondary}; */
 `;
@@ -21,7 +25,6 @@ const StyledInput = styled.input`
   background-color: ${(props) => props.theme.colors.foreground.tertiary};
   font-size: ${(props) => props.theme.fonts.b1.size};
   font-weight: ${(props) => props.theme.fonts.b1.weight};
-  letter-spacing: ${(props) => props.theme.fonts.b1.letterspacing};
   padding-left: 10px;
   /* color: ${(props) => props.theme.colors.foreground.secondary}; */
   border: none;
@@ -35,7 +38,7 @@ const Container = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Label = styled(B1)`
+const Label = styled(S2)`
   margin-bottom: 0.5rem;
 `;
 
@@ -74,10 +77,12 @@ function Login() {
         setName(values);
       })}
     >
-      <Title>
-        If you are responding for you and a guest (or your family), you&#39;ll
-        be able to RSVP for your entire group.
-      </Title>
+      <Title>Login</Title>
+      <Text>
+        Welcome to our wedding website. We are so excited to celebrate with you
+        all! As our big day is soon approaching, we would greatly appreciate it
+        if you could kindly login and RSVP by May 7, 2022.
+      </Text>
 
       <Container>
         <Label>
@@ -93,7 +98,7 @@ function Login() {
       </Container>
 
       <ButtonGroup center>
-        <Button type="submit">Next</Button>
+        <Button type="submit">Login</Button>
       </ButtonGroup>
     </form>
   );

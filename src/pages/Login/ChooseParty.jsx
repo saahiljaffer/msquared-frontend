@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { B1 } from "../../components/Fonts";
+import { S2 } from "../../components/Fonts";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 
-const Title = styled(B1)`
+const Title = styled(S2)`
   margin-bottom: 1rem;
 `;
 
