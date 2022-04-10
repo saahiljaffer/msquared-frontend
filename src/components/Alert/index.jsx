@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const getBackgroundColor = (theme, variant) => {
   switch (variant) {
     case "success":
-      return theme.colors.background.quaternary;
+      return "#087f5b";
     case "error":
       return theme.colors.danger.default;
     case "warn":
@@ -19,7 +19,7 @@ const getBackgroundColor = (theme, variant) => {
 const getFontColor = (theme, variant) => {
   switch (variant) {
     case "success":
-      return theme.colors.background.default;
+      return theme.colors.foreground.default;
     case "error":
       return theme.colors.danger.verylight;
     case "warn":

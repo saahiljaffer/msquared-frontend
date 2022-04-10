@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
@@ -60,20 +60,28 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const name = useStore((state) => state.name);
-  const { data, isLoading } = useGetPotentialParties(name);
+  const chosenPartyId = useStore((state) => state.chosenPartyId);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   return (
     <>
       <NavBar />
       <form
         onSubmit={handleSubmit((values) => {
-          // TODO: wire this up
-          // eslint-disable-next-line no-console
-          console.log(values);
+          setLoading(true);
+          fetch(`${process.env.REACT_APP_API_URL}/contact/${chosenPartyId}/`, {
+            method: "POST",
+            body: JSON.stringify(values),
+          }).then(() => {
+            setLoading(false);
+            setSuccess(true);
+          });
         })}
       >
         <Title>Questions</Title>
+
+        {loading && <Alert variant="error">Loading</Alert>}
 
         <Container>
           <Label>
@@ -94,27 +102,25 @@ function Login() {
             Please enter your message
             <StyledTextArea
               rows="4"
-              name="comments"
-              {...register("comments", { required: "This is required." })}
+              name="message"
+              {...register("message", { required: "This is required." })}
             />
           </Label>
           <ErrorMessage
             errors={errors}
-            name="comments"
+            name="message"
             render={({ message }) => <Alert variant="error">{message}</Alert>}
           />
         </Container>
 
-        {data && data.length === 0 && (
-          <StyledAlert variant="error">
-            The name you entered could not be found on the guest list.
-          </StyledAlert>
+        {success && (
+          <StyledAlert variant="success">Message sent successfully</StyledAlert>
         )}
 
         <ButtonGroup center>
-          <Button type="submit" disabled={isLoading}>
-            {isLoading && <LoadingIndicator />}
-            {!isLoading && "Submit"}
+          <Button type="submit" disabled={loading}>
+            {loading && <LoadingIndicator />}
+            {!loading && "Submit"}
           </Button>
         </ButtonGroup>
       </form>
