@@ -17,9 +17,7 @@ const Section = styled.div`
   text-align: center;
 `;
 
-const P = styled(S2)`
-  /* color: ${(props) => props.theme.colors.foreground.secondary}; */
-`;
+const P = styled(S2)``;
 
 const DirectionsContainer = styled.section`
   display: flex;

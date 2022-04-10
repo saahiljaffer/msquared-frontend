@@ -12,6 +12,7 @@ import Reception from "./pages/Reception";
 import RSVP from "./pages/RSVP";
 import Login from "./pages/Login";
 import Mendhi from "./pages/Mendhi";
+import Contact from "./pages/Contact";
 import PageContainer from "./components/PageContainer";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,10 @@ const routes = (isLoggedin) => [
   {
     path: "/mendhi",
     element: isLoggedin ? <Mendhi /> : <Navigate to="/login" replace />,
+  },
+  {
+    path: "/contact",
+    element: isLoggedin ? <Contact /> : <Navigate to="/login" replace />,
   },
   {
     path: "/rsvp",

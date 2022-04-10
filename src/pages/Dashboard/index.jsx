@@ -13,7 +13,6 @@ const MainTitle = styled.h1`
   font-weight: ${(props) => props.theme.fonts.h1.weight};
   color: ${(props) => props.theme.colors.foreground.default};
   font-family: "Eu Alonira";
-  margin-bottom: 0.5rem;
   text-align: center;
 `;
 
@@ -21,7 +20,6 @@ const SubTitle = styled(S2)``;
 
 const DaysLeft = styled(Countdown)`
   text-align: center;
-  margin-bottom: 1rem;
 `;
 
 const ButtonGroupItem = styled(Link)`
@@ -32,7 +30,6 @@ const ButtonGroupContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 1rem;
-  margin-block: 1rem;
   width: 100%;
 `;
 
@@ -41,6 +38,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.75rem;
 `;
 
 const Image = styled.img`
@@ -89,9 +87,14 @@ function Landing() {
           )}
         </ButtonGroupContainer>
 
+        <StyledLink to="/contact">
+          <Button variant="secondary">Questions</Button>
+        </StyledLink>
+
         <StyledLink to="/rsvp">
           <Button>RSVP</Button>
         </StyledLink>
+
         <Image src="/images/splash.png" alt="" />
       </Container>
     </>

@@ -46,7 +46,6 @@ function GuestsForm() {
       </CurrentGuestHeader>
       <SingleGuestForm
         onSubmit={(values) => {
-          // alert(values);
           const currentUpdatedGuests = updatedGuests;
 
           const updatedGuest = {

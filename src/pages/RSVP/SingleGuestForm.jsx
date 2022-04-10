@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
@@ -221,6 +220,7 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
 
 SingleGuestForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  currentGuest: PropTypes.shape.isRequired,
 };
 
 export default SingleGuestForm;

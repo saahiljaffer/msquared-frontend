@@ -4,6 +4,7 @@ import { S2 } from "../../components/Fonts";
 import useStore from "../../store";
 import { useGetPotentialParties } from "../../api";
 import NavBar from "../../components/NavBar";
+import LoadingIndicator from "../../components/LoadingIndicator";
 
 const Title = styled(S2)`
   margin-bottom: 1rem;
@@ -35,7 +36,7 @@ const Cell = styled.td`
 function ChooseParty() {
   const name = useStore((state) => state.name);
   const setChosenPartyId = useStore((state) => state.setChosenPartyId);
-  const { data } = useGetPotentialParties(name);
+  const { data, isLoading } = useGetPotentialParties(name);
   return (
     <>
       <NavBar />
@@ -43,6 +44,8 @@ function ChooseParty() {
         We have found more than one match in the guest list. Please select the
         correct option from the list below.
       </Title>
+
+      {isLoading && <LoadingIndicator />}
 
       {data.map((party) => (
         <Choice
