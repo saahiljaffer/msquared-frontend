@@ -19,10 +19,6 @@ const queryClient = new QueryClient();
 
 const routes = (isLoggedin) => [
   {
-    path: "/",
-    element: isLoggedin ? <Dashboard /> : <Navigate to="/login" replace />,
-  },
-  {
     path: "/nikkah",
     element: isLoggedin ? <Nikkah /> : <Navigate to="/login" replace />,
   },
@@ -45,6 +41,10 @@ const routes = (isLoggedin) => [
   {
     path: "/login",
     element: isLoggedin ? <Navigate to="/" replace /> : <Login />,
+  },
+  {
+    path: "*",
+    element: isLoggedin ? <Dashboard /> : <Navigate to="/login" replace />,
   },
 ];
 
