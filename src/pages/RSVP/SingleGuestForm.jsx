@@ -220,7 +220,7 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
 
 SingleGuestForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  currentGuest: PropTypes.shape.isRequired,
+  currentGuest: PropTypes.shape().isRequired,
 };
 
 export default SingleGuestForm;

@@ -71,19 +71,18 @@ function Landing() {
           below tab, by May 7, 2022.
         </SubTitle>
         <ButtonGroupContainer>
-          <Link to="/nikkah">
-            <Button variant="secondary">Nikkah</Button>
-          </Link>
-          {data && data?.fields?.can_see_reception && (
-            <ButtonGroupItem to="/reception">
-              <Button variant="secondary">Reception</Button>
-            </ButtonGroupItem>
-          )}
-
-          {data && data?.fields?.can_see_mendhi && (
+          {data && data?.can_see_mendhi && (
             <StyledLink to="/mendhi">
               <Button variant="secondary">Mendhi</Button>
             </StyledLink>
+          )}
+          <Link to="/nikkah">
+            <Button variant="secondary">Nikkah</Button>
+          </Link>
+          {data && data?.can_see_reception && (
+            <ButtonGroupItem to="/reception">
+              <Button variant="secondary">Reception</Button>
+            </ButtonGroupItem>
           )}
         </ButtonGroupContainer>
 

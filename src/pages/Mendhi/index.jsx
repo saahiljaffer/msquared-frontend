@@ -43,6 +43,12 @@ export default function WeddingDay() {
         <P>Richmond Hill, Ontario L4B 0C6</P>
       </Section>
 
+      <Section>
+        <P>4:30 PM: Recitation begins </P>
+        <P>5:30 PM: Dinner is served </P>
+        <P>6:00 PM: Mendhi application begins </P>
+      </Section>
+
       <DirectionsContainer>
         <DirectionsFrame
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.680614987092!2d-79.39797878407472!3d43.84171987911515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2b44f716eb59%3A0xe55ea4717c99aec4!2sRoyal%20Gardens%20Condominiums!5e0!3m2!1sen!2sus!4v1649449165711!5m2!1sen!2sus"

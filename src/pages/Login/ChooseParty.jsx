@@ -50,19 +50,22 @@ function ChooseParty() {
       {data.map((party) => (
         <Choice
           type="button"
+          key={party[0].party_id}
           onClick={() => {
             setChosenPartyId(party[0].party_id);
           }}
         >
           <Table>
-            {party.map((guest) => (
-              <tr>
-                <Cell>
-                  {guest.first_name} {guest.last_name}
-                </Cell>
-                <Cell>{guest.email}</Cell>
-              </tr>
-            ))}
+            <tbody>
+              {party.map((guest) => (
+                <tr key={guest.id}>
+                  <Cell>
+                    {guest.first_name} {guest.last_name}
+                  </Cell>
+                  <Cell>{guest.email}</Cell>
+                </tr>
+              ))}
+            </tbody>
           </Table>
         </Choice>
       ))}

@@ -51,15 +51,7 @@ function GuestDetails({ guest }) {
 
 GuestDetails.propTypes = {
   guest: PropTypes.shape({
-    fields: PropTypes.shape({
-      first_name: PropTypes.string.isRequired,
-      last_name: PropTypes.string.isRequired,
-      is_invited_mendhi: PropTypes.bool.isRequired,
-      is_invited_reception: PropTypes.bool.isRequired,
-      is_attending_nikkah: PropTypes.bool.isRequired,
-      is_attending_reception: PropTypes.bool.isRequired,
-      is_attending_mendhi: PropTypes.bool.isRequired,
-    }),
+    fields: PropTypes.shape(),
   }).isRequired,
 };
 

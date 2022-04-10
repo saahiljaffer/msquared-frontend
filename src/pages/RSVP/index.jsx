@@ -12,7 +12,7 @@ function RSVP() {
 
   let partyResponded;
   if (data) {
-    partyResponded = data.fields.has_responded;
+    partyResponded = data.has_responded;
   }
 
   return (
