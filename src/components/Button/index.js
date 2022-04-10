@@ -32,7 +32,7 @@ const getFontColor = (props) => {
     case STYLES.DEFAULT:
       return props.theme.colors.foreground.default;
     case STYLES.SECONDARY:
-      return props.theme.colors.foreground.quintenary;
+      return props.theme.colors.foreground.default;
     default:
       throw new Error(`Invalid button style: ${props.variant}`);
   }
@@ -42,7 +42,7 @@ const getDisabledFontColor = (props) => {
   switch (props.variant) {
     case STYLES.DEFAULT:
     case STYLES.SECONDARY:
-      return props.theme.colors.foreground.tertiary;
+      return props.theme.colors.foreground.default;
     default:
       throw new Error(`Invalid button style: ${props.variant}`);
   }
