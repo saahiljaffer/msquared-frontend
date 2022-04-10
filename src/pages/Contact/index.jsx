@@ -6,7 +6,6 @@ import { S1, S2 } from "../../components/Fonts";
 import Button from "../../components/Button";
 import { ButtonGroup } from "../../components/ButtonGroup";
 import useStore from "../../store";
-import { useGetPotentialParties } from "../../api";
 import NavBar from "../../components/NavBar";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import Alert from "../../components/Alert";
