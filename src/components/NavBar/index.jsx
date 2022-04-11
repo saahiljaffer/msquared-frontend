@@ -67,7 +67,7 @@ function NavBar({ showHome, showLogout }) {
           <FontAwesomeIcon
             alt="logout"
             icon="fa-arrow-right-from-bracket"
-            size="lg"
+            size="xl"
           />
         </StyledButton>
       )}
