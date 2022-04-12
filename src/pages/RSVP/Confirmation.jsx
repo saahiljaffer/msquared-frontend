@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { S1 } from "../../components/Fonts";
 import GuestDetails from "./GuestDetails";
 import { useGetGuests } from "../../api";
 import useStore from "../../store";
 import LoadingIndicator from "../../components/LoadingIndicator";
+import Button from "../../components/Button";
 
 const HeadingContainer = styled.section`
   margin-bottom: 1rem;
@@ -26,6 +28,9 @@ function Confirmation() {
       {isLoading && <LoadingIndicator />}
       {data &&
         data.map((guest) => <GuestDetails key={guest.pk} guest={guest} />)}
+      <Link to="/">
+        <Button>Back to Home</Button>
+      </Link>
     </>
   );
 }

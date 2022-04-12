@@ -5,18 +5,12 @@ import NavBar from "../../components/NavBar";
 
 const ImportantText = styled(S1)`
   font-size: ${(props) => props.theme.fonts.s2.size};
-  margin-bottom: 0.25rem;
 `;
 
 const Section = styled.div`
   margin-bottom: 1rem;
   text-align: center;
 `;
-
-// const EndSection = styled.div`
-//   margin-bottom: 1rem;
-//   text-align: end;
-// `;
 
 const StartSection = styled.div`
   margin-bottom: 1rem;
@@ -57,15 +51,16 @@ export default function WeddingDay() {
       <StartSection>
         <P>The families of</P>
         <P>
-          Late Hassan Ali Mohammed Jaffer and Late Amir Hassanali Jaffer Dhanji
+          Late Hassan Ali Mohammed Jaffer and Late Amir Hassanali Jaffer Dhanji,
         </P>
         <P>Late Yusuf & Late Zerabai Nasser and Mohamed & Nargis Dungersi</P>
       </StartSection>
 
-      <Section>
-        <P>Request the honour of your presence</P>
-        <P>To witness the Nikaah Ceremony of</P>
-      </Section>
+      <StartSection>
+        <P>
+          Request the honour of your presence to witness the Nikaah Ceremony of
+        </P>
+      </StartSection>
 
       <MainTitle>Maysum</MainTitle>
 
