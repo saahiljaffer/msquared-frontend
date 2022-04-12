@@ -36,6 +36,13 @@ const DirectionsFrame = styled.iframe`
   border: none;
 `;
 
+const Gold = styled.div`
+  background-image: url("/images/gold11.png");
+  background-repeat: no-repeat;
+  /* background-size: 100px 100px; */
+  background-position: right;
+`;
+
 export default function WeddingDay() {
   return (
     <>
@@ -46,24 +53,25 @@ export default function WeddingDay() {
           Sukaina & Eliya Nasser humbly request your presence at the Mendhi of
         </P>
       </StartSection>
+      <Gold>
+        <MainTitle>Malika Maryam</MainTitle>
 
-      <MainTitle>Malika Maryam</MainTitle>
+        <StartSection>
+          <P>Thursday June 2nd, 2022 at 4:00 PM</P>
+        </StartSection>
 
-      <StartSection>
-        <P>Thursday June 2nd, 2022 at 4:00 PM</P>
-      </StartSection>
+        <StartSection>
+          <P>Royal Gardens Party Room</P>
+          <P>376 Hwy 7</P>
+          <P>Richmond Hill, Ontario L4B 0C4</P>
+        </StartSection>
 
-      <StartSection>
-        <P>Royal Gardens Party Room</P>
-        <P>376 Hwy 7</P>
-        <P>Richmond Hill, Ontario L4B 0C4</P>
-      </StartSection>
-
-      <StartSection>
-        <P>4:30 PM: Recitation begins </P>
-        <P>5:30 PM: Dinner is served </P>
-        <P>6:00 PM: Mendhi application begins </P>
-      </StartSection>
+        <StartSection>
+          <P>4:30 PM: Recitation begins </P>
+          <P>5:30 PM: Dinner is served </P>
+          <P>6:00 PM: Mendhi application begins </P>
+        </StartSection>
+      </Gold>
 
       <DirectionsContainer>
         <DirectionsFrame
