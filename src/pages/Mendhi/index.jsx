@@ -41,6 +41,7 @@ const Gold = styled.div`
   background-image: url("/images/gold11.png");
   background-repeat: no-repeat;
   background-position: right;
+  background-size: 66px 236px;
 `;
 
 export default function WeddingDay() {
