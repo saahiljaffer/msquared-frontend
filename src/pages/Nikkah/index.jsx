@@ -13,10 +13,10 @@ const Section = styled.div`
   text-align: center;
 `;
 
-const EndSection = styled.div`
-  margin-bottom: 1rem;
-  text-align: end;
-`;
+// const EndSection = styled.div`
+//   margin-bottom: 1rem;
+//   text-align: end;
+// `;
 
 const StartSection = styled.div`
   margin-bottom: 1rem;
