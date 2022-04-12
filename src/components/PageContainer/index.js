@@ -5,6 +5,6 @@ export default styled.section`
   padding-right: 1rem;
   padding-bottom: 3rem;
 
-  max-width: 500px;
+  max-width: 520px;
   margin: auto;
 `;

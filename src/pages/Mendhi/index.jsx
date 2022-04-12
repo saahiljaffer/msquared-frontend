@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { S1, S2 } from "../../components/Fonts";
+import { S2 } from "../../components/Fonts";
 import NavBar from "../../components/NavBar";
 
-const HeadingContainer = styled.section`
+const StartSection = styled.div`
   margin-bottom: 1rem;
+  text-align: start;
 `;
 
-const MainHeader = styled(S1)`
-  margin-bottom: 0.25rem;
+const MainTitle = styled.h1`
+  font-size: var(--font-size-fluid-2);
+  font-weight: ${(props) => props.theme.fonts.h1.weight};
+  color: ${(props) => props.theme.colors.foreground.default};
+  font-family: "Eu Alonira";
   text-align: center;
-`;
-
-const Section = styled.div`
   margin-bottom: 1rem;
-  text-align: center;
 `;
 
 const P = styled(S2)``;
@@ -33,21 +33,30 @@ export default function WeddingDay() {
   return (
     <>
       <NavBar />
-      <HeadingContainer>
-        <MainHeader>Thursday June 2th, 2022 at 4:30 PM</MainHeader>
-      </HeadingContainer>
 
-      <Section>
+      <StartSection>
+        <P>
+          Sukaina & Eliya Nasser humbly request your presence at the Mendhi of
+        </P>
+      </StartSection>
+
+      <MainTitle>Malika Maryam</MainTitle>
+
+      <StartSection>
+        <P>Thursday June 2nd, 2022 at 4:00 PM</P>
+      </StartSection>
+
+      <StartSection>
         <P>Royal Gardens Party Room</P>
-        <P>370-376 Hwy 7</P>
-        <P>Richmond Hill, Ontario L4B 0C6</P>
-      </Section>
+        <P>376 Hwy 7</P>
+        <P>Richmond Hill, Ontario L4B 0C4</P>
+      </StartSection>
 
-      <Section>
+      <StartSection>
         <P>4:30 PM: Recitation begins </P>
         <P>5:30 PM: Dinner is served </P>
         <P>6:00 PM: Mendhi application begins </P>
-      </Section>
+      </StartSection>
 
       <DirectionsContainer>
         <DirectionsFrame

@@ -49,23 +49,16 @@ export default function WeddingDay() {
       </StartSection>
 
       <StartSection>
-        <P>The families of</P>
         <P>
-          Late Hassan Ali Mohammed Jaffer and Late Amir Hassanali Jaffer Dhanji,
-        </P>
-        <P>Late Yusuf & Late Zerabai Nasser and Mohamed & Nargis Dungersi</P>
-      </StartSection>
-
-      <StartSection>
-        <P>
-          Request the honour of your presence to witness the Nikaah Ceremony of
+          We request the honour of your presence to witness the Nikaah Ceremony
+          of
         </P>
       </StartSection>
 
       <MainTitle>Maysum</MainTitle>
 
       <Section>
-        <P>Son of Haider & Tahera Jaffer</P>
+        <P>Son of Haider and Tahera Jaffer</P>
       </Section>
 
       <MainTitle style={{ marginBottom: "1rem" }}>&</MainTitle>
