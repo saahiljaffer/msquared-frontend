@@ -3,17 +3,26 @@ import styled from "styled-components";
 import { S1, S2 } from "../../components/Fonts";
 import NavBar from "../../components/NavBar";
 
-const HeadingContainer = styled.section`
-  margin-bottom: 1rem;
-`;
-
-const MainHeader = styled(S1)`
+const ImportantText = styled(S1)`
+  font-size: ${(props) => props.theme.fonts.s2.size};
   margin-bottom: 0.25rem;
-  text-align: center;
 `;
 
 const Section = styled.div`
   margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const EndSection = styled.div`
+  margin-bottom: 1rem;
+  text-align: end;
+`;
+
+const MainTitle = styled.h1`
+  font-size: var(--font-size-fluid-2);
+  font-weight: ${(props) => props.theme.fonts.h1.weight};
+  color: ${(props) => props.theme.colors.foreground.default};
+  font-family: "Eu Alonira";
   text-align: center;
 `;
 
@@ -33,15 +42,54 @@ export default function WeddingDay() {
   return (
     <>
       <NavBar />
-      <HeadingContainer>
-        <MainHeader>Saturday June 4th, 2022 at 3:00 PM</MainHeader>
-      </HeadingContainer>
 
       <Section>
+        <P>
+          In the name of the Almighty, the Most Beneficent, the Most Merciful
+        </P>
+      </Section>
+
+      <Section>
+        <P>The families of</P>
+        <P>
+          Late Hassan Ali Mohammed Jaffer and Late Amir Hassanali Jaffer Dhanji
+        </P>
+        <P>Late Yusuf & Late Zerabai Nasser and Mohamed & Nargis Dungersi</P>
+      </Section>
+
+      <Section>
+        <P>Request the honour of your presence</P>
+        <P>To witness the Nikaah Ceremony of</P>
+      </Section>
+
+      <MainTitle>Maysum</MainTitle>
+
+      <Section>
+        <P>Son of Haider & Tahera Jaffer</P>
+      </Section>
+
+      <MainTitle>&</MainTitle>
+      <MainTitle>Malika Maryam</MainTitle>
+
+      <Section>
+        <P>Daughter of Murtaza and Sukaina Nasser</P>
+      </Section>
+
+      <EndSection>
+        <P>Insha&apos;Allah on</P>
+        <ImportantText>Saturday June 4th 2022 at 3:00 PM</ImportantText>
+        <P>4th Zilqaad 1443 AH</P>
+      </EndSection>
+
+      <EndSection>
         <P>Jaffari Community Centre</P>
         <P>9000 Bathurst Street</P>
         <P>Thornhill, Ontario L4J 8A7</P>
-      </Section>
+      </EndSection>
+
+      <EndSection>
+        <P>Walimah dinner to follow</P>
+      </EndSection>
 
       <DirectionsContainer>
         <DirectionsFrame

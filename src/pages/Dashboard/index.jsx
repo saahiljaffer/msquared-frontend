@@ -76,8 +76,8 @@ function Landing() {
               <Button variant="secondary">Mendhi</Button>
             </StyledLink>
           )}
-          <Link to="/nikkah">
-            <Button variant="secondary">Nikkah</Button>
+          <Link to="/nikaah">
+            <Button variant="secondary">Nikaah</Button>
           </Link>
           {data && data?.can_see_reception && (
             <ButtonGroupItem to="/reception">

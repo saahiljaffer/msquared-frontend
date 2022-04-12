@@ -19,7 +19,7 @@ const queryClient = new QueryClient();
 
 const routes = (isLoggedin) => [
   {
-    path: "/nikkah",
+    path: "/nikaah",
     element: isLoggedin ? <Nikkah /> : <Navigate to="/login" replace />,
   },
   {
