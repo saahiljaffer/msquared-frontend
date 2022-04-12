@@ -37,9 +37,9 @@ const DirectionsFrame = styled.iframe`
 `;
 
 const Gold = styled.div`
+  margin-right: -1rem;
   background-image: url("/images/gold11.png");
   background-repeat: no-repeat;
-  /* background-size: 100px 100px; */
   background-position: right;
 `;
 
@@ -48,12 +48,13 @@ export default function WeddingDay() {
     <>
       <NavBar />
 
-      <StartSection>
-        <P>
-          Sukaina & Eliya Nasser humbly request your presence at the Mendhi of
-        </P>
-      </StartSection>
       <Gold>
+        <StartSection>
+          <P>
+            Sukaina & Eliya Nasser humbly request your presence at the Mendhi of
+          </P>
+        </StartSection>
+
         <MainTitle>Malika Maryam</MainTitle>
 
         <StartSection>
