@@ -18,6 +18,11 @@ const EndSection = styled.div`
   text-align: end;
 `;
 
+const StartSection = styled.div`
+  margin-bottom: 1rem;
+  text-align: start;
+`;
+
 const MainTitle = styled.h1`
   font-size: var(--font-size-fluid-2);
   font-weight: ${(props) => props.theme.fonts.h1.weight};
@@ -43,19 +48,19 @@ export default function WeddingDay() {
     <>
       <NavBar />
 
-      <Section>
+      <StartSection>
         <P>
           In the name of the Almighty, the Most Beneficent, the Most Merciful
         </P>
-      </Section>
+      </StartSection>
 
-      <Section>
+      <StartSection>
         <P>The families of</P>
         <P>
           Late Hassan Ali Mohammed Jaffer and Late Amir Hassanali Jaffer Dhanji
         </P>
         <P>Late Yusuf & Late Zerabai Nasser and Mohamed & Nargis Dungersi</P>
-      </Section>
+      </StartSection>
 
       <Section>
         <P>Request the honour of your presence</P>
@@ -68,28 +73,28 @@ export default function WeddingDay() {
         <P>Son of Haider & Tahera Jaffer</P>
       </Section>
 
-      <MainTitle>&</MainTitle>
+      <MainTitle style={{ marginBottom: "1rem" }}>&</MainTitle>
       <MainTitle>Malika Maryam</MainTitle>
 
       <Section>
         <P>Daughter of Murtaza and Sukaina Nasser</P>
       </Section>
 
-      <EndSection>
+      <StartSection>
         <P>Insha&apos;Allah on</P>
         <ImportantText>Saturday June 4th 2022 at 3:00 PM</ImportantText>
         <P>4th Zilqaad 1443 AH</P>
-      </EndSection>
+      </StartSection>
 
-      <EndSection>
+      <StartSection>
         <P>Jaffari Community Centre</P>
         <P>9000 Bathurst Street</P>
         <P>Thornhill, Ontario L4J 8A7</P>
-      </EndSection>
+      </StartSection>
 
-      <EndSection>
+      <StartSection>
         <P>Walimah dinner to follow</P>
-      </EndSection>
+      </StartSection>
 
       <DirectionsContainer>
         <DirectionsFrame
