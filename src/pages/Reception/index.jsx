@@ -15,6 +15,13 @@ const MainTitle = styled.h1`
   font-family: "Eu Alonira";
   text-align: center;
   margin-bottom: 1rem;
+
+  color: #c3a343;
+  -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(transparent, transparent),
+    url(/gold7.png) repeat;
+  background: -o-linear-gradient(transparent, transparent);
+  -webkit-background-clip: text;
 `;
 
 const P = styled(S2)``;
