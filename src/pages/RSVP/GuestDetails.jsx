@@ -43,9 +43,13 @@ function GuestDetails({ guest }) {
         <GuestName>
           {`${guest.fields.first_name} ${guest.fields.last_name}`}
         </GuestName>
-        <StyledAnchor href={filename}>
-          <FontAwesomeIcon icon="fa-solid fa-calendar-plus" size="lg" />
-        </StyledAnchor>
+        {(guest.fields.is_attending_mendhi ||
+          guest.fields.is_attending_nikkah ||
+          guest.fields.is_attending_reception) && (
+          <StyledAnchor href={filename}>
+            <FontAwesomeIcon icon="fa-solid fa-calendar-plus" size="lg" />
+          </StyledAnchor>
+        )}
       </GuestHeader>
 
       {guest?.fields?.is_invited_mendhi && (
