@@ -1,16 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { S1, S2 } from "../../components/Fonts";
 
 const GuestContainer = styled.section`
   margin-bottom: 2rem;
 `;
 
-const GuestName = styled(S1)`
+const GuestHeader = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
   margin-bottom: 1rem;
   text-align: start;
 `;
+
+const GuestName = styled(S1)``;
 
 const AnswerContainer = styled.div`
   display: flex;
@@ -22,14 +28,24 @@ const AnswerContainer = styled.div`
   }
 `;
 
+const StyledAnchor = styled.a`
+  color: #000;
+`;
+
 const Answer = styled(S2)``;
 
 function GuestDetails({ guest }) {
   return (
     <GuestContainer>
-      <GuestName>
-        {`${guest.fields.first_name} ${guest.fields.last_name}`}
-      </GuestName>
+      <GuestHeader>
+        <GuestName>
+          {`${guest.fields.first_name} ${guest.fields.last_name}`}
+        </GuestName>
+        <StyledAnchor href="/ics/myevents.ics">
+          <FontAwesomeIcon icon="fa-solid fa-calendar-plus" size="lg" />
+        </StyledAnchor>
+      </GuestHeader>
+
       {guest?.fields?.is_invited_mendhi && (
         <AnswerContainer>
           <Answer>Is attending mendhi?</Answer>
