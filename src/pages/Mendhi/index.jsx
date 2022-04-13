@@ -18,10 +18,16 @@ const MainTitle = styled.h1`
 
   color: #c3a343;
   -webkit-text-fill-color: transparent;
+
   background: -webkit-linear-gradient(transparent, transparent),
-    url(/gold7.png) repeat;
+    url(/images/GF_7_1.png) repeat;
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
+  background-size: contain;
+`;
+
+const Span = styled.span`
+  font-size: 0px;
 `;
 
 const P = styled(S2)``;
@@ -33,15 +39,25 @@ const DirectionsContainer = styled.section`
 `;
 
 const DirectionsFrame = styled.iframe`
+  margin-left: 1rem;
   border: none;
 `;
 
-const Gold = styled.div`
+const RightGold = styled.div`
   margin-right: -1rem;
-  background-image: url("/images/GF_11.png");
+  background-image: url("/images/GF_11_1.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: right top;
   background-size: 65px 296px;
+`;
+
+const LeftGold = styled.div`
+  margin-left: -1rem;
+  background-image: url("/images/GF_11_2.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 65px 296px;
+  min-height: 300px;
 `;
 
 export default function WeddingDay() {
@@ -49,14 +65,16 @@ export default function WeddingDay() {
     <>
       <NavBar />
 
-      <Gold>
+      <RightGold>
         <StartSection>
           <P>
             Sukaina & Eliya Nasser humbly request your presence at the Mendhi of
           </P>
         </StartSection>
 
-        <MainTitle>Malika Maryam</MainTitle>
+        <MainTitle>
+          Malika Mary<Span>s</Span>am
+        </MainTitle>
 
         <StartSection>
           <P>Thursday June 2nd, 2022 at 4:00 PM</P>
@@ -73,18 +91,20 @@ export default function WeddingDay() {
           <P>5:30 PM: Dinner is served </P>
           <P>6:00 PM: Mendhi application begins </P>
         </StartSection>
-      </Gold>
+      </RightGold>
 
-      <DirectionsContainer>
-        <DirectionsFrame
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.680614987092!2d-79.39797878407472!3d43.84171987911515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2b44f716eb59%3A0xe55ea4717c99aec4!2sRoyal%20Gardens%20Condominiums!5e0!3m2!1sen!2sus!4v1649449165711!5m2!1sen!2sus"
-          width="600"
-          height="450"
-          allowFullScreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        />
-      </DirectionsContainer>
+      <LeftGold>
+        <DirectionsContainer>
+          <DirectionsFrame
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2877.680614987092!2d-79.39797878407472!3d43.84171987911515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2b44f716eb59%3A0xe55ea4717c99aec4!2sRoyal%20Gardens%20Condominiums!5e0!3m2!1sen!2sus!4v1649449165711!5m2!1sen!2sus"
+            width="600"
+            height="450"
+            allowFullScreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </DirectionsContainer>
+      </LeftGold>
     </>
   );
 }

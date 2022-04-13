@@ -18,9 +18,10 @@ const MainTitle = styled.h1`
   color: #c3a343;
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(transparent, transparent),
-    url(/gold7.png) repeat;
+    url(/images/GF_7_1.png) repeat;
   background: -o-linear-gradient(transparent, transparent);
   -webkit-background-clip: text;
+  background-size: contain;
 `;
 
 const SubTitle = styled(S2)``;

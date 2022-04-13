@@ -8,11 +8,13 @@ const ImportantText = styled(S1)`
 `;
 
 const Section = styled.div`
+  margin-left: 1rem;
   margin-bottom: 1rem;
   text-align: center;
 `;
 
 const StartSection = styled.div`
+  margin-left: 1rem;
   margin-bottom: 1rem;
   text-align: start;
 `;
@@ -23,13 +25,19 @@ const MainTitle = styled.h1`
   color: ${(props) => props.theme.colors.foreground.default};
   font-family: "Eu Alonira";
   text-align: center;
+  margin-left: 1rem;
 
   color: #c3a343;
   -webkit-text-fill-color: transparent;
   background: -webkit-linear-gradient(transparent, transparent),
-    url(/gold7.png) repeat;
+    url(/images/GF_7_1.png) repeat;
   background: -o-linear-gradient(transparent, transparent);
+  background-size: contain;
   -webkit-background-clip: text;
+`;
+
+const Span = styled.span`
+  font-size: 0px;
 `;
 
 const P = styled(S2)``;
@@ -44,52 +52,73 @@ const DirectionsFrame = styled.iframe`
   border: none;
 `;
 
+const LeftGold = styled.div`
+  margin-left: -1rem;
+  background-image: url("/images/GF_11_3.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 65px 296px;
+`;
+
+const RightGold = styled.div`
+  margin-right: -1rem;
+  background-image: url("/images/GF_11_1.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 65px 296px;
+`;
+
 export default function WeddingDay() {
   return (
     <>
       <NavBar />
 
-      <StartSection>
-        <P>
-          In the name of the Almighty, the Most Beneficent, the Most Merciful
-        </P>
-      </StartSection>
+      <LeftGold>
+        <StartSection>
+          <P>
+            In the name of the Almighty, the Most Beneficent, the Most Merciful
+          </P>
+        </StartSection>
 
-      <StartSection>
-        <P>
-          We request the honour of your presence to witness the Nikaah Ceremony
-          of
-        </P>
-      </StartSection>
+        <StartSection>
+          <P>
+            We request the honour of your presence to witness the Nikaah
+            Ceremony of
+          </P>
+        </StartSection>
+        <RightGold>
+          <MainTitle>Maysum</MainTitle>
 
-      <MainTitle>Maysum</MainTitle>
+          <Section>
+            <P>Son of Haider and Tahera Jaffer</P>
+          </Section>
 
-      <Section>
-        <P>Son of Haider and Tahera Jaffer</P>
-      </Section>
+          <MainTitle style={{ marginBottom: "1rem" }}>&</MainTitle>
+          <MainTitle>
+            Malika Mary<Span>s</Span>am
+          </MainTitle>
 
-      <MainTitle style={{ marginBottom: "1rem" }}>&</MainTitle>
-      <MainTitle>Malika Maryam</MainTitle>
+          <Section>
+            <P>Daughter of Murtaza and Sukaina Nasser</P>
+          </Section>
 
-      <Section>
-        <P>Daughter of Murtaza and Sukaina Nasser</P>
-      </Section>
+          <StartSection>
+            <P>Insha&apos;Allah on</P>
+            <ImportantText>Saturday June 4th 2022 at 3:00 PM</ImportantText>
+            <P>4th Zilqaad 1443 AH</P>
+          </StartSection>
 
-      <StartSection>
-        <P>Insha&apos;Allah on</P>
-        <ImportantText>Saturday June 4th 2022 at 3:00 PM</ImportantText>
-        <P>4th Zilqaad 1443 AH</P>
-      </StartSection>
+          <StartSection>
+            <P>Jaffari Community Centre</P>
+            <P>9000 Bathurst Street</P>
+            <P>Thornhill, Ontario L4J 8A7</P>
+          </StartSection>
 
-      <StartSection>
-        <P>Jaffari Community Centre</P>
-        <P>9000 Bathurst Street</P>
-        <P>Thornhill, Ontario L4J 8A7</P>
-      </StartSection>
-
-      <StartSection>
-        <P>Walimah dinner to follow</P>
-      </StartSection>
+          <StartSection>
+            <P>Walimah dinner to follow</P>
+          </StartSection>
+        </RightGold>
+      </LeftGold>
 
       <DirectionsContainer>
         <DirectionsFrame
