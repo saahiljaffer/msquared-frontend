@@ -13,6 +13,7 @@ const CurrentGuestHeader = styled.div`
 `;
 
 const GuestName = styled(S1)`
+  text-align: start;
   flex-grow: 1;
 `;
 

@@ -9,6 +9,7 @@ const GuestContainer = styled.section`
 
 const GuestName = styled(S1)`
   margin-bottom: 1rem;
+  text-align: start;
 `;
 
 const AnswerContainer = styled.div`

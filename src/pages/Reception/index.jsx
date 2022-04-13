@@ -56,6 +56,10 @@ const LeftGold = styled.div`
   min-height: 300px;
 `;
 
+const Span = styled.span`
+  font-size: 0px;
+`;
+
 export default function WeddingDay() {
   return (
     <>
@@ -74,7 +78,9 @@ export default function WeddingDay() {
           </P>
         </StartSection>
 
-        <MainTitle>Maysum & Malika</MainTitle>
+        <MainTitle>
+          Maysum & Mali<Span> </Span>ka
+        </MainTitle>
 
         <StartSection>
           <P>Sunday June 5th, 2022 at 10:00 AM</P>

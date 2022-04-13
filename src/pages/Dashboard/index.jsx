@@ -59,6 +59,10 @@ const StyledLink = styled(Link)`
   width: 100%;
 `;
 
+const Span = styled.span`
+  font-size: 0px;
+`;
+
 const WEDDING_DATE = new Date(2022, 5, 4);
 const TODAY = new Date();
 
@@ -70,7 +74,9 @@ function Landing() {
     <>
       <NavBar showHome={false} />
       <Container>
-        <MainTitle>Maysum & Malika 2022</MainTitle>
+        <MainTitle>
+          Maysum & Mali<Span> </Span>ka 2022
+        </MainTitle>
         <DaysLeft fromDate={TODAY} toDate={WEDDING_DATE} />
         <SubTitle>
           Welcome to our wedding website. We are so excited to celebrate with

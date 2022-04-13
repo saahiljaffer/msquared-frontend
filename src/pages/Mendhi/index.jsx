@@ -73,7 +73,7 @@ export default function WeddingDay() {
         </StartSection>
 
         <MainTitle>
-          Malika Mary<Span>s</Span>am
+          Mali<Span> </Span>ka Mary<Span>s</Span>am
         </MainTitle>
 
         <StartSection>
@@ -87,6 +87,7 @@ export default function WeddingDay() {
         </StartSection>
 
         <StartSection>
+          <P>Itinerary</P>
           <P>4:30 PM: Recitation begins </P>
           <P>5:30 PM: Dinner is served </P>
           <P>6:00 PM: Mendhi application begins </P>

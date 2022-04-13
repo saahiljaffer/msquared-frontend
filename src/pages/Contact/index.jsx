@@ -46,6 +46,7 @@ const Container = styled.div`
 `;
 
 const Label = styled(S2)`
+  text-align: start;
   margin-bottom: 0.5rem;
 `;
 

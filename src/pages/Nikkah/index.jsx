@@ -95,7 +95,7 @@ export default function WeddingDay() {
 
           <MainTitle style={{ marginBottom: "1rem" }}>&</MainTitle>
           <MainTitle>
-            Malika Mary<Span>s</Span>am
+            Mali<Span> </Span>ka Mary<Span>s</Span>am
           </MainTitle>
 
           <Section>

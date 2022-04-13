@@ -20,7 +20,9 @@ const QuestionContainer = styled.div`
   gap: 1rem;
 `;
 
-const Label = styled(S2)``;
+const Label = styled(S2)`
+  text-align: start;
+`;
 
 const RadioLabel = styled.label`
   margin-bottom: 0.5rem;
