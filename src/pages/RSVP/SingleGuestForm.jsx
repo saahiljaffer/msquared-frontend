@@ -129,7 +129,7 @@ function SingleGuestForm({ onSubmit, currentGuest }) {
       )}
 
       <QuestionContainer>
-        <Label>Will you be joining us for the nikkah?</Label>
+        <Label>Will you be joining us for the nikaah?</Label>
 
         <RadioLabel>
           <Input

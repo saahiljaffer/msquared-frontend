@@ -53,7 +53,7 @@ function GuestDetails({ guest }) {
         </AnswerContainer>
       )}
       <AnswerContainer>
-        <Answer>Is attending nikkah?</Answer>
+        <Answer>Is attending nikaah?</Answer>
         <Answer>{guest.fields.is_attending_nikkah ? "Yes" : "No"}</Answer>
       </AnswerContainer>
       {guest?.fields?.is_invited_reception && (
