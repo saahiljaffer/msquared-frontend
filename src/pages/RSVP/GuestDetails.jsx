@@ -35,15 +35,22 @@ const StyledAnchor = styled.a`
 const Answer = styled(S2)``;
 
 function GuestDetails({ guest }) {
+  const filename = `/ics/${guest.fields.is_attending_mendhi ? "mendhi" : ""}${
+    guest.fields.is_attending_nikkah ? "nikaah" : ""
+  }${guest.fields.is_attending_reception ? "reception" : ""}.ics`;
   return (
     <GuestContainer>
       <GuestHeader>
         <GuestName>
           {`${guest.fields.first_name} ${guest.fields.last_name}`}
         </GuestName>
-        <StyledAnchor href="/ics/myevents.ics">
-          <FontAwesomeIcon icon="fa-solid fa-calendar-plus" size="lg" />
-        </StyledAnchor>
+        {(guest.fields.is_attending_mendhi ||
+          guest.fields.is_attending_nikkah ||
+          guest.fields.is_attending_reception) && (
+          <StyledAnchor href={filename}>
+            <FontAwesomeIcon icon="fa-solid fa-calendar-plus" size="lg" />
+          </StyledAnchor>
+        )}
       </GuestHeader>
 
       {guest?.fields?.is_invited_mendhi && (
