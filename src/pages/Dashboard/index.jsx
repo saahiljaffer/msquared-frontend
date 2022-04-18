@@ -100,8 +100,8 @@ function Landing() {
           )}
         </ButtonGroupContainer>
 
-        <StyledLink to="/contact">
-          <Button variant="secondary">Questions</Button>
+        <StyledLink to="/guestbook">
+          <Button variant="secondary">Guest Book</Button>
         </StyledLink>
 
         <StyledLink to="/rsvp">

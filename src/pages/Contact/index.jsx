@@ -79,7 +79,7 @@ function Login() {
           });
         })}
       >
-        <Title>Questions</Title>
+        <Title>Guest Book</Title>
 
         <Container>
           <Label>

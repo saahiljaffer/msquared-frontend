@@ -31,7 +31,7 @@ const routes = (isLoggedin) => [
     element: isLoggedin ? <Mendhi /> : <Navigate to="/login" replace />,
   },
   {
-    path: "/contact",
+    path: "/guestbook",
     element: isLoggedin ? <Contact /> : <Navigate to="/login" replace />,
   },
   {
