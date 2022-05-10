@@ -85,8 +85,9 @@ function Login() {
         <Text>
           Welcome to our wedding website. We are so excited to celebrate with
           you all! As our big day is soon approaching, we would greatly
-          appreciate it if you could kindly login and RSVP by May 7, 2022.
+          appreciate it if you could kindly login and RSVP by May 20th, 2022.
         </Text>
+        <Text>Guests are kindly requested to wear their masks.</Text>
 
         <Container>
           <Label>

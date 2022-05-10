@@ -82,8 +82,9 @@ function Landing() {
           Welcome to our wedding website. We are so excited to celebrate with
           you all! As our big day is soon approaching, we would greatly
           appreciate it if you could kindly take a few minutes to RSVP using the
-          below tab, by May 7, 2022.
+          below tab, by May 20th, 2022.
         </SubTitle>
+        <SubTitle>Guests are kindly requested to wear their masks.</SubTitle>
         <ButtonGroupContainer>
           {data && data?.can_see_mendhi && (
             <StyledLink to="/mendhi">
